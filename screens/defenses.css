@@ -1,0 +1,82 @@
+/* OGame Retrowave — Defenses screen */
+
+#defenses {
+    color: var(--rw-text);
+}
+
+/* Main defenses artwork/header frame. */
+#defenses > header {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(49, 231, 255, .42) !important;
+    box-shadow:
+        0 0 14px rgba(49, 231, 255, .08),
+        inset 0 0 30px rgba(5, 5, 16, .20);
+}
+
+#defenses > header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        var(--rw-cyan),
+        var(--rw-purple),
+        var(--rw-magenta)
+    );
+    opacity: .78;
+}
+
+#defenses > header h2 {
+    color: var(--rw-text) !important;
+    text-shadow: 0 0 6px rgba(49, 231, 255, .34);
+}
+
+/* Single defensive-production grid. */
+#defenses #technologies {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(139, 92, 246, .07),
+            transparent 62%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(13, 16, 34, .95),
+            rgba(6, 8, 20, .96)
+        ) !important;
+    border: 1px solid rgba(49, 231, 255, .18);
+    box-shadow: 0 0 14px rgba(49, 231, 255, .045);
+}
+
+#defenses #technologies h3 {
+    color: var(--rw-cyan) !important;
+    text-shadow: 0 0 5px rgba(49, 231, 255, .30);
+    border-bottom: 1px solid rgba(49, 231, 255, .22);
+    background: linear-gradient(
+        90deg,
+        rgba(49, 231, 255, .065),
+        rgba(139, 92, 246, .045),
+        transparent 82%
+    ) !important;
+}
+
+/* Details drawer. */
+#defenses #technologydetails_wrapper,
+#defenses #technologydetails_content {
+    color: var(--rw-text) !important;
+}
+
+#defenses #technologydetails_content {
+    border-color: rgba(49, 231, 255, .28) !important;
+    box-shadow: 0 0 12px rgba(49, 231, 255, .07);
+}
+
+/* Defenses use the same shipyard production queue as ships. */
+#productionboxBottom .productionboxshipyard.parent.defenses .content-box-s {
+    border-color: rgba(49, 231, 255, .30) !important;
+}
