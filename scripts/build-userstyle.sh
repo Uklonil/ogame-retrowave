@@ -23,7 +23,8 @@ if not main.endswith('}'):
 # Remove the final closing brace only.
 main = main[:-1].rstrip()
 
-# Ensure Stylus auto-update points at the generated bundle.
+# Metadata for the distributable bundle.
+main = main.replace('@version        1.0.0', '@version        1.1.1')
 main = main.replace(
     '@updateURL      https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/main.css',
     '@updateURL      https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/ogame-retrowave.user.css'
