@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           OGame Retrowave
 @namespace      https://github.com/Uklonil/ogame-retrowave
-@version        1.1.1
+@version        1.2.0
 @description    Retrowave userstyle for OGame 13, designed for Stylus and compatible with AntiGameReborn.
 @author         Uklonil
 @homepageURL    https://github.com/Uklonil/ogame-retrowave
@@ -983,6 +983,118 @@
 
     #productionboxBottom .parent.facilities .content-box-s {
         border-color: rgba(49, 231, 255, .28) !important;
+    }
+
+    /* ===== Bundled from screens/research.css ===== */
+
+    /* OGame Retrowave — Research screen */
+
+    #research {
+        color: var(--rw-text);
+    }
+
+    #research > header {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(49, 231, 255, .42) !important;
+        box-shadow: 0 0 14px rgba(49, 231, 255, .08), inset 0 0 30px rgba(5, 5, 16, .22);
+    }
+
+    #research > header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        pointer-events: none;
+        background: linear-gradient(90deg, var(--rw-cyan), var(--rw-purple), var(--rw-magenta));
+        opacity: .8;
+    }
+
+    #research > header h2 {
+        color: var(--rw-text) !important;
+        text-shadow: 0 0 6px rgba(49, 231, 255, .35);
+    }
+
+    #research #technologies {
+        background: linear-gradient(180deg, rgba(13, 16, 34, .96), rgba(6, 8, 20, .96)) !important;
+        border: 1px solid rgba(49, 231, 255, .20);
+        box-shadow: 0 0 14px rgba(49, 231, 255, .045);
+    }
+
+    #research #technologies > div {
+        position: relative;
+    }
+
+    #research #technologies > div > h3 {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .28);
+        border-bottom: 1px solid rgba(49, 231, 255, .18);
+        background: linear-gradient(90deg, rgba(49, 231, 255, .055), rgba(139, 92, 246, .04), transparent 85%) !important;
+    }
+
+    #research #technologies ul.icons {
+        background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, .055), transparent 72%);
+    }
+
+    /* Discoverer research-time bonus shown directly on research tiles. */
+    #research #technologies .technology .acceleration {
+        color: var(--rw-cyan-soft) !important;
+        text-shadow: 0 0 4px rgba(49, 231, 255, .28);
+    }
+
+    #research #technologies .technology[data-status="active"] .acceleration {
+        color: var(--rw-pink) !important;
+        text-shadow: 0 0 5px rgba(255, 60, 172, .34);
+    }
+
+    #research #technologies .technology[data-status="active"] .cooldownBackground {
+        box-shadow: inset 0 0 9px rgba(255, 60, 172, .22);
+    }
+
+    #research #technologydetails_wrapper,
+    #research #technologydetails_content {
+        color: var(--rw-text) !important;
+    }
+
+    #research #technologydetails_content {
+        border-color: rgba(49, 231, 255, .28) !important;
+        box-shadow: 0 0 12px rgba(49, 231, 255, .07);
+    }
+
+    /* Research queue */
+    #productionboxBottom .parent.research .content-box-s {
+        border-color: rgba(49, 231, 255, .28) !important;
+    }
+
+    #productionboxBottom .productionBoxResearch .construction.active {
+        color: var(--rw-text) !important;
+    }
+
+    #productionboxBottom .productionBoxResearch .construction.active th {
+        color: var(--rw-pink) !important;
+        text-shadow: 0 0 4px rgba(255, 60, 172, .30);
+    }
+
+    #productionboxBottom .productionBoxResearch .construction.active .queuePic {
+        border: 1px solid rgba(255, 60, 172, .34);
+        box-shadow: 0 0 7px rgba(255, 60, 172, .12);
+    }
+
+    #productionboxBottom .productionBoxResearch .construction.active .timer,
+    #productionboxBottom .productionBoxResearch .construction.active .researchCountdown,
+    #productionboxBottom .productionBoxResearch .construction.active time {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 4px rgba(49, 231, 255, .30);
+    }
+
+    #productionboxBottom .productionBoxResearch .build-faster {
+        border-color: rgba(255, 230, 109, .30) !important;
+    }
+
+    #productionboxBottom .productionBoxResearch .build-faster:hover {
+        box-shadow: 0 0 8px rgba(255, 230, 109, .18);
     }
 
 }
