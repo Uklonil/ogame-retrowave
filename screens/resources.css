@@ -1,0 +1,167 @@
+/* OGame Retrowave — Resources screen */
+
+/* Main resources panel */
+#supplies {
+    color: var(--rw-text);
+}
+
+#supplies > header {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(49, 231, 255, .42) !important;
+    box-shadow:
+        0 0 14px rgba(49, 231, 255, .08),
+        inset 0 0 30px rgba(5, 5, 16, .22);
+}
+
+#supplies > header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        var(--rw-cyan),
+        var(--rw-purple),
+        var(--rw-magenta)
+    );
+    opacity: .8;
+}
+
+#supplies > header h2 {
+    color: var(--rw-text) !important;
+    text-shadow: 0 0 6px rgba(49, 231, 255, .35);
+}
+
+#supplies #slot01 a {
+    color: var(--rw-cyan) !important;
+    text-shadow: 0 0 4px rgba(49, 231, 255, .28);
+}
+
+#supplies #slot01 a:hover {
+    color: var(--rw-pink) !important;
+    text-shadow: var(--rw-glow-magenta);
+}
+
+/* Section containing the technology tiles */
+#supplies #technologies {
+    background: linear-gradient(
+        180deg,
+        rgba(13, 16, 34, .96),
+        rgba(6, 8, 20, .96)
+    ) !important;
+    border: 1px solid rgba(49, 231, 255, .20);
+    box-shadow: 0 0 14px rgba(49, 231, 255, .045);
+}
+
+#supplies #technologies > h3 {
+    color: var(--rw-cyan) !important;
+    text-shadow: 0 0 5px rgba(49, 231, 255, .3);
+    border-bottom: 1px solid rgba(49, 231, 255, .22);
+}
+
+/* Resource building tiles */
+#supplies #producers.icons > li.technology {
+    position: relative;
+    border: 1px solid rgba(49, 231, 255, .18);
+    background-color: rgba(7, 9, 21, .62) !important;
+    box-shadow: inset 0 0 12px rgba(5, 5, 16, .32);
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease,
+        filter .15s ease,
+        transform .15s ease;
+}
+
+#supplies #producers.icons > li.technology:hover {
+    border-color: rgba(49, 231, 255, .58);
+    box-shadow:
+        0 0 9px rgba(49, 231, 255, .12),
+        inset 0 0 12px rgba(5, 5, 16, .25);
+    filter: brightness(1.08) saturate(1.06);
+    transform: translateY(-1px);
+}
+
+/* Currently buildable */
+#supplies #producers.icons > li.technology[data-status="on"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    pointer-events: none;
+    background: var(--rw-cyan);
+    opacity: .48;
+    box-shadow: 0 0 5px rgba(49, 231, 255, .35);
+}
+
+/* Known but currently unaffordable */
+#supplies #producers.icons > li.technology[data-status="disabled"] {
+    border-color: rgba(255, 230, 109, .28);
+}
+
+#supplies #producers.icons > li.technology[data-status="disabled"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    pointer-events: none;
+    background: var(--rw-yellow);
+    opacity: .55;
+}
+
+/* Locked / requirements not met */
+#supplies #producers.icons > li.technology[data-status="off"] {
+    filter: saturate(.45) brightness(.68);
+    border-color: rgba(137, 144, 181, .15);
+}
+
+#supplies #producers.icons > li.technology[data-status="off"]:hover {
+    filter: saturate(.65) brightness(.82);
+}
+
+/* Levels */
+#supplies #producers .technology .level {
+    color: var(--rw-text) !important;
+    text-shadow: 0 0 4px rgba(49, 231, 255, .22);
+}
+
+#supplies #producers .technology[data-status="on"] .level {
+    color: var(--rw-cyan-soft) !important;
+}
+
+#supplies #producers .technology[data-status="disabled"] .level {
+    color: var(--rw-yellow) !important;
+}
+
+/* Upgrade button keeps OGame behaviour, only gets a neon interaction cue */
+#supplies #producers .technology button.upgrade {
+    transition: filter .15s ease, box-shadow .15s ease;
+}
+
+#supplies #producers .technology button.upgrade:hover {
+    filter: brightness(1.18) saturate(1.12);
+    box-shadow: 0 0 8px rgba(49, 231, 255, .24);
+}
+
+/* Technology details drawer */
+#supplies #technologydetails_wrapper,
+#supplies #technologydetails_content {
+    color: var(--rw-text) !important;
+}
+
+#supplies #technologydetails_content {
+    border-color: rgba(49, 231, 255, .28) !important;
+    box-shadow: 0 0 12px rgba(49, 231, 255, .07);
+}
+
+/* Supplies-specific production boxes */
+#productionboxBottom .parent.supplies .content-box-s {
+    border-color: rgba(49, 231, 255, .28) !important;
+}
