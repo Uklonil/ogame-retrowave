@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           OGame Retrowave
 @namespace      https://github.com/Uklonil/ogame-retrowave
-@version        1.1.0
+@version        1.0.0
 @description    Retrowave userstyle for OGame 13, designed for Stylus and compatible with AntiGameReborn.
 @author         Uklonil
 @homepageURL    https://github.com/Uklonil/ogame-retrowave
@@ -10,11 +10,915 @@
 @license        MIT
 ==/UserStyle== */
 
-/*
- * Single Stylus entrypoint.
- * Install or paste only this file; the rest is loaded from GitHub.
- */
-@import url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/main.css");
-@import url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/components/technology-grid.css");
-@import url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/screens/resources.css");
-@import url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/screens/facilities.css");
+@-moz-document regexp("https://s[0-9]+-[a-z]{2}\\.ogame\\.gameforge\\.com/game/.*") {
+/* =========================================================
+       OGAME RETROWAVE — DESIGN TOKENS
+       ========================================================= */
+
+    :root {
+        --rw-void: #050510;
+        --rw-space: #080a18;
+
+        --rw-panel: #0d1022;
+        --rw-panel-2: #12162c;
+        --rw-panel-hover: #191e39;
+
+        --rw-cyan: #31e7ff;
+        --rw-cyan-soft: #78efff;
+
+        --rw-magenta: #ff3cac;
+        --rw-pink: #ff71ce;
+
+        --rw-purple: #8b5cf6;
+        --rw-violet: #5634a5;
+
+        --rw-yellow: #ffe66d;
+        --rw-green: #62ff9d;
+        --rw-red: #ff5277;
+
+        --rw-text: #e7e9ff;
+        --rw-muted: #8990b5;
+
+        --rw-border: rgba(49, 231, 255, .32);
+        --rw-border-hot: rgba(255, 60, 172, .65);
+
+        --rw-glow-cyan:
+            0 0 4px rgba(49, 231, 255, .45),
+            0 0 12px rgba(49, 231, 255, .12);
+
+        --rw-glow-magenta:
+            0 0 5px rgba(255, 60, 172, .55),
+            0 0 14px rgba(255, 60, 172, .15);
+
+        --rw-gradient: linear-gradient(
+            90deg,
+            var(--rw-cyan),
+            var(--rw-purple),
+            var(--rw-magenta)
+        );
+    }
+
+    /* =========================================================
+       SPACE / PAGE
+       ========================================================= */
+
+    html,
+    body,
+    #ingamepage {
+        background-color: var(--rw-void) !important;
+    }
+
+    body#ingamepage {
+        background-color: var(--rw-void) !important;
+        background-image:
+            linear-gradient(
+                90deg,
+                rgba(3, 4, 14, .38) 0%,
+                rgba(3, 4, 14, .28) 38%,
+                rgba(3, 4, 14, .08) 70%,
+                rgba(3, 4, 14, .02) 100%
+            ),
+            url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/background.png") !important;
+        background-position: center top !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        color: var(--rw-text);
+    }
+
+    /* =========================================================
+       MAIN OGame WRAPPER
+       ========================================================= */
+
+    #pageContent,
+    #contentWrapper,
+    #content,
+    #middle,
+    #overviewcomponent,
+    #inhalt {
+        background-color: transparent !important;
+    }
+
+    /* =========================================================
+       LINKS
+       ========================================================= */
+
+    a {
+        color: var(--rw-cyan-soft);
+    }
+
+    a:hover {
+        color: var(--rw-pink);
+        text-shadow: var(--rw-glow-magenta);
+    }
+
+    /* =========================================================
+       OVERVIEW — PLANET
+       ========================================================= */
+
+    #planet {
+        border: 1px solid rgba(49, 231, 255, .35) !important;
+        box-shadow:
+            0 0 15px rgba(49, 231, 255, .08),
+            inset 0 0 25px rgba(5, 5, 16, .45);
+        overflow: hidden;
+    }
+
+    #detailWrapper {
+        background: linear-gradient(
+            90deg,
+            rgba(8, 10, 24, .35),
+            rgba(13, 16, 34, .86)
+        ) !important;
+    }
+
+    #header_text h2,
+    #header_text h2 a,
+    #planetNameHeader,
+    .planetNameOverview {
+        color: var(--rw-text) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .4);
+    }
+
+    #planetNameHeader {
+        color: var(--rw-cyan) !important;
+    }
+
+    /* =========================================================
+       OVERVIEW PRODUCTION CARDS
+       ========================================================= */
+
+    #productionboxBottom .content-box-s {
+        background: linear-gradient(
+            180deg,
+            rgba(18, 22, 44, .97),
+            rgba(8, 10, 24, .98)
+        ) !important;
+        border: 1px solid var(--rw-border) !important;
+        box-shadow:
+            inset 0 1px rgba(255, 255, 255, .025),
+            0 0 8px rgba(49, 231, 255, .06);
+        border-radius: 2px;
+        transition:
+            border-color .15s ease,
+            box-shadow .15s ease,
+            transform .15s ease;
+    }
+
+    #productionboxBottom .content-box-s .header {
+        background: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .13),
+            rgba(139, 92, 246, .10),
+            rgba(255, 60, 172, .10)
+        ) !important;
+        border-bottom: 1px solid var(--rw-border) !important;
+    }
+
+    #productionboxBottom .content-box-s .header h3 {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .3);
+        letter-spacing: .3px;
+    }
+
+    #productionboxBottom .content-box-s .content {
+        background: rgba(7, 9, 20, .88) !important;
+        color: var(--rw-text) !important;
+    }
+
+    #productionboxBottom td {
+        background: transparent !important;
+        color: var(--rw-text) !important;
+    }
+
+    #productionboxBottom td.idle a {
+        color: var(--rw-muted) !important;
+    }
+
+    #productionboxBottom td.idle a:hover {
+        color: var(--rw-cyan) !important;
+    }
+
+    #productionboxBottom .content-box-s:hover {
+        border-color: rgba(255, 60, 172, .38) !important;
+        box-shadow:
+            0 0 10px rgba(255, 60, 172, .08),
+            inset 0 1px rgba(255, 255, 255, .025);
+        transform: translateY(-1px);
+    }
+
+    /* =========================================================
+       GENERIC CONTENT BOXES
+       ========================================================= */
+
+    .content-box-s,
+    .content-box-m,
+    .content-box-l,
+    .content-box-xl {
+        color: var(--rw-text);
+    }
+
+    .content-box-s .header,
+    .content-box-m .header,
+    .content-box-l .header,
+    .content-box-xl .header {
+        color: var(--rw-cyan);
+    }
+
+    /* =========================================================
+       TOP USER BAR
+       ========================================================= */
+
+    #bar {
+        background: linear-gradient(
+            180deg,
+            rgba(14, 17, 38, .98),
+            rgba(6, 8, 20, .98)
+        ) !important;
+        border-bottom: 1px solid rgba(49, 231, 255, .28) !important;
+        box-shadow: 0 2px 12px rgba(49, 231, 255, .06);
+    }
+
+    #bar a {
+        color: var(--rw-cyan-soft) !important;
+        transition: color .15s ease, text-shadow .15s ease;
+    }
+
+    #bar a:hover {
+        color: var(--rw-pink) !important;
+        text-shadow: var(--rw-glow-magenta);
+    }
+
+    #bar .playername,
+    #bar .textBeefy {
+        color: var(--rw-text) !important;
+    }
+
+    /* =========================================================
+       LEFT MENU
+       ========================================================= */
+
+    #left {
+        background: linear-gradient(
+            180deg,
+            rgba(11, 14, 30, .97),
+            rgba(5, 7, 17, .99)
+        ) !important;
+        border: 1px solid rgba(49, 231, 255, .14);
+        box-shadow: inset 0 0 35px rgba(49, 231, 255, .025);
+    }
+
+    #menuTable > li {
+        position: relative;
+        filter: saturate(.72) brightness(.88);
+        transition: filter .15s ease;
+    }
+
+    #menuTable > li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 2px;
+        bottom: 2px;
+        width: 2px;
+        background: var(--rw-cyan);
+        opacity: 0;
+        box-shadow: 0 0 7px rgba(49, 231, 255, .65);
+        transition: opacity .15s ease;
+    }
+
+    #menuTable a.menubutton {
+        position: relative;
+        color: #929dbf !important;
+        transition:
+            color .15s ease,
+            text-shadow .15s ease,
+            background-color .15s ease;
+    }
+
+    #menuTable a.menubutton .textlabel {
+        color: inherit !important;
+        transition: color .15s ease, text-shadow .15s ease;
+    }
+
+    #menuTable > li:hover {
+        filter: saturate(.95) brightness(1.02);
+    }
+
+    #menuTable > li:hover::before {
+        opacity: .85;
+    }
+
+    #menuTable > li:hover a.menubutton {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .42);
+        background: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .10),
+            transparent 80%
+        ) !important;
+    }
+
+    #menuTable > li:hover .menu_icon {
+        filter:
+            brightness(1.16)
+            saturate(1.15)
+            drop-shadow(0 0 3px rgba(49, 231, 255, .30));
+    }
+
+    #menuTable > li:has(a.menubutton.selected) {
+        filter: saturate(1) brightness(1.08);
+    }
+
+    #menuTable > li:has(a.menubutton.selected)::before {
+        opacity: 1;
+        background: var(--rw-magenta);
+        box-shadow: 0 0 8px rgba(255, 60, 172, .7);
+    }
+
+    #menuTable a.menubutton.selected {
+        color: var(--rw-pink) !important;
+        text-shadow: 0 0 5px rgba(255, 60, 172, .45);
+        background: linear-gradient(
+            90deg,
+            rgba(255, 60, 172, .13),
+            rgba(139, 92, 246, .05),
+            transparent 80%
+        ) !important;
+    }
+
+    #menuTable a.menubutton.selected .textlabel {
+        color: var(--rw-pink) !important;
+    }
+
+    #menuTable > li:has(a.menubutton.selected) .menu_icon {
+        filter:
+            brightness(1.15)
+            saturate(1.2)
+            drop-shadow(0 0 4px rgba(255, 60, 172, .32));
+    }
+
+    #menuTable a.menubutton.premiumHighligt,
+    #menuTable a.menubutton.premiumHighligt .textlabel {
+        color: var(--rw-yellow) !important;
+        text-shadow: 0 0 4px rgba(255, 230, 109, .28);
+    }
+
+    #menuTable a.menubutton.premiumHighligt:hover {
+        color: #fff0a3 !important;
+        text-shadow: 0 0 6px rgba(255, 230, 109, .45);
+    }
+
+    /* =========================================================
+       RESOURCES HUD
+       ========================================================= */
+
+    #resourcesbarcomponent {
+        position: relative;
+        background: linear-gradient(
+            180deg,
+            rgba(14, 17, 38, .82),
+            rgba(5, 8, 20, .72)
+        ) !important;
+        border-bottom: 1px solid rgba(49, 231, 255, .18);
+        filter: drop-shadow(0 0 5px rgba(49, 231, 255, .10));
+    }
+
+    #resourcesbarcomponent li {
+        transition: filter .15s ease, transform .15s ease;
+    }
+
+    #resourcesbarcomponent li:hover {
+        filter: brightness(1.2) saturate(1.15);
+        transform: translateY(-1px);
+    }
+
+    #resourcesbarcomponent .value {
+        color: var(--rw-text) !important;
+        font-weight: 600;
+        text-shadow: 0 0 4px rgba(49, 231, 255, .2);
+    }
+
+    #resourcesbarcomponent #metal_box .value,
+    #resourcesbarcomponent .metal .value {
+        color: #d2d8e8 !important;
+    }
+
+    #resourcesbarcomponent #crystal_box .value,
+    #resourcesbarcomponent .crystal .value {
+        color: var(--rw-cyan) !important;
+    }
+
+    #resourcesbarcomponent #deuterium_box .value,
+    #resourcesbarcomponent .deuterium .value {
+        color: #aa86ff !important;
+    }
+
+    #resourcesbarcomponent #energy_box .value,
+    #resourcesbarcomponent .energy .value {
+        color: var(--rw-yellow) !important;
+    }
+
+    #resourcesbarcomponent #darkmatter_box .value,
+    #resourcesbarcomponent .darkmatter .value {
+        color: var(--rw-pink) !important;
+    }
+
+    /* =========================================================
+       EVENT / FLEET BAR
+       ========================================================= */
+
+    #eventboxContent,
+    #eventboxFilled,
+    #eventboxBlank {
+        background-color: rgba(7, 9, 21, .9) !important;
+        border-color: var(--rw-border) !important;
+    }
+
+    #eventboxContent a {
+        color: var(--rw-cyan-soft) !important;
+    }
+
+    #eventboxContent a:hover {
+        color: var(--rw-pink) !important;
+    }
+
+    /* =========================================================
+       PLANET LIST
+       ========================================================= */
+
+    #rechts,
+    #myWorlds,
+    #planetList {
+        background-color: transparent !important;
+    }
+
+    #rechts {
+        color: var(--rw-text) !important;
+    }
+
+    #countColonies {
+        background: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .06),
+            rgba(139, 92, 246, .05)
+        ) !important;
+        color: var(--rw-muted) !important;
+        border: 1px solid rgba(49, 231, 255, .18) !important;
+    }
+
+    #countColonies span {
+        color: var(--rw-cyan) !important;
+    }
+
+    #planetList .smallplanet {
+        border: 1px solid transparent;
+        border-radius: 3px;
+        transition: filter .15s ease, transform .15s ease;
+    }
+
+    #planetList .smallplanet:hover {
+        filter: drop-shadow(0 0 6px rgba(255, 60, 172, .5));
+        transform: translateX(-2px);
+        border-color: rgba(255, 60, 172, .45);
+        background-color: rgba(255, 60, 172, .035);
+        box-shadow: 0 0 10px rgba(255, 60, 172, .10);
+    }
+
+    #planetList .planet-name,
+    #planetList .planet-name:link,
+    #planetList .planet-name:visited {
+        color: var(--rw-text) !important;
+    }
+
+    #planetList .planet-koords {
+        color: var(--rw-cyan) !important;
+    }
+
+    /* =========================================================
+       OVERVIEW FRAME
+       ========================================================= */
+
+    #planet {
+        border-color: rgba(49, 231, 255, .48) !important;
+        box-shadow:
+            0 0 0 1px rgba(139, 92, 246, .08),
+            0 0 16px rgba(49, 231, 255, .075),
+            inset 0 0 32px rgba(5, 5, 16, .38);
+    }
+
+    #header_text {
+        position: relative;
+    }
+
+    #header_text::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--rw-cyan),
+            var(--rw-purple),
+            var(--rw-magenta),
+            transparent
+        );
+        opacity: .55;
+    }
+
+    /* =========================================================
+       FORMS
+       ========================================================= */
+
+    input,
+    select,
+    textarea {
+        background: var(--rw-space) !important;
+        color: var(--rw-text) !important;
+        border: 1px solid var(--rw-border) !important;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--rw-cyan) !important;
+        box-shadow: var(--rw-glow-cyan);
+        outline: none !important;
+    }
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
+
+    button,
+    .btn,
+    input[type="button"],
+    input[type="submit"] {
+        background: linear-gradient(180deg, #171c37, #0b0e20) !important;
+        color: var(--rw-cyan) !important;
+        border: 1px solid var(--rw-border) !important;
+        transition:
+            border-color .15s ease,
+            color .15s ease,
+            box-shadow .15s ease;
+    }
+
+    button:hover,
+    .btn:hover,
+    input[type="button"]:hover,
+    input[type="submit"]:hover {
+        color: var(--rw-pink) !important;
+        border-color: var(--rw-border-hot) !important;
+        box-shadow: var(--rw-glow-magenta);
+    }
+
+    /* =========================================================
+       TABLES / STATUS
+       ========================================================= */
+
+    table {
+        color: var(--rw-text);
+    }
+
+    th {
+        color: var(--rw-cyan) !important;
+    }
+
+    tr:hover td {
+        background-color: rgba(49, 231, 255, .035) !important;
+    }
+
+    .positive,
+    .success {
+        color: var(--rw-green) !important;
+    }
+
+    .negative,
+    .error {
+        color: var(--rw-red) !important;
+    }
+
+    .warning {
+        color: var(--rw-yellow) !important;
+    }
+
+    /* =========================================================
+       TOOLTIPS
+       ========================================================= */
+
+    #tooltip,
+    .tooltipWrapper,
+    .tooltipContent {
+        background: linear-gradient(
+            180deg,
+            rgba(15, 18, 38, .98),
+            rgba(6, 8, 20, .98)
+        ) !important;
+        color: var(--rw-text) !important;
+        border: 1px solid rgba(49, 231, 255, .38) !important;
+        box-shadow:
+            0 0 10px rgba(49, 231, 255, .10),
+            inset 0 1px rgba(255, 255, 255, .025) !important;
+    }
+
+    #tooltip a,
+    .tooltipWrapper a,
+    .tooltipContent a {
+        color: var(--rw-cyan) !important;
+    }
+
+    #tooltip strong,
+    .tooltipWrapper strong,
+    .tooltipContent strong {
+        color: var(--rw-pink) !important;
+    }
+
+    /* =========================================================
+       SCROLLBAR — Chromium
+       ========================================================= */
+
+    ::-webkit-scrollbar {
+        width: 9px;
+        height: 9px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--rw-void);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, var(--rw-purple), var(--rw-magenta));
+        border: 2px solid var(--rw-void);
+        border-radius: 6px;
+    }
+
+    ::selection {
+        background: rgba(255, 60, 172, .35);
+        color: #fff;
+    }
+
+    /* ===== Bundled from components/technology-grid.css ===== */
+
+    /* OGame Retrowave — shared technology grid */
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology {
+        position: relative;
+        border: 1px solid rgba(49, 231, 255, .18);
+        background-color: rgba(7, 9, 21, .62) !important;
+        box-shadow: inset 0 0 12px rgba(5, 5, 16, .32);
+        transition: border-color .15s ease, box-shadow .15s ease, filter .15s ease, transform .15s ease;
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology:not([data-status="off"]):hover {
+        border-color: rgba(49, 231, 255, .58);
+        box-shadow: 0 0 9px rgba(49, 231, 255, .12), inset 0 0 12px rgba(5, 5, 16, .25);
+        filter: brightness(1.08) saturate(1.06);
+        transform: translateY(-1px);
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="on"]::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        pointer-events: none;
+        background: var(--rw-cyan);
+        opacity: .48;
+        box-shadow: 0 0 5px rgba(49, 231, 255, .35);
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="disabled"] {
+        border-color: rgba(255, 230, 109, .16);
+        filter: saturate(.78) brightness(.92);
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="disabled"]::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        pointer-events: none;
+        background: var(--rw-yellow);
+        opacity: .28;
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="off"] {
+        border-color: rgba(137, 144, 181, .12);
+        filter: grayscale(.85) saturate(.35) brightness(.62);
+        opacity: .76;
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="off"]:hover {
+        filter: grayscale(.7) saturate(.5) brightness(.76);
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="active"] {
+        border-color: rgba(255, 60, 172, .68) !important;
+        box-shadow: 0 0 10px rgba(255, 60, 172, .16), inset 0 0 14px rgba(139, 92, 246, .10);
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="active"]::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--rw-magenta);
+        box-shadow: 0 0 7px rgba(255, 60, 172, .55);
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) .technology .level {
+        color: var(--rw-text) !important;
+        text-shadow: 0 0 4px rgba(49, 231, 255, .22);
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) .technology[data-status="on"] .level {
+        color: var(--rw-cyan-soft) !important;
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) .technology[data-status="disabled"] .level {
+        color: var(--rw-yellow) !important;
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) .technology[data-status="active"] .targetlevel,
+    :is(#supplies #producers, #facilities #technologies > ul.icons) .technology[data-status="active"] time {
+        color: var(--rw-pink) !important;
+        text-shadow: 0 0 5px rgba(255, 60, 172, .38);
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) .technology button.upgrade {
+        transition: filter .15s ease, box-shadow .15s ease;
+    }
+
+    :is(#supplies #producers, #facilities #technologies > ul.icons) .technology button.upgrade:hover {
+        filter: brightness(1.18) saturate(1.12);
+        box-shadow: 0 0 8px rgba(49, 231, 255, .24);
+    }
+
+    /* ===== Bundled from screens/resources.css ===== */
+
+    /* OGame Retrowave — Resources screen */
+
+    #supplies {
+        color: var(--rw-text);
+    }
+
+    #supplies > header {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(49, 231, 255, .42) !important;
+        box-shadow: 0 0 14px rgba(49, 231, 255, .08), inset 0 0 30px rgba(5, 5, 16, .22);
+    }
+
+    #supplies > header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        pointer-events: none;
+        background: linear-gradient(90deg, var(--rw-cyan), var(--rw-purple), var(--rw-magenta));
+        opacity: .8;
+    }
+
+    #supplies > header h2 {
+        color: var(--rw-text) !important;
+        text-shadow: 0 0 6px rgba(49, 231, 255, .35);
+    }
+
+    #supplies #slot01 a {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 4px rgba(49, 231, 255, .28);
+    }
+
+    #supplies #slot01 a:hover {
+        color: var(--rw-pink) !important;
+        text-shadow: var(--rw-glow-magenta);
+    }
+
+    #supplies #technologies {
+        background: linear-gradient(180deg, rgba(13, 16, 34, .96), rgba(6, 8, 20, .96)) !important;
+        border: 1px solid rgba(49, 231, 255, .20);
+        box-shadow: 0 0 14px rgba(49, 231, 255, .045);
+    }
+
+    #supplies #technologies > h3 {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .3);
+        border-bottom: 1px solid rgba(49, 231, 255, .22);
+    }
+
+    #supplies #technologydetails_wrapper,
+    #supplies #technologydetails_content {
+        color: var(--rw-text) !important;
+    }
+
+    #supplies #technologydetails_content {
+        border-color: rgba(49, 231, 255, .28) !important;
+        box-shadow: 0 0 12px rgba(49, 231, 255, .07);
+    }
+
+    #productionboxBottom .parent.supplies .content-box-s {
+        border-color: rgba(49, 231, 255, .28) !important;
+    }
+
+    #productionboxBottom .productionBoxBuildings .construction.active {
+        color: var(--rw-text) !important;
+    }
+
+    #productionboxBottom .productionBoxBuildings .construction.active .desc {
+        color: var(--rw-muted) !important;
+    }
+
+    #productionboxBottom .productionBoxBuildings .construction.active .ausbau,
+    #productionboxBottom .productionBoxBuildings .construction.active .ausbau .level {
+        color: var(--rw-pink) !important;
+        text-shadow: 0 0 4px rgba(255, 60, 172, .32);
+    }
+
+    #productionboxBottom .productionBoxBuildings .construction.active .timer,
+    #productionboxBottom .productionBoxBuildings .construction.active .buildingCountdown {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 4px rgba(49, 231, 255, .32);
+    }
+
+    #productionboxBottom .productionBoxBuildings .build-faster {
+        border-color: rgba(255, 230, 109, .32) !important;
+    }
+
+    #productionboxBottom .productionBoxBuildings .build-faster:hover {
+        box-shadow: 0 0 8px rgba(255, 230, 109, .18);
+    }
+
+    /* ===== Bundled from screens/facilities.css ===== */
+
+    /* OGame Retrowave — Facilities screen */
+
+    #facilities {
+        color: var(--rw-text);
+    }
+
+    #facilities > header {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(49, 231, 255, .42) !important;
+        box-shadow: 0 0 14px rgba(49, 231, 255, .08), inset 0 0 30px rgba(5, 5, 16, .22);
+    }
+
+    #facilities > header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        pointer-events: none;
+        background: linear-gradient(90deg, var(--rw-cyan), var(--rw-purple), var(--rw-magenta));
+        opacity: .8;
+    }
+
+    #facilities > header h2 {
+        color: var(--rw-text) !important;
+        text-shadow: 0 0 6px rgba(49, 231, 255, .35);
+    }
+
+    #facilities #technologies {
+        background: linear-gradient(180deg, rgba(13, 16, 34, .96), rgba(6, 8, 20, .96)) !important;
+        border: 1px solid rgba(49, 231, 255, .20);
+        box-shadow: 0 0 14px rgba(49, 231, 255, .045);
+    }
+
+    #facilities #technologies > h3 {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .3);
+        border-bottom: 1px solid rgba(49, 231, 255, .22);
+    }
+
+    #facilities #technologies > ul.icons {
+        background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, .08), transparent 65%);
+    }
+
+    #facilities #technologydetails_wrapper,
+    #facilities #technologydetails_content {
+        color: var(--rw-text) !important;
+    }
+
+    #facilities #technologydetails_content {
+        border-color: rgba(49, 231, 255, .28) !important;
+        box-shadow: 0 0 12px rgba(49, 231, 255, .07);
+    }
+
+    #productionboxBottom .parent.facilities .content-box-s {
+        border-color: rgba(49, 231, 255, .28) !important;
+    }
+
+}
