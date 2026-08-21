@@ -831,12 +831,12 @@
 
     /* OGame Retrowave — shared production grid
      *
-     * Used by production-oriented screens such as Shipyard and, later, Defenses.
+     * Used by production-oriented screens such as Shipyard and Defenses.
      * Keep this separate from technology-grid.css: production entries represent
      * quantities/stock and factory availability rather than technology levels.
      */
 
-    #shipyard #technologies ul.icons > li.technology {
+    :is(#shipyard, #defenses) #technologies ul.icons > li.technology {
         position: relative;
         border: 1px solid rgba(49, 231, 255, .16);
         background-color: rgba(7, 9, 21, .64) !important;
@@ -849,23 +849,23 @@
     }
 
     /* Requirements not met. */
-    #shipyard #technologies ul.icons > li.technology[data-status="off"] {
+    :is(#shipyard, #defenses) #technologies ul.icons > li.technology[data-status="off"] {
         border-color: rgba(137, 144, 181, .10);
         filter: grayscale(.88) saturate(.30) brightness(.60);
         opacity: .74;
     }
 
-    #shipyard #technologies ul.icons > li.technology[data-status="off"]:hover {
+    :is(#shipyard, #defenses) #technologies ul.icons > li.technology[data-status="off"]:hover {
         filter: grayscale(.72) saturate(.45) brightness(.74);
         border-color: rgba(137, 144, 181, .20);
     }
 
     /* Production entry is currently actionable. */
-    #shipyard #technologies ul.icons > li.technology[data-status="on"] {
+    :is(#shipyard, #defenses) #technologies ul.icons > li.technology[data-status="on"] {
         border-color: rgba(49, 231, 255, .34);
     }
 
-    #shipyard #technologies ul.icons > li.technology[data-status="on"]::after {
+    :is(#shipyard, #defenses) #technologies ul.icons > li.technology[data-status="on"]::after {
         content: "";
         position: absolute;
         left: 0;
@@ -879,12 +879,12 @@
     }
 
     /* Known/available, but temporarily not executable: resources, factory busy, etc. */
-    #shipyard #technologies ul.icons > li.technology[data-status="disabled"] {
+    :is(#shipyard, #defenses) #technologies ul.icons > li.technology[data-status="disabled"] {
         border-color: rgba(255, 230, 109, .15);
         filter: saturate(.76) brightness(.90);
     }
 
-    #shipyard #technologies ul.icons > li.technology[data-status="disabled"]::after {
+    :is(#shipyard, #defenses) #technologies ul.icons > li.technology[data-status="disabled"]::after {
         content: "";
         position: absolute;
         left: 0;
@@ -897,14 +897,14 @@
     }
 
     /* Selected/active production entry, when OGame exposes this state. */
-    #shipyard #technologies ul.icons > li.technology[data-status="active"] {
+    :is(#shipyard, #defenses) #technologies ul.icons > li.technology[data-status="active"] {
         border-color: rgba(255, 60, 172, .68) !important;
         box-shadow:
             0 0 10px rgba(255, 60, 172, .16),
             inset 0 0 14px rgba(139, 92, 246, .10);
     }
 
-    #shipyard #technologies ul.icons > li.technology[data-status="active"]::before {
+    :is(#shipyard, #defenses) #technologies ul.icons > li.technology[data-status="active"]::before {
         content: "";
         position: absolute;
         left: 0;
@@ -916,7 +916,7 @@
     }
 
     /* Hover only for entries that are not hard-locked by requirements. */
-    #shipyard #technologies ul.icons > li.technology:not([data-status="off"]):hover {
+    :is(#shipyard, #defenses) #technologies ul.icons > li.technology:not([data-status="off"]):hover {
         border-color: rgba(49, 231, 255, .58);
         box-shadow:
             0 0 9px rgba(49, 231, 255, .12),
@@ -925,22 +925,22 @@
         transform: translateY(-1px);
     }
 
-    /* Ship stock/quantity is the important number on this grid. */
-    #shipyard #technologies .technology .amount,
-    #shipyard #technologies .technology .stockAmount {
+    /* Stock/quantity is the important number on production grids. */
+    :is(#shipyard, #defenses) #technologies .technology .amount,
+    :is(#shipyard, #defenses) #technologies .technology .stockAmount {
         color: var(--rw-text) !important;
         text-shadow: 0 0 4px rgba(49, 231, 255, .20);
     }
 
-    #shipyard #technologies .technology[data-status="on"] .stockAmount {
+    :is(#shipyard, #defenses) #technologies .technology[data-status="on"] .stockAmount {
         color: var(--rw-cyan-soft) !important;
     }
 
-    #shipyard #technologies .technology[data-status="disabled"] .stockAmount {
+    :is(#shipyard, #defenses) #technologies .technology[data-status="disabled"] .stockAmount {
         color: var(--rw-yellow) !important;
     }
 
-    #shipyard #technologies .technology[data-status="active"] .stockAmount {
+    :is(#shipyard, #defenses) #technologies .technology[data-status="active"] .stockAmount {
         color: var(--rw-pink) !important;
         text-shadow: 0 0 5px rgba(255, 60, 172, .36);
     }
