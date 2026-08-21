@@ -1,0 +1,20 @@
+/* ==UserStyle==
+@name           OGame Retrowave
+@namespace      https://github.com/Uklonil/ogame-retrowave
+@version        1.1.0
+@description    Retrowave userstyle for OGame 13, designed for Stylus and compatible with AntiGameReborn.
+@author         Uklonil
+@homepageURL    https://github.com/Uklonil/ogame-retrowave
+@supportURL     https://github.com/Uklonil/ogame-retrowave/issues
+@updateURL      https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/ogame-retrowave.user.css
+@license        MIT
+==/UserStyle== */
+
+/*
+ * Single Stylus entrypoint.
+ * Install or paste only this file; the rest is loaded from GitHub.
+ */
+@import url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/main.css");
+@import url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/components/technology-grid.css");
+@import url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/screens/resources.css");
+@import url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/screens/facilities.css");
