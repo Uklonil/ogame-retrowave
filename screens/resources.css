@@ -230,3 +230,37 @@
 #productionboxBottom .productionBoxBuildings .build-faster:hover {
     box-shadow: 0 0 8px rgba(255, 230, 109, .18);
 }
+/* Disabled should read as unavailable, not warning */
+#supplies #producers.icons > li.technology[data-status="disabled"] {
+    border-color: rgba(255, 230, 109, .16);
+    filter: saturate(.78) brightness(.92);
+}
+
+#supplies #producers.icons > li.technology[data-status="disabled"]::after {
+    opacity: .28;
+}
+
+/* Active construction gets stronger identity */
+#supplies #producers.icons > li.technology[data-status="active"] {
+    border-color: rgba(255, 60, 172, .68) !important;
+
+    box-shadow:
+        0 0 10px rgba(255, 60, 172, .16),
+        inset 0 0 14px rgba(139, 92, 246, .10);
+}
+
+#supplies #producers.icons > li.technology[data-status="active"]::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 2px;
+
+    background: var(--rw-magenta);
+
+    box-shadow:
+        0 0 7px rgba(255, 60, 172, .55);
+}
