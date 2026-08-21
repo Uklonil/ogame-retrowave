@@ -6,14 +6,18 @@ The goal is to preserve OGame's information density and original artwork while r
 
 ## Status
 
-Early development. The overview, global HUD, navigation, resource bar, planet selector, generic controls and core visual language are already themed. Individual OGame screens are still being refined.
+Early development. The overview, global HUD, navigation, resource bar, planet selector, generic controls, Resources and Facilities screens already have themed coverage.
 
 ## Installation
 
+Use **one file only** in Stylus:
+
 1. Install the Stylus browser extension.
-2. Open `main.css` in this repository using its raw view.
-3. Install the userstyle with Stylus.
+2. Open `ogame-retrowave.user.css` using GitHub's raw view.
+3. Install it as a userstyle, or copy/paste that single file into Stylus.
 4. Keep automatic updates enabled if you want future versions from this repository.
+
+`ogame-retrowave.user.css` is the public entrypoint and loads the modular CSS files with `@import`. You do not need to copy the files in `components/` or `screens/` manually.
 
 The style targets OGame universe hosts following the `sNNN-xx.ogame.gameforge.com` pattern, so it is not tied to a single universe or language.
 
@@ -28,9 +32,10 @@ Other browsers and extensions may work, but are not yet part of the tested basel
 
 ## Visual language
 
-- **Cyan** — interaction / hover
-- **Magenta** — current or selected state
-- **Yellow** — premium / special actions
+- **Cyan** — available / interaction / hover
+- **Magenta** — current, selected or actively building
+- **Yellow** — temporarily unavailable / premium / special actions depending on context
+- **Muted grey** — requirements not met
 - **Green / red** — positive and negative status
 
 The background is deliberately darker behind the main game interface and visually heavier on the right side so it does not compete with gameplay information.
@@ -40,16 +45,21 @@ The background is deliberately darker behind the main game interface and visuall
 ```text
 ogame-retrowave/
 ├── background.png
-├── main.css
+├── ogame-retrowave.user.css   # single Stylus entrypoint
+├── main.css                   # core theme / global OGame chrome
+├── components/
+│   └── technology-grid.css    # shared technology/building cards
+├── screens/
+│   ├── resources.css
+│   └── facilities.css
 ├── README.md
 └── LICENSE
 ```
 
-The background is loaded from this repository rather than embedded as Base64, keeping the CSS editable and update-friendly.
+The background is loaded from this repository rather than embedded as Base64. Shared UI patterns live in `components/`; screen files should contain only screen-specific differences.
 
 ## Roadmap
 
-- Refine Resources and Facilities
 - Research and Shipyard
 - Fleet dispatch and movement UI
 - Galaxy view
