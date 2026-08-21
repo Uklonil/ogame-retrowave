@@ -1,0 +1,38 @@
+name: Build userstyle bundle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'main.css'
+      - 'components/**.css'
+      - 'screens/**.css'
+      - 'scripts/build-userstyle.sh'
+      - '.github/workflows/build-userstyle.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build bundled userstyle
+        run: bash scripts/build-userstyle.sh
+
+      - name: Commit bundle if changed
+        run: |
+          if git diff --quiet -- ogame-retrowave.user.css; then
+            echo "Bundle already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ogame-retrowave.user.css
+          git commit -m "build: regenerate bundled userstyle"
+          git push
