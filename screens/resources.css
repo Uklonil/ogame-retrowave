@@ -99,7 +99,7 @@
     box-shadow: 0 0 5px rgba(49, 231, 255, .35);
 }
 
-/* Known but currently unaffordable */
+/* Known but currently unavailable (e.g. insufficient resources or full queue) */
 #supplies #producers.icons > li.technology[data-status="disabled"] {
     border-color: rgba(255, 230, 109, .28);
 }
@@ -114,6 +114,42 @@
     pointer-events: none;
     background: var(--rw-yellow);
     opacity: .55;
+}
+
+/* Active construction */
+#supplies #producers.icons > li.technology[data-status="active"] {
+    border-color: rgba(255, 60, 172, .72);
+    box-shadow:
+        0 0 10px rgba(255, 60, 172, .16),
+        inset 0 0 14px rgba(139, 92, 246, .12);
+    filter: brightness(1.08) saturate(1.08);
+}
+
+#supplies #producers.icons > li.technology[data-status="active"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    pointer-events: none;
+    background: linear-gradient(90deg, var(--rw-purple), var(--rw-magenta));
+    opacity: .9;
+    box-shadow: 0 0 7px rgba(255, 60, 172, .5);
+}
+
+#supplies #producers .technology[data-status="active"] .targetlevel,
+#supplies #producers .technology[data-status="active"] time.buildingCountdown {
+    color: var(--rw-pink) !important;
+    text-shadow: 0 0 5px rgba(255, 60, 172, .42);
+}
+
+#supplies #producers .technology[data-status="active"] .level {
+    color: var(--rw-cyan-soft) !important;
+}
+
+#supplies #producers .technology[data-status="active"] .cooldownBackground {
+    box-shadow: inset 0 0 8px rgba(255, 60, 172, .22);
 }
 
 /* Locked / requirements not met */
@@ -164,4 +200,33 @@
 /* Supplies-specific production boxes */
 #productionboxBottom .parent.supplies .content-box-s {
     border-color: rgba(49, 231, 255, .28) !important;
+}
+
+/* Active building card */
+#productionboxBottom .productionBoxBuildings .construction.active {
+    color: var(--rw-text) !important;
+}
+
+#productionboxBottom .productionBoxBuildings .construction.active .desc {
+    color: var(--rw-muted) !important;
+}
+
+#productionboxBottom .productionBoxBuildings .construction.active .ausbau,
+#productionboxBottom .productionBoxBuildings .construction.active .ausbau .level {
+    color: var(--rw-pink) !important;
+    text-shadow: 0 0 4px rgba(255, 60, 172, .32);
+}
+
+#productionboxBottom .productionBoxBuildings .construction.active .timer,
+#productionboxBottom .productionBoxBuildings .construction.active .buildingCountdown {
+    color: var(--rw-cyan) !important;
+    text-shadow: 0 0 4px rgba(49, 231, 255, .32);
+}
+
+#productionboxBottom .productionBoxBuildings .build-faster {
+    border-color: rgba(255, 230, 109, .32) !important;
+}
+
+#productionboxBottom .productionBoxBuildings .build-faster:hover {
+    box-shadow: 0 0 8px rgba(255, 230, 109, .18);
 }
