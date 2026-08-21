@@ -1,6 +1,10 @@
 /* OGame Retrowave — shared technology grid */
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) > li.technology {
     position: relative;
     border: 1px solid rgba(49, 231, 255, .18);
     background-color: rgba(7, 9, 21, .62) !important;
@@ -8,14 +12,22 @@
     transition: border-color .15s ease, box-shadow .15s ease, filter .15s ease, transform .15s ease;
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology:not([data-status="off"]):hover {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) > li.technology:not([data-status="off"]):hover {
     border-color: rgba(49, 231, 255, .58);
     box-shadow: 0 0 9px rgba(49, 231, 255, .12), inset 0 0 12px rgba(5, 5, 16, .25);
     filter: brightness(1.08) saturate(1.06);
     transform: translateY(-1px);
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="on"]::after {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) > li.technology[data-status="on"]::after {
     content: "";
     position: absolute;
     left: 0;
@@ -28,12 +40,20 @@
     box-shadow: 0 0 5px rgba(49, 231, 255, .35);
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="disabled"] {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) > li.technology[data-status="disabled"] {
     border-color: rgba(255, 230, 109, .16);
     filter: saturate(.78) brightness(.92);
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="disabled"]::after {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) > li.technology[data-status="disabled"]::after {
     content: "";
     position: absolute;
     left: 0;
@@ -45,22 +65,38 @@
     opacity: .28;
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="off"] {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) > li.technology[data-status="off"] {
     border-color: rgba(137, 144, 181, .12);
     filter: grayscale(.85) saturate(.35) brightness(.62);
     opacity: .76;
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="off"]:hover {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) > li.technology[data-status="off"]:hover {
     filter: grayscale(.7) saturate(.5) brightness(.76);
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="active"] {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) > li.technology[data-status="active"] {
     border-color: rgba(255, 60, 172, .68) !important;
     box-shadow: 0 0 10px rgba(255, 60, 172, .16), inset 0 0 14px rgba(139, 92, 246, .10);
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) > li.technology[data-status="active"]::before {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) > li.technology[data-status="active"]::before {
     content: "";
     position: absolute;
     left: 0;
@@ -71,30 +107,58 @@
     box-shadow: 0 0 7px rgba(255, 60, 172, .55);
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) .technology .level {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) .technology .level {
     color: var(--rw-text) !important;
     text-shadow: 0 0 4px rgba(49, 231, 255, .22);
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) .technology[data-status="on"] .level {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) .technology[data-status="on"] .level {
     color: var(--rw-cyan-soft) !important;
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) .technology[data-status="disabled"] .level {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) .technology[data-status="disabled"] .level {
     color: var(--rw-yellow) !important;
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) .technology[data-status="active"] .targetlevel,
-:is(#supplies #producers, #facilities #technologies > ul.icons) .technology[data-status="active"] time {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) .technology[data-status="active"] .targetlevel,
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) .technology[data-status="active"] time {
     color: var(--rw-pink) !important;
     text-shadow: 0 0 5px rgba(255, 60, 172, .38);
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) .technology button.upgrade {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) .technology button.upgrade {
     transition: filter .15s ease, box-shadow .15s ease;
 }
 
-:is(#supplies #producers, #facilities #technologies > ul.icons) .technology button.upgrade:hover {
+:is(
+    #supplies #producers,
+    #facilities #technologies > ul.icons,
+    #research #technologies ul.icons
+) .technology button.upgrade:hover {
     filter: brightness(1.18) saturate(1.12);
     box-shadow: 0 0 8px rgba(49, 231, 255, .24);
 }
