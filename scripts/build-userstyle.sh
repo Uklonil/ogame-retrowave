@@ -9,6 +9,8 @@ TMP="${OUT}.tmp"
 
 # main.css already contains the UserStyle metadata and the @-moz-document wrapper.
 # Remove only the final wrapper brace, append modular CSS, then close it again.
+# The generated bundle intentionally contains no @import directives so Stylus is not
+# affected by CSP restrictions on remote stylesheet imports.
 python3 - <<'PY'
 from pathlib import Path
 
