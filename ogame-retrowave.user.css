@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           OGame Retrowave
 @namespace      https://github.com/Uklonil/ogame-retrowave
-@version        1.2.0
+@version        1.3.0
 @description    Retrowave userstyle for OGame 13, designed for Stylus and compatible with AntiGameReborn.
 @author         Uklonil
 @homepageURL    https://github.com/Uklonil/ogame-retrowave
@@ -827,6 +827,124 @@
         box-shadow: 0 0 8px rgba(49, 231, 255, .24);
     }
 
+    /* ===== Bundled from components/production-grid.css ===== */
+
+    /* OGame Retrowave — shared production grid
+     *
+     * Used by production-oriented screens such as Shipyard and, later, Defenses.
+     * Keep this separate from technology-grid.css: production entries represent
+     * quantities/stock and factory availability rather than technology levels.
+     */
+
+    #shipyard #technologies ul.icons > li.technology {
+        position: relative;
+        border: 1px solid rgba(49, 231, 255, .16);
+        background-color: rgba(7, 9, 21, .64) !important;
+        box-shadow: inset 0 0 12px rgba(5, 5, 16, .34);
+        transition:
+            border-color .15s ease,
+            box-shadow .15s ease,
+            filter .15s ease,
+            transform .15s ease;
+    }
+
+    /* Requirements not met. */
+    #shipyard #technologies ul.icons > li.technology[data-status="off"] {
+        border-color: rgba(137, 144, 181, .10);
+        filter: grayscale(.88) saturate(.30) brightness(.60);
+        opacity: .74;
+    }
+
+    #shipyard #technologies ul.icons > li.technology[data-status="off"]:hover {
+        filter: grayscale(.72) saturate(.45) brightness(.74);
+        border-color: rgba(137, 144, 181, .20);
+    }
+
+    /* Production entry is currently actionable. */
+    #shipyard #technologies ul.icons > li.technology[data-status="on"] {
+        border-color: rgba(49, 231, 255, .34);
+    }
+
+    #shipyard #technologies ul.icons > li.technology[data-status="on"]::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        pointer-events: none;
+        background: var(--rw-cyan);
+        opacity: .50;
+        box-shadow: 0 0 5px rgba(49, 231, 255, .38);
+    }
+
+    /* Known/available, but temporarily not executable: resources, factory busy, etc. */
+    #shipyard #technologies ul.icons > li.technology[data-status="disabled"] {
+        border-color: rgba(255, 230, 109, .15);
+        filter: saturate(.76) brightness(.90);
+    }
+
+    #shipyard #technologies ul.icons > li.technology[data-status="disabled"]::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        pointer-events: none;
+        background: var(--rw-yellow);
+        opacity: .25;
+    }
+
+    /* Selected/active production entry, when OGame exposes this state. */
+    #shipyard #technologies ul.icons > li.technology[data-status="active"] {
+        border-color: rgba(255, 60, 172, .68) !important;
+        box-shadow:
+            0 0 10px rgba(255, 60, 172, .16),
+            inset 0 0 14px rgba(139, 92, 246, .10);
+    }
+
+    #shipyard #technologies ul.icons > li.technology[data-status="active"]::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--rw-magenta);
+        box-shadow: 0 0 7px rgba(255, 60, 172, .55);
+    }
+
+    /* Hover only for entries that are not hard-locked by requirements. */
+    #shipyard #technologies ul.icons > li.technology:not([data-status="off"]):hover {
+        border-color: rgba(49, 231, 255, .58);
+        box-shadow:
+            0 0 9px rgba(49, 231, 255, .12),
+            inset 0 0 12px rgba(5, 5, 16, .25);
+        filter: brightness(1.08) saturate(1.06);
+        transform: translateY(-1px);
+    }
+
+    /* Ship stock/quantity is the important number on this grid. */
+    #shipyard #technologies .technology .amount,
+    #shipyard #technologies .technology .stockAmount {
+        color: var(--rw-text) !important;
+        text-shadow: 0 0 4px rgba(49, 231, 255, .20);
+    }
+
+    #shipyard #technologies .technology[data-status="on"] .stockAmount {
+        color: var(--rw-cyan-soft) !important;
+    }
+
+    #shipyard #technologies .technology[data-status="disabled"] .stockAmount {
+        color: var(--rw-yellow) !important;
+    }
+
+    #shipyard #technologies .technology[data-status="active"] .stockAmount {
+        color: var(--rw-pink) !important;
+        text-shadow: 0 0 5px rgba(255, 60, 172, .36);
+    }
+
     /* ===== Bundled from screens/resources.css ===== */
 
     /* OGame Retrowave — Resources screen */
@@ -1095,6 +1213,137 @@
 
     #productionboxBottom .productionBoxResearch .build-faster:hover {
         box-shadow: 0 0 8px rgba(255, 230, 109, .18);
+    }
+
+    /* ===== Bundled from screens/shipyard.css ===== */
+
+    /* OGame Retrowave — Shipyard screen */
+
+    #shipyard {
+        color: var(--rw-text);
+    }
+
+    /* Main shipyard artwork/header frame. */
+    #shipyard > header {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(49, 231, 255, .42) !important;
+        box-shadow:
+            0 0 14px rgba(49, 231, 255, .08),
+            inset 0 0 30px rgba(5, 5, 16, .20);
+    }
+
+    #shipyard > header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        pointer-events: none;
+        background: linear-gradient(
+            90deg,
+            var(--rw-cyan),
+            var(--rw-purple),
+            var(--rw-magenta)
+        );
+        opacity: .78;
+    }
+
+    #shipyard > header h2 {
+        color: var(--rw-text) !important;
+        text-shadow: 0 0 6px rgba(49, 231, 255, .34);
+    }
+
+    /* Main production area. */
+    #shipyard #technologies {
+        background:
+            radial-gradient(
+                circle at 55% 0%,
+                rgba(139, 92, 246, .07),
+                transparent 62%
+            ),
+            linear-gradient(
+                180deg,
+                rgba(13, 16, 34, .95),
+                rgba(6, 8, 20, .96)
+            ) !important;
+        border: 1px solid rgba(49, 231, 255, .18);
+        box-shadow: 0 0 14px rgba(49, 231, 255, .045);
+    }
+
+    /* Battle/civil section headings. */
+    #shipyard #technologies_battle > h3,
+    #shipyard #technologies_civil > h3 {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .30);
+        border-bottom: 1px solid rgba(49, 231, 255, .22);
+        background: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .065),
+            rgba(139, 92, 246, .045),
+            transparent 82%
+        ) !important;
+    }
+
+    /* Details drawer. */
+    #shipyard #technologydetails_wrapper,
+    #shipyard #technologydetails_content {
+        color: var(--rw-text) !important;
+    }
+
+    #shipyard #technologydetails_content {
+        border-color: rgba(49, 231, 255, .28) !important;
+        box-shadow: 0 0 12px rgba(49, 231, 255, .07);
+    }
+
+    /* Shipyard queue. */
+    #productionboxBottom .productionBoxShips .content-box-s {
+        border-color: rgba(49, 231, 255, .30) !important;
+    }
+
+    #productionboxBottom .productionBoxShips .header {
+        background: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .12),
+            rgba(139, 92, 246, .10),
+            rgba(255, 60, 172, .08)
+        ) !important;
+        border-bottom: 1px solid rgba(49, 231, 255, .24) !important;
+    }
+
+    #productionboxBottom .productionBoxShips .header h3 {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .30);
+    }
+
+    #productionboxBottom .productionBoxShips .construction {
+        color: var(--rw-text) !important;
+    }
+
+    #productionboxBottom .productionBoxShips .construction td {
+        background: rgba(7, 9, 20, .82) !important;
+    }
+
+    #productionboxBottom .productionBoxShips .construction td.idle a {
+        color: var(--rw-muted) !important;
+    }
+
+    #productionboxBottom .productionBoxShips .construction td.idle a:hover {
+        color: var(--rw-cyan) !important;
+        text-shadow: var(--rw-glow-cyan);
+    }
+
+    /* Future-proof the active queue without depending on translated labels. */
+    #productionboxBottom .productionBoxShips .construction.active:not(:has(td.idle)) {
+        border-left: 2px solid var(--rw-magenta);
+        box-shadow: -2px 0 8px rgba(255, 60, 172, .20);
+    }
+
+    #productionboxBottom .productionBoxShips .construction time,
+    #productionboxBottom .productionBoxShips .construction .countdown {
+        color: var(--rw-pink) !important;
+        text-shadow: 0 0 5px rgba(255, 60, 172, .34);
     }
 
 }
