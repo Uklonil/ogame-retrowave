@@ -24,7 +24,7 @@ if not main.endswith('}'):
 main = main[:-1].rstrip()
 
 # Metadata for the distributable bundle.
-main = main.replace('@version        1.0.0', '@version        1.2.0')
+main = main.replace('@version        1.0.0', '@version        1.3.0')
 main = main.replace(
     '@updateURL      https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/main.css',
     '@updateURL      https://raw.githubusercontent.com/Uklonil/ogame-retrowave/main/ogame-retrowave.user.css'
@@ -32,9 +32,11 @@ main = main.replace(
 
 parts = [
     'components/technology-grid.css',
+    'components/production-grid.css',
     'screens/resources.css',
     'screens/facilities.css',
     'screens/research.css',
+    'screens/shipyard.css',
 ]
 
 bundle = [main]
