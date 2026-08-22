@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           OGame Retrowave
 @namespace      https://github.com/Uklonil/ogame-retrowave
-@version        1.4.2
+@version        1.4.3
 @description    Retrowave userstyle for OGame 13, designed for Stylus and compatible with AntiGameReborn.
 @author         Uklonil
 @homepageURL    https://github.com/Uklonil/ogame-retrowave
@@ -1449,6 +1449,255 @@
     #productionboxBottom .productionboxshipyard.parent.defenses .content-box-s {
         border-color: rgba(49, 231, 255, .30) !important;
     }
+
+    /* ===== Bundled from screens/fleetdispatch.css ===== */
+
+    /* =========================================================
+       FLEET DISPATCH — OGame + OGame Infinity
+       Visual layer only. Do not alter display/visibility of fleet steps.
+       ========================================================= */
+
+    /* Main fleet panels */
+    #fleet1 #inhalt,
+    #fleet2 #inhalt,
+    #fleet3 #inhalt {
+        color: var(--rw-text) !important;
+    }
+
+    #fleet1 .fleetStatus,
+    #fleet2 .fleetStatus,
+    #fleet3 .fleetStatus,
+    #fleet1 #buttonz,
+    #fleet2 #buttonz,
+    #fleet3 #buttonz {
+        border-color: var(--rw-border) !important;
+    }
+
+    #fleet1 .fleetStatus,
+    #fleet2 .fleetStatus,
+    #fleet3 .fleetStatus {
+        background: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .07),
+            rgba(139, 92, 246, .05),
+            rgba(255, 60, 172, .05)
+        ) !important;
+        color: var(--rw-muted) !important;
+    }
+
+    #fleet1 .fleetStatus .title,
+    #fleet2 .fleetStatus .title,
+    #fleet3 .fleetStatus .title {
+        color: var(--rw-cyan-soft) !important;
+    }
+
+    #fleet1 .fleetStatus .missionName,
+    #fleet1 .fleetStatus .targetName,
+    #fleet1 .fleetStatus .targetPlayerName,
+    #fleet2 .fleetStatus .missionName,
+    #fleet2 .fleetStatus .targetName,
+    #fleet2 .fleetStatus .targetPlayerName,
+    #fleet3 .fleetStatus .missionName,
+    #fleet3 .fleetStatus .targetName,
+    #fleet3 .fleetStatus .targetPlayerName {
+        color: var(--rw-yellow) !important;
+        text-shadow: 0 0 4px rgba(255, 230, 109, .22);
+    }
+
+    /* Section headers */
+    #fleet1 #buttonz .header,
+    #fleet2 #buttonz .header,
+    #fleet3 #buttonz .header {
+        background: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .12),
+            rgba(139, 92, 246, .08),
+            rgba(255, 60, 172, .08)
+        ) !important;
+        border-bottom: 1px solid var(--rw-border) !important;
+    }
+
+    #fleet1 #buttonz .header h2,
+    #fleet2 #buttonz .header h2,
+    #fleet3 #buttonz .header h2,
+    #fleet1 #technologies .header h2 {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .30);
+    }
+
+    /* Ship selection — preserve Infinity layout, improve states */
+    #fleet1 #technologies li.technology {
+        transition:
+            filter .15s ease,
+            box-shadow .15s ease,
+            border-color .15s ease;
+    }
+
+    #fleet1 #technologies li.technology[data-status="on"],
+    #fleet1 #technologies li.technology:hover {
+        filter: brightness(1.08) saturate(1.05);
+    }
+
+    #fleet1 #technologies li.technology[data-status="on"] {
+        box-shadow:
+            inset 0 0 0 1px rgba(49, 231, 255, .38),
+            0 0 9px rgba(49, 231, 255, .10);
+    }
+
+    #fleet1 #technologies li.technology[data-status="off"] {
+        filter: saturate(.55) brightness(.72);
+    }
+
+    #fleet1 #technologies li.technology[data-status="off"]:hover {
+        filter: saturate(.75) brightness(.88);
+    }
+
+    /* Inputs / selects */
+    #fleet1 input[type="text"],
+    #fleet1 input[type="number"],
+    #fleet2 input[type="text"],
+    #fleet2 input[type="number"],
+    #fleet3 input[type="text"],
+    #fleet3 input[type="number"],
+    #fleet1 select,
+    #fleet2 select,
+    #fleet3 select {
+        background: rgba(7, 9, 20, .96) !important;
+        color: var(--rw-text) !important;
+        border: 1px solid rgba(49, 231, 255, .28) !important;
+        box-shadow: inset 0 0 8px rgba(49, 231, 255, .035);
+    }
+
+    #fleet1 input:focus,
+    #fleet2 input:focus,
+    #fleet3 input:focus,
+    #fleet1 select:focus,
+    #fleet2 select:focus,
+    #fleet3 select:focus {
+        border-color: var(--rw-magenta) !important;
+        box-shadow:
+            0 0 7px rgba(255, 60, 172, .14),
+            inset 0 0 8px rgba(255, 60, 172, .04);
+        outline: none !important;
+    }
+
+    /* Speed selector */
+    #fleet1 .speed,
+    #fleet2 .speed,
+    #fleet3 .speed,
+    #fleet1 #speed,
+    #fleet2 #speed,
+    #fleet3 #speed {
+        color: var(--rw-muted) !important;
+    }
+
+    #fleet1 .speed.selected,
+    #fleet2 .speed.selected,
+    #fleet3 .speed.selected,
+    #fleet1 #speed .selected,
+    #fleet2 #speed .selected,
+    #fleet3 #speed .selected {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .32);
+    }
+
+    /* Mission grid */
+    #fleet2 #missions li,
+    #fleet3 #missions li {
+        transition:
+            filter .15s ease,
+            transform .15s ease;
+    }
+
+    #fleet2 #missions li:hover,
+    #fleet3 #missions li:hover {
+        filter: brightness(1.15) saturate(1.1);
+        transform: translateY(-1px);
+    }
+
+    #fleet2 #missions li.on,
+    #fleet3 #missions li.on,
+    #fleet2 #missions li.selected,
+    #fleet3 #missions li.selected {
+        filter:
+            brightness(1.16)
+            saturate(1.15)
+            drop-shadow(0 0 5px rgba(255, 60, 172, .30));
+    }
+
+    #fleet2 #missionNameWrapper,
+    #fleet3 #missionNameWrapper {
+        color: var(--rw-yellow) !important;
+    }
+
+    #fleet2 .mission_description,
+    #fleet3 .mission_description {
+        color: var(--rw-muted) !important;
+    }
+
+    /* Destination / briefing / cargo blocks */
+    #fleet2 #buttonz > div,
+    #fleet3 #buttonz > div,
+    #fleet2 .ui-state-default,
+    #fleet3 .ui-state-default {
+        border-color: rgba(49, 231, 255, .18) !important;
+    }
+
+    #fleet2 #fleetboxbriefing,
+    #fleet3 #fleetboxbriefing,
+    #fleet2 #fleetboxmission,
+    #fleet3 #fleetboxmission,
+    #fleet2 #fleetboxresources,
+    #fleet3 #fleetboxresources {
+        background-color: rgba(7, 9, 20, .76) !important;
+    }
+
+    #fleet2 #fleetboxbriefing li,
+    #fleet3 #fleetboxbriefing li {
+        color: var(--rw-text) !important;
+    }
+
+    #fleet2 #fleetboxbriefing li::marker,
+    #fleet3 #fleetboxbriefing li::marker {
+        color: var(--rw-cyan);
+    }
+
+    /* Resource/cargo values */
+    #fleet2 #fleetboxresources .value,
+    #fleet3 #fleetboxresources .value,
+    #fleet2 .capacity,
+    #fleet3 .capacity {
+        color: var(--rw-cyan-soft) !important;
+    }
+
+    /* Primary/secondary action buttons — only recolor, preserve dimensions/behavior */
+    #fleet1 .btn_blue,
+    #fleet2 .btn_blue,
+    #fleet3 .btn_blue,
+    #fleet1 .btn_action,
+    #fleet2 .btn_action,
+    #fleet3 .btn_action,
+    #fleet1 button[type="submit"],
+    #fleet2 button[type="submit"],
+    #fleet3 button[type="submit"] {
+        border-color: rgba(49, 231, 255, .50) !important;
+        box-shadow: 0 0 8px rgba(49, 231, 255, .08);
+    }
+
+    #fleet1 .btn_blue:hover,
+    #fleet2 .btn_blue:hover,
+    #fleet3 .btn_blue:hover,
+    #fleet1 .btn_action:hover,
+    #fleet2 .btn_action:hover,
+    #fleet3 .btn_action:hover,
+    #fleet1 button[type="submit"]:hover,
+    #fleet2 button[type="submit"]:hover,
+    #fleet3 button[type="submit"]:hover {
+        border-color: var(--rw-magenta) !important;
+        box-shadow: 0 0 10px rgba(255, 60, 172, .16);
+    }
+
+    /* Infinity-friendly: never force display/visibility on fleet steps. */
 
     /* ===== Bundled from compatibility/ogame-infinity-opera.css ===== */
 
