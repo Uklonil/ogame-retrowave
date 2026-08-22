@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           OGame Retrowave
 @namespace      https://github.com/Uklonil/ogame-retrowave
-@version        1.4.0
+@version        1.4.1
 @description    Retrowave userstyle for OGame 13, designed for Stylus and compatible with AntiGameReborn.
 @author         Uklonil
 @homepageURL    https://github.com/Uklonil/ogame-retrowave
@@ -1429,6 +1429,19 @@
     /* Defenses use the same shipyard production queue as ships. */
     #productionboxBottom .productionboxshipyard.parent.defenses .content-box-s {
         border-color: rgba(49, 231, 255, .30) !important;
+    }
+
+    /* ===== Bundled from compatibility/ogame-infinity-opera.css ===== */
+
+    /* OGame Retrowave — compatibility: OGame Infinity + Opera GX
+     *
+     * OGame Infinity may leave #planetdata at visibility:hidden when its entrance
+     * animation callback fails to complete in Opera GX. The content is already in
+     * the DOM and laid out correctly, so forcing visibility is sufficient.
+     */
+
+    #planetdata {
+        visibility: visible !important;
     }
 
 }
