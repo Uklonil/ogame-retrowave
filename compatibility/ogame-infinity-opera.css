@@ -1,0 +1,10 @@
+/* OGame Retrowave — compatibility: OGame Infinity + Opera GX
+ *
+ * OGame Infinity may leave #planetdata at visibility:hidden when its entrance
+ * animation callback fails to complete in Opera GX. The content is already in
+ * the DOM and laid out correctly, so forcing visibility is sufficient.
+ */
+
+#planetdata {
+    visibility: visible !important;
+}
