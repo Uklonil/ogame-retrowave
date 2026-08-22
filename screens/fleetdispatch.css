@@ -152,7 +152,8 @@
 #fleet3 #missions li {
     transition:
         filter .15s ease,
-        transform .15s ease;
+        transform .15s ease,
+        box-shadow .15s ease;
 }
 
 #fleet2 #missions li:hover,
@@ -167,8 +168,20 @@
 #fleet3 #missions li.selected {
     filter:
         brightness(1.16)
-        saturate(1.15)
+        saturate(1.12)
         drop-shadow(0 0 5px rgba(255, 60, 172, .30));
+    box-shadow:
+        0 0 0 1px rgba(255, 60, 172, .72),
+        0 0 10px rgba(255, 60, 172, .16),
+        inset 0 0 10px rgba(49, 231, 255, .06);
+}
+
+#fleet2 #missions li.on .textlabel,
+#fleet3 #missions li.on .textlabel,
+#fleet2 #missions li.selected .textlabel,
+#fleet3 #missions li.selected .textlabel {
+    color: var(--rw-pink) !important;
+    text-shadow: 0 0 5px rgba(255, 60, 172, .38);
 }
 
 #fleet2 #missionNameWrapper,
@@ -216,7 +229,52 @@
     color: var(--rw-cyan-soft) !important;
 }
 
-/* Primary/secondary action buttons — only recolor, preserve dimensions/behavior */
+/* Native final actions: keep semantics, remove the bright legacy red chrome. */
+#fleet2 #sendFleet,
+#fleet3 #sendFleet {
+    background: linear-gradient(
+        90deg,
+        rgba(86, 52, 165, .96),
+        rgba(255, 60, 172, .92)
+    ) !important;
+    border: 1px solid rgba(255, 113, 206, .74) !important;
+    box-shadow:
+        0 0 10px rgba(255, 60, 172, .18),
+        inset 0 1px rgba(255, 255, 255, .10) !important;
+    color: #fff !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, .18);
+}
+
+#fleet2 #sendFleet:hover,
+#fleet3 #sendFleet:hover {
+    filter: brightness(1.12);
+    box-shadow:
+        0 0 14px rgba(255, 60, 172, .30),
+        inset 0 1px rgba(255, 255, 255, .13) !important;
+}
+
+#fleet2 #backToFleet1,
+#fleet3 #backToFleet1,
+#fleet3 #backToFleet2 {
+    background: linear-gradient(
+        180deg,
+        rgba(18, 22, 44, .98),
+        rgba(7, 9, 20, .98)
+    ) !important;
+    border: 1px solid rgba(49, 231, 255, .38) !important;
+    box-shadow: 0 0 8px rgba(49, 231, 255, .07) !important;
+    color: var(--rw-cyan-soft) !important;
+}
+
+#fleet2 #backToFleet1:hover,
+#fleet3 #backToFleet1:hover,
+#fleet3 #backToFleet2:hover {
+    border-color: rgba(255, 60, 172, .54) !important;
+    color: var(--rw-pink) !important;
+    box-shadow: 0 0 9px rgba(255, 60, 172, .12) !important;
+}
+
+/* Generic primary/secondary actions — preserve dimensions/behavior. */
 #fleet1 .btn_blue,
 #fleet2 .btn_blue,
 #fleet3 .btn_blue,
