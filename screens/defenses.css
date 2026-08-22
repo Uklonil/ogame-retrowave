@@ -1,11 +1,11 @@
 /* OGame Retrowave — Defenses screen */
 
-#defenses {
+#defense {
     color: var(--rw-text);
 }
 
 /* Main defenses artwork/header frame. */
-#defenses > header {
+#defense > header {
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(49, 231, 255, .42) !important;
@@ -14,7 +14,7 @@
         inset 0 0 30px rgba(5, 5, 16, .20);
 }
 
-#defenses > header::after {
+#defense > header::after {
     content: "";
     position: absolute;
     left: 0;
@@ -31,13 +31,13 @@
     opacity: .78;
 }
 
-#defenses > header h2 {
+#defense > header h2 {
     color: var(--rw-text) !important;
     text-shadow: 0 0 6px rgba(49, 231, 255, .34);
 }
 
 /* Single defensive-production grid. */
-#defenses #technologies {
+#defense #technologies {
     background:
         radial-gradient(
             circle at 50% 0%,
@@ -53,7 +53,7 @@
     box-shadow: 0 0 14px rgba(49, 231, 255, .045);
 }
 
-#defenses #technologies h3 {
+#defense #technologies h3 {
     color: var(--rw-cyan) !important;
     text-shadow: 0 0 5px rgba(49, 231, 255, .30);
     border-bottom: 1px solid rgba(49, 231, 255, .22);
@@ -66,12 +66,12 @@
 }
 
 /* Details drawer. */
-#defenses #technologydetails_wrapper,
-#defenses #technologydetails_content {
+#defense #technologydetails_wrapper,
+#defense #technologydetails_content {
     color: var(--rw-text) !important;
 }
 
-#defenses #technologydetails_content {
+#defense #technologydetails_content {
     border-color: rgba(49, 231, 255, .28) !important;
     box-shadow: 0 0 12px rgba(49, 231, 255, .07);
 }
