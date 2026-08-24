@@ -156,10 +156,8 @@
 
 /* Keep Infinity alert animations and target markers intact; only
    translate their visible palette. */
-#planetList[data-alert-hostile-incoming-mode="2"]
-.smallplanet.ogi-planet_under_hostile_activity .planetlink.active,
-#planetList[data-alert-hostile-incoming-mode="2"]
-.smallplanet.ogi-moon_under_hostile_activity .moonlink.active {
+#planetList[data-alert-hostile-incoming-mode="2"] .smallplanet.ogi-planet_under_hostile_activity .planetlink.active,
+#planetList[data-alert-hostile-incoming-mode="2"] .smallplanet.ogi-moon_under_hostile_activity .moonlink.active {
     background: rgba(255, 82, 119, .30) !important;
 }
 
