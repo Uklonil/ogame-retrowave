@@ -1,0 +1,294 @@
+/* =========================================================
+   OGAME RETROWAVE V2 — APPLICATION SHELL
+   Header, resource HUD, navigation, event bar, planet rail and
+   central content frame. Geometry is intentionally conservative.
+   ========================================================= */
+
+/* ---------- top player bar ---------- */
+
+#bar {
+    background: linear-gradient(
+        180deg,
+        rgba(13, 16, 34, .98),
+        rgba(5, 7, 18, .98)
+    ) !important;
+    border-bottom: 1px solid var(--rw-border) !important;
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, .24),
+        0 1px 12px rgba(49, 231, 255, .05) !important;
+}
+
+#bar a {
+    color: var(--rw-cyan-soft) !important;
+}
+
+#bar a:hover {
+    color: var(--rw-pink) !important;
+}
+
+#bar .playername,
+#bar .textBeefy,
+#bar .textCenter {
+    color: var(--rw-text) !important;
+}
+
+/* ---------- resources HUD ---------- */
+
+#resourcesbarcomponent {
+    position: relative;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15, 18, 39, .90),
+            rgba(5, 8, 20, .80)
+        ) !important;
+    border-bottom: 1px solid var(--rw-border-soft) !important;
+    box-shadow:
+        inset 0 -1px rgba(255, 60, 172, .05),
+        0 4px 18px rgba(0, 0, 0, .20) !important;
+}
+
+#resourcesbarcomponent li {
+    transition:
+        filter var(--rw-transition-fast),
+        transform var(--rw-transition-fast);
+}
+
+#resourcesbarcomponent li:hover {
+    filter: brightness(1.12) saturate(1.12);
+    transform: translateY(-1px);
+}
+
+#resourcesbarcomponent .value,
+#resourcesbarcomponent .resourceIcon + span,
+#resourcesbarcomponent .resourceIcon ~ span {
+    color: var(--rw-text) !important;
+    text-shadow: 0 0 4px rgba(49, 231, 255, .16);
+}
+
+#resources_metal,
+#resourcesbarcomponent .metal .value {
+    color: var(--rw-metal) !important;
+}
+
+#resources_crystal,
+#resourcesbarcomponent .crystal .value {
+    color: var(--rw-crystal) !important;
+}
+
+#resources_deuterium,
+#resourcesbarcomponent .deuterium .value {
+    color: var(--rw-deuterium) !important;
+}
+
+#resources_energy,
+#resourcesbarcomponent .energy .value {
+    color: var(--rw-energy) !important;
+}
+
+#resources_darkmatter,
+#resourcesbarcomponent .darkmatter .value {
+    color: var(--rw-darkmatter) !important;
+}
+
+/* ---------- left navigation ---------- */
+
+#left {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10, 13, 29, .97),
+            rgba(4, 6, 16, .99)
+        ) !important;
+    border: 1px solid var(--rw-border-soft) !important;
+    box-shadow:
+        inset 0 0 35px rgba(49, 231, 255, .025),
+        var(--rw-shadow-panel) !important;
+}
+
+#menuTable > li {
+    position: relative;
+    filter: saturate(.78) brightness(.92);
+    transition:
+        filter var(--rw-transition-fast),
+        background-color var(--rw-transition-fast);
+}
+
+#menuTable > li::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 2px;
+    bottom: 2px;
+    left: 0;
+    width: 2px;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--rw-cyan);
+    box-shadow: 0 0 8px rgba(49, 231, 255, .62);
+    transition: opacity var(--rw-transition-fast);
+}
+
+#menuTable a.menubutton,
+#menuTable a.menubutton .textlabel {
+    color: #9aa3c4 !important;
+    text-shadow: none !important;
+    transition:
+        color var(--rw-transition-fast),
+        text-shadow var(--rw-transition-fast),
+        background-color var(--rw-transition-fast);
+}
+
+#menuTable > li:hover {
+    filter: saturate(1) brightness(1.03);
+}
+
+#menuTable > li:hover::before {
+    opacity: .85;
+}
+
+#menuTable > li:hover a.menubutton {
+    color: var(--rw-cyan) !important;
+    background: linear-gradient(
+        90deg,
+        rgba(49, 231, 255, .10),
+        transparent 82%
+    ) !important;
+    text-shadow: 0 0 5px rgba(49, 231, 255, .35) !important;
+}
+
+#menuTable > li:has(a.menubutton.selected)::before {
+    opacity: 1;
+    background: var(--rw-magenta);
+    box-shadow: 0 0 9px rgba(255, 60, 172, .68);
+}
+
+#menuTable a.menubutton.selected,
+#menuTable a.menubutton.selected .textlabel {
+    color: var(--rw-pink) !important;
+    text-shadow: 0 0 5px rgba(255, 60, 172, .40) !important;
+}
+
+#menuTable a.menubutton.selected {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 60, 172, .13),
+        rgba(139, 92, 246, .05),
+        transparent 82%
+    ) !important;
+}
+
+#menuTable a.menubutton.premiumHighligt,
+#menuTable a.menubutton.premiumHighligt .textlabel {
+    color: var(--rw-yellow) !important;
+}
+
+/* ---------- event/fleet bar ---------- */
+
+#eventboxContent,
+#eventboxFilled,
+#eventboxBlank,
+.eventboxContent {
+    background: rgba(7, 9, 22, .92) !important;
+    border-color: var(--rw-border-soft) !important;
+    color: var(--rw-text) !important;
+}
+
+#eventboxContent a,
+#eventboxFilled a {
+    color: var(--rw-cyan-soft) !important;
+}
+
+/* ---------- planet rail ---------- */
+
+#rechts,
+#myWorlds,
+#myPlanets,
+#planetList {
+    color: var(--rw-text) !important;
+}
+
+#planetList {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10, 13, 29, .95),
+            rgba(5, 7, 18, .96)
+        ) !important;
+    border: 1px solid var(--rw-border-soft) !important;
+    box-shadow: var(--rw-shadow-panel) !important;
+}
+
+#countColonies {
+    background: var(--rw-gradient-header) !important;
+    color: var(--rw-muted) !important;
+    border-color: var(--rw-border-soft) !important;
+}
+
+#planetList .smallplanet,
+#rechts .smallplanet {
+    background-color: rgba(10, 13, 28, .75) !important;
+    border-color: transparent !important;
+    transition:
+        background-color var(--rw-transition-fast),
+        border-color var(--rw-transition-fast),
+        box-shadow var(--rw-transition-fast);
+}
+
+#planetList .smallplanet:hover,
+#rechts .smallplanet:hover {
+    background-color: rgba(22, 27, 51, .90) !important;
+}
+
+#planetList .planetlink,
+#planetList .moonlink {
+    color: var(--rw-text) !important;
+}
+
+#planetList .planetlink.active,
+#planetList .moonlink.active {
+    background: linear-gradient(
+        90deg,
+        rgba(49, 231, 255, .13),
+        rgba(139, 92, 246, .09),
+        rgba(255, 60, 172, .09)
+    ) !important;
+    outline-color: var(--rw-cyan) !important;
+    box-shadow:
+        inset 2px 0 var(--rw-magenta),
+        0 0 10px rgba(49, 231, 255, .08) !important;
+}
+
+#planetList .planet-name {
+    color: var(--rw-text-strong) !important;
+}
+
+#planetList .planet-koords {
+    color: var(--rw-cyan-soft) !important;
+}
+
+/* ---------- central content frame ---------- */
+
+#middle,
+#contentWrapper,
+#inhalt {
+    color: var(--rw-text) !important;
+}
+
+#contentWrapper > #content,
+#inhalt > .content,
+#middle > .content {
+    background-color: transparent !important;
+}
+
+/* Retain the original dimensions, only replace the visual chrome. */
+#contentWrapper .content-box-s,
+#contentWrapper .content-box-m,
+#contentWrapper .content-box-l,
+#contentWrapper .content-box-xl,
+#inhalt .content-box-s,
+#inhalt .content-box-m,
+#inhalt .content-box-l,
+#inhalt .content-box-xl {
+    filter: none;
+}
