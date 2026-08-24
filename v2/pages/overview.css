@@ -1,7 +1,7 @@
 /* =========================================================
    OGAME RETROWAVE V2 — OVERVIEW
    First fully-owned page surface. Behaviour from OGame/Infinity stays
-   intact; dev.4 starts releasing the page from its 670px legacy canvas.
+   intact while the presentation is adapted to the fluid desktop shell.
    ========================================================= */
 
 #overviewcomponent {
@@ -12,23 +12,21 @@
 #overviewcomponent #planet {
     width: 100% !important;
     max-width: none !important;
+    min-height: 300px;
+    height: auto !important;
     border: 1px solid var(--rw-border) !important;
     border-radius: var(--rw-radius-sm) !important;
     box-shadow:
         0 0 18px rgba(49, 231, 255, .08),
-        inset 0 0 28px rgba(5, 5, 16, .44) !important;
+        inset 0 0 28px rgba(5, 5, 16, .32) !important;
     overflow: hidden;
 }
 
 #overviewcomponent #planet #detailWrapper {
     width: 100% !important;
     max-width: none !important;
-    background: linear-gradient(
-        90deg,
-        rgba(5, 7, 18, .34),
-        rgba(12, 15, 33, .87) 58%,
-        rgba(18, 15, 39, .92)
-    ) !important;
+    min-height: 300px;
+    box-sizing: border-box !important;
 }
 
 #overviewcomponent #planet #header_text,
@@ -46,10 +44,12 @@
 
 #overviewcomponent #planetdata {
     color: var(--rw-text) !important;
-    background: rgba(6, 8, 21, .72) !important;
+    background: rgba(6, 8, 21, .78) !important;
     border: 1px solid var(--rw-border-soft) !important;
     border-radius: var(--rw-radius-md) !important;
-    box-shadow: inset 0 0 18px rgba(49, 231, 255, .025) !important;
+    box-shadow:
+        inset 0 0 18px rgba(49, 231, 255, .025),
+        0 8px 22px rgba(0, 0, 0, .18) !important;
 }
 
 #overviewcomponent #planetdata a,
@@ -59,10 +59,9 @@
 }
 
 #overviewcomponent #detailWrapper > #planetOptions {
-    background: rgba(9, 12, 29, .82) !important;
+    background: rgba(9, 12, 29, .86) !important;
     border: 1px solid var(--rw-border-soft) !important;
-    border-right: 0 !important;
-    border-radius: var(--rw-radius-md) 0 0 var(--rw-radius-md) !important;
+    border-radius: var(--rw-radius-md) !important;
     box-shadow: inset 0 0 14px rgba(139, 92, 246, .04) !important;
 }
 
@@ -90,10 +89,114 @@
         drop-shadow(0 0 4px rgba(49, 231, 255, .38));
 }
 
-/* Production queues -------------------------------------------------------
-   These were three fixed-width legacy boxes followed by the lifeform queue
-   boxes. The DOM is already suitable for a responsive grid, so we can use
-   the extra central width without changing any queue behaviour. */
+/* -------------------------------------------------------------------------
+   Fluid detail card
+   -------------------------------------------------------------------------
+   Infinity's overview assumes a 670px canvas: #planetdata is 365px wide,
+   shifted down 106px and animated in from the right, while #planetOptions
+   floats at 390px. Those values create a huge empty split once the middle
+   column becomes fluid. On desktop we keep the same nodes and state flags,
+   but place them in a stable two-column card.
+   ------------------------------------------------------------------------- */
+@media (min-width: 1200px) {
+    #overviewcomponent #planet #detailWrapper {
+        display: grid !important;
+        grid-template-columns: minmax(280px, 1fr) minmax(330px, 390px);
+        grid-template-rows: 38px minmax(190px, 1fr) auto;
+        column-gap: 14px;
+        align-items: stretch;
+        position: relative;
+        padding: 0 12px 12px !important;
+    }
+
+    #overviewcomponent #planet #header_text {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        width: auto !important;
+        height: 38px !important;
+        position: relative !important;
+        float: none !important;
+        margin: 0 !important;
+        z-index: 4;
+    }
+
+    #overviewcomponent #planet #header_text h2 {
+        width: auto !important;
+        max-width: none !important;
+        margin-left: 150px !important;
+        padding-top: 8px !important;
+    }
+
+    #overviewcomponent #planet #header_text h2 a {
+        width: auto !important;
+        max-width: none !important;
+    }
+
+    #overviewcomponent #planet #detail {
+        grid-column: 1;
+        grid-row: 2 / 4;
+        width: auto !important;
+        height: auto !important;
+        min-width: 0 !important;
+        position: relative !important;
+    }
+
+    #overviewcomponent #planet #detailWrapper #planetdata {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: start;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        min-height: 150px;
+        margin: 4px 0 6px !important;
+        padding: 8px 10px !important;
+        clear: none !important;
+        float: none !important;
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        opacity: 1 !important;
+        animation: none !important;
+        box-sizing: border-box !important;
+    }
+
+    #overviewcomponent #planet[details-active="true"] #detailWrapper #planetdata {
+        visibility: visible !important;
+    }
+
+    #overviewcomponent #planet[details-active="false"] #detailWrapper #planetdata {
+        visibility: hidden !important;
+    }
+
+    #overviewcomponent #planetdata #planetDetails,
+    #overviewcomponent #planetdata #planetDetails table {
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+        box-sizing: border-box !important;
+    }
+
+    #overviewcomponent #planetdata td.desc {
+        width: 45%;
+    }
+
+    #overviewcomponent #detailWrapper > #planetOptions {
+        grid-column: 2;
+        grid-row: 3;
+        width: auto !important;
+        max-width: none !important;
+        min-height: 24px;
+        padding: 4px 8px !important;
+        margin: 0 !important;
+        float: none !important;
+        position: relative !important;
+        animation: none !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* Production queues ------------------------------------------------------- */
 #overviewcomponent #productionboxBottom {
     width: 100% !important;
     max-width: none !important;
@@ -104,8 +207,9 @@
         display: grid !important;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         align-items: start;
-        gap: 8px;
+        gap: 10px;
         clear: both;
+        margin-top: 10px !important;
     }
 
     #overviewcomponent #productionboxBottom > *,
