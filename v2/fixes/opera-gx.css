@@ -1,0 +1,15 @@
+/* =========================================================
+   OGAME RETROWAVE V2 — OPERA GX FIXES
+   Keep browser-specific compatibility isolated from the theme.
+   ========================================================= */
+
+/* OGame Infinity hides #planetdata and relies on the
+   appearing-planetdata animation to make it visible. Opera GX can
+   fail to commit the animated visibility state, leaving the content
+   permanently hidden even though it is present in the DOM. */
+#overviewcomponent
+#planet[details-active="true"]
+#detailWrapper
+#planetdata {
+    visibility: visible !important;
+}
