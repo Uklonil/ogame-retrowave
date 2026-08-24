@@ -1629,17 +1629,45 @@
         background-image: none !important;
     }
 
+    #menuTable {
+        padding: 4px 3px 6px !important;
+        background: linear-gradient(180deg, rgba(8, 11, 27, .82), rgba(5, 7, 18, .66)) !important;
+        border: 1px solid rgba(49, 231, 255, .10) !important;
+        border-radius: var(--rw-radius-md) !important;
+        box-shadow: inset 0 1px rgba(255, 255, 255, .018), 0 10px 28px rgba(0, 0, 0, .18) !important;
+    }
+
     #menuTable > li {
-        margin: 2px 4px !important;
-        border: 1px solid rgba(49, 231, 255, .07) !important;
+        position: relative;
+        margin: 3px 3px !important;
+        border: 1px solid rgba(49, 231, 255, .065) !important;
         border-radius: var(--rw-radius-sm) !important;
-        background: rgba(9, 12, 27, .68) !important;
+        background: linear-gradient(90deg, rgba(14, 18, 38, .82), rgba(8, 11, 27, .68)) !important;
         box-shadow: inset 0 1px rgba(255,255,255,.015) !important;
+        overflow: hidden;
+        transition: border-color var(--rw-transition-fast), background-color var(--rw-transition-fast), transform var(--rw-transition-fast);
+    }
+
+    #menuTable > li::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 2px;
+        background: transparent;
+        box-shadow: none;
+        pointer-events: none;
+        transition: background-color var(--rw-transition-fast), box-shadow var(--rw-transition-fast), width var(--rw-transition-fast);
     }
 
     #menuTable > li:hover {
         border-color: rgba(49, 231, 255, .24) !important;
-        background: rgba(18, 24, 45, .88) !important;
+        background: linear-gradient(90deg, rgba(25, 31, 58, .94), rgba(12, 16, 34, .86)) !important;
+        transform: translateX(1px);
+    }
+
+    #menuTable > li:hover::before {
+        background: var(--rw-cyan);
+        box-shadow: 0 0 8px rgba(49, 231, 255, .42);
     }
 
     #menuTable a.menubutton {
@@ -1647,25 +1675,49 @@
         box-shadow: none !important;
     }
 
+    #menuTable a.menubutton .textlabel {
+        color: var(--rw-muted) !important;
+        letter-spacing: .015em;
+        text-shadow: none !important;
+        transition: color var(--rw-transition-fast), text-shadow var(--rw-transition-fast);
+    }
+
+    #menuTable > li:hover a.menubutton .textlabel {
+        color: var(--rw-text-strong) !important;
+    }
+
     #menuTable a.menubutton.selected {
         border: 0 !important;
-        background: linear-gradient(
-            90deg,
-            rgba(255, 60, 172, .16),
-            rgba(139, 92, 246, .08) 55%,
-            rgba(49, 231, 255, .03)
-        ) !important;
+        background: linear-gradient(90deg, rgba(255, 60, 172, .18), rgba(139, 92, 246, .10) 55%, rgba(49, 231, 255, .035)) !important;
+    }
+
+    #menuTable a.menubutton.selected .textlabel {
+        color: var(--rw-pink) !important;
+        text-shadow: 0 0 7px rgba(255, 60, 172, .24) !important;
+    }
+
+    #menuTable > li:has(a.menubutton.selected) {
+        border-color: rgba(255, 60, 172, .30) !important;
+    }
+
+    #menuTable > li:has(a.menubutton.selected)::before {
+        width: 3px;
+        background: linear-gradient(180deg, var(--rw-pink), var(--rw-purple), var(--rw-cyan));
+        box-shadow: 0 0 10px rgba(255, 60, 172, .38);
     }
 
     #menuTable .menu_icon,
     #menuTable .menu_icon span,
     #menuTable .menu_icon a {
-        filter: saturate(.8) brightness(.92);
+        filter: saturate(.72) brightness(.88);
+        opacity: .82;
+        transition: filter var(--rw-transition-fast), opacity var(--rw-transition-fast);
     }
 
     #menuTable > li:hover .menu_icon,
     #menuTable > li:has(a.menubutton.selected) .menu_icon {
         filter: saturate(1.12) brightness(1.08) drop-shadow(0 0 3px rgba(49,231,255,.22));
+        opacity: 1;
     }
 
     /* ---------- fleet / message strip ---------- */
@@ -1690,16 +1742,82 @@
         background-image: none !important;
     }
 
+    #planetbarcomponent {
+        border-radius: var(--rw-radius-md) !important;
+    }
+
+    #planetList {
+        padding: 4px !important;
+        border: 1px solid rgba(49, 231, 255, .10) !important;
+        border-radius: var(--rw-radius-md) !important;
+        background: linear-gradient(180deg, rgba(8, 11, 27, .90), rgba(5, 7, 18, .84)) !important;
+        box-shadow: inset 0 1px rgba(255, 255, 255, .018), 0 10px 26px rgba(0, 0, 0, .20) !important;
+    }
+
+    #countColonies {
+        margin: 0 3px 4px !important;
+        color: var(--rw-muted) !important;
+        background: rgba(14, 18, 38, .76) !important;
+        border: 1px solid rgba(49, 231, 255, .075) !important;
+        border-radius: var(--rw-radius-sm) !important;
+    }
+
     #planetList .smallplanet {
-        margin: 2px 3px !important;
+        position: relative;
+        margin: 3px 1px !important;
         border: 1px solid rgba(49, 231, 255, .08) !important;
         border-radius: var(--rw-radius-sm) !important;
+        background: linear-gradient(90deg, rgba(14, 18, 38, .84), rgba(7, 10, 24, .72)) !important;
+        overflow: hidden;
+        transition: border-color var(--rw-transition-fast), background-color var(--rw-transition-fast), transform var(--rw-transition-fast), box-shadow var(--rw-transition-fast);
+    }
+
+    #planetList .smallplanet::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 2px;
+        background: rgba(49, 231, 255, .24);
+        pointer-events: none;
+    }
+
+    #planetList .smallplanet:hover {
+        border-color: rgba(49, 231, 255, .28) !important;
+        background: linear-gradient(90deg, rgba(22, 29, 53, .94), rgba(10, 14, 30, .84)) !important;
+        box-shadow: 0 0 10px rgba(49, 231, 255, .06) !important;
+        transform: translateX(-1px);
     }
 
     #planetList .smallplanet:has(.active),
     #planetList .planetlink.active,
     #planetList .moonlink.active {
-        border-color: rgba(255, 60, 172, .42) !important;
+        border-color: rgba(255, 60, 172, .48) !important;
+    }
+
+    #planetList .smallplanet:has(.active) {
+        background: linear-gradient(90deg, rgba(255, 60, 172, .13), rgba(139, 92, 246, .09) 58%, rgba(49, 231, 255, .03)) !important;
+        box-shadow: inset 0 0 16px rgba(255, 60, 172, .04), 0 0 10px rgba(255, 60, 172, .07) !important;
+    }
+
+    #planetList .smallplanet:has(.active)::before {
+        width: 3px;
+        background: linear-gradient(180deg, var(--rw-pink), var(--rw-purple), var(--rw-cyan));
+        box-shadow: 0 0 9px rgba(255, 60, 172, .34);
+    }
+
+    #planetList .planet-name {
+        color: var(--rw-text-strong) !important;
+        text-shadow: none !important;
+    }
+
+    #planetList .planet-koords {
+        color: var(--rw-cyan-soft) !important;
+        opacity: .82;
+    }
+
+    #planetList .smallplanet:has(.active) .planet-name {
+        color: var(--rw-pink) !important;
+        text-shadow: 0 0 6px rgba(255, 60, 172, .20) !important;
     }
 
     /* ---------- generic legacy box chrome ---------- */
@@ -1753,12 +1871,7 @@
     }
 
     #overviewcomponent #planet #detailWrapper {
-        background: linear-gradient(
-            90deg,
-            rgba(7, 10, 25, .26),
-            rgba(10, 14, 32, .54) 48%,
-            rgba(19, 14, 39, .86)
-        ) !important;
+        background: linear-gradient(90deg, rgba(7, 10, 25, .26), rgba(10, 14, 32, .54) 48%, rgba(19, 14, 39, .86)) !important;
     }
 
     #overviewcomponent #planetdata {
