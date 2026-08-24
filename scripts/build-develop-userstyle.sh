@@ -16,7 +16,7 @@ out = root / 'ogame-retrowave-develop.user.css.tmp'
 metadata = '''/* ==UserStyle==
 @name           OGame Retrowave — Develop
 @namespace      https://github.com/Uklonil/ogame-retrowave
-@version        2.0.0-dev.1
+@version        2.0.0-dev.2
 @description    Experimental full-theme rewrite for OGame 13. Develop channel; designed for Stylus and OGame Infinity.
 @author         Uklonil
 @homepageURL    https://github.com/Uklonil/ogame-retrowave/tree/develop
@@ -36,6 +36,7 @@ parts = [
     'v2/pages/overview.css',
     'v2/integrations/ogame-infinity.css',
     'v2/fixes/opera-gx.css',
+    'v2/responsive.css',
 ]
 
 bundle = [metadata.rstrip()]
