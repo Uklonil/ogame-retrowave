@@ -1,0 +1,103 @@
+/* =========================================================
+   OGAME RETROWAVE V2 — EVENT / FLEET LIST
+   Owns the expanded fleet-movement surface while preserving the event DOM
+   and Infinity hover/toggle behaviour.
+   ========================================================= */
+
+@media (min-width: 1200px) {
+    #middle > #eventlistcomponent {
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        position: relative !important;
+        z-index: 24;
+        box-sizing: border-box !important;
+    }
+
+    #eventlistcomponent #eventboxContent {
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        margin: 0 0 8px !important;
+        padding: 0 !important;
+        background: rgba(6, 9, 23, .96) !important;
+        border: 1px solid rgba(49, 231, 255, .13) !important;
+        border-radius: var(--rw-radius-sm) !important;
+        box-shadow:
+            0 12px 30px rgba(0, 0, 0, .30),
+            inset 0 1px rgba(255, 255, 255, .02) !important;
+        overflow: hidden !important;
+    }
+
+    #eventlistcomponent #eventListWrap,
+    #eventlistcomponent #eventHeader,
+    #eventlistcomponent #eventContent,
+    #eventlistcomponent #eventFooter {
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    #eventlistcomponent #eventHeader {
+        min-height: 28px;
+        display: flex !important;
+        align-items: center;
+        padding: 0 10px !important;
+        background: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .10),
+            rgba(139, 92, 246, .10) 58%,
+            rgba(255, 60, 172, .08)
+        ) !important;
+        border-bottom: 1px solid rgba(49, 231, 255, .10) !important;
+    }
+
+    #eventlistcomponent #eventHeader h2 {
+        flex: 1 1 auto;
+        margin: 0 !important;
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 6px rgba(49, 231, 255, .24) !important;
+    }
+
+    #eventlistcomponent #eventHeader .close_details {
+        flex: 0 0 auto;
+        margin-left: auto !important;
+    }
+
+    #eventlistcomponent #eventContent {
+        table-layout: fixed !important;
+        border-collapse: collapse !important;
+        background: rgba(5, 8, 19, .68) !important;
+    }
+
+    #eventlistcomponent #eventContent tr {
+        border-bottom: 1px solid rgba(49, 231, 255, .055) !important;
+    }
+
+    #eventlistcomponent #eventContent tr:last-child {
+        border-bottom: 0 !important;
+    }
+
+    #eventlistcomponent #eventContent td {
+        background-color: transparent !important;
+        color: var(--rw-text) !important;
+        vertical-align: middle !important;
+    }
+
+    #eventlistcomponent #eventContent tr:hover td {
+        background-color: rgba(49, 231, 255, .035) !important;
+    }
+
+    #eventlistcomponent #eventFooter {
+        min-height: 4px;
+        background: linear-gradient(
+            90deg,
+            var(--rw-cyan),
+            var(--rw-purple) 55%,
+            var(--rw-pink)
+        ) !important;
+        opacity: .25;
+    }
+}
