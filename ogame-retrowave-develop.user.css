@@ -10,17 +10,27 @@
 @license        MIT
 ==/UserStyle== */
 
-@-moz-document regexp("https://s[0-9]+-[a-z]{2}\\.ogame\\.gameforge\\.com/game/.*") {
+@-moz-document regexp("https://s[0-9]+-[a-z]{2}\.ogame\.gameforge\.com/game/.*") {
+
     /* ===== Bundled from v2/tokens.css ===== */
+
+    /* =========================================================
+       OGAME RETROWAVE V2 — DESIGN TOKENS
+       Visual primitives only. Keep OGame/Infinity behaviour out
+       of this file.
+       ========================================================= */
+
     :root {
         --rw-void: #050510;
         --rw-space: #080a18;
         --rw-space-soft: rgba(8, 10, 24, .82);
+
         --rw-panel: rgba(13, 16, 34, .94);
         --rw-panel-2: rgba(18, 22, 44, .94);
         --rw-panel-3: rgba(25, 30, 57, .92);
         --rw-panel-hover: rgba(31, 37, 70, .94);
         --rw-elevated: rgba(20, 25, 48, .97);
+
         --rw-cyan: #31e7ff;
         --rw-cyan-soft: #78efff;
         --rw-magenta: #ff3cac;
@@ -30,35 +40,67 @@
         --rw-yellow: #ffe66d;
         --rw-green: #62ff9d;
         --rw-red: #ff5277;
+
         --rw-text: #e7e9ff;
         --rw-text-strong: #f5f7ff;
         --rw-muted: #8990b5;
         --rw-muted-2: #606987;
+
         --rw-metal: #c9d0df;
         --rw-crystal: #31e7ff;
         --rw-deuterium: #8b7cff;
         --rw-energy: #ffe66d;
         --rw-darkmatter: #ff71ce;
         --rw-food: #f5b739;
+
         --rw-border: rgba(49, 231, 255, .28);
         --rw-border-soft: rgba(49, 231, 255, .13);
         --rw-border-hot: rgba(255, 60, 172, .62);
         --rw-border-purple: rgba(139, 92, 246, .45);
+
         --rw-shadow-panel: 0 12px 35px rgba(0, 0, 0, .35);
-        --rw-glow-cyan: 0 0 4px rgba(49, 231, 255, .42), 0 0 14px rgba(49, 231, 255, .12);
-        --rw-glow-magenta: 0 0 5px rgba(255, 60, 172, .5), 0 0 16px rgba(255, 60, 172, .14);
-        --rw-gradient: linear-gradient(90deg, var(--rw-cyan), var(--rw-purple), var(--rw-magenta));
-        --rw-gradient-panel: linear-gradient(180deg, rgba(18, 22, 44, .96), rgba(7, 9, 22, .97));
-        --rw-gradient-header: linear-gradient(90deg, rgba(49, 231, 255, .13), rgba(139, 92, 246, .09) 52%, rgba(255, 60, 172, .10));
+        --rw-glow-cyan:
+            0 0 4px rgba(49, 231, 255, .42),
+            0 0 14px rgba(49, 231, 255, .12);
+        --rw-glow-magenta:
+            0 0 5px rgba(255, 60, 172, .5),
+            0 0 16px rgba(255, 60, 172, .14);
+
+        --rw-gradient: linear-gradient(
+            90deg,
+            var(--rw-cyan),
+            var(--rw-purple),
+            var(--rw-magenta)
+        );
+        --rw-gradient-panel: linear-gradient(
+            180deg,
+            rgba(18, 22, 44, .96),
+            rgba(7, 9, 22, .97)
+        );
+        --rw-gradient-header: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .13),
+            rgba(139, 92, 246, .09) 52%,
+            rgba(255, 60, 172, .10)
+        );
+
         --rw-radius-xs: 2px;
         --rw-radius-sm: 4px;
         --rw-radius-md: 7px;
         --rw-radius-lg: 11px;
+
         --rw-transition-fast: 120ms ease;
         --rw-transition: 180ms ease;
     }
 
     /* ===== Bundled from v2/foundation.css ===== */
+
+    /* =========================================================
+       OGAME RETROWAVE V2 — FOUNDATION
+       Establishes the visual baseline without resetting OGame's
+       behavioural layout contracts.
+       ========================================================= */
+
     *,
     *::before,
     *::after {
@@ -75,7 +117,13 @@
     body#ingamepage {
         color: var(--rw-text);
         background-image:
-            linear-gradient(90deg, rgba(3, 4, 14, .42) 0%, rgba(3, 4, 14, .30) 38%, rgba(3, 4, 14, .10) 70%, rgba(3, 4, 14, .02) 100%),
+            linear-gradient(
+                90deg,
+                rgba(3, 4, 14, .42) 0%,
+                rgba(3, 4, 14, .30) 38%,
+                rgba(3, 4, 14, .10) 70%,
+                rgba(3, 4, 14, .02) 100%
+            ),
             url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/develop/background.png") !important;
         background-position: center top !important;
         background-size: cover !important;
@@ -108,13 +156,20 @@
 
     a {
         color: var(--rw-cyan-soft);
-        transition: color var(--rw-transition-fast), text-shadow var(--rw-transition-fast);
+        transition:
+            color var(--rw-transition-fast),
+            text-shadow var(--rw-transition-fast);
     }
 
     a:hover,
     a:focus-visible {
         color: var(--rw-pink);
         text-shadow: var(--rw-glow-magenta);
+    }
+
+    strong,
+    b {
+        color: inherit;
     }
 
     input[type="text"],
@@ -126,8 +181,13 @@
         background: rgba(6, 9, 23, .92) !important;
         border: 1px solid var(--rw-border) !important;
         border-radius: var(--rw-radius-sm) !important;
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .015), 0 0 0 rgba(0, 0, 0, 0) !important;
-        transition: border-color var(--rw-transition-fast), box-shadow var(--rw-transition-fast), background-color var(--rw-transition-fast);
+        box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, .015),
+            0 0 0 rgba(0, 0, 0, 0) !important;
+        transition:
+            border-color var(--rw-transition-fast),
+            box-shadow var(--rw-transition-fast),
+            background-color var(--rw-transition-fast);
     }
 
     input[type="text"]:focus,
@@ -146,57 +206,139 @@
         color: var(--rw-text-strong);
     }
 
-    .overmark { color: var(--rw-red) !important; }
-    .undermark { color: var(--rw-green) !important; }
-    .hide { display: none; }
-    .invisible { visibility: hidden; }
-
-    /* ===== Bundled from v2/shell.css ===== */
-    #bar {
-        background: linear-gradient(180deg, rgba(13, 16, 34, .98), rgba(5, 7, 18, .98)) !important;
-        border-bottom: 1px solid var(--rw-border) !important;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, .24), 0 1px 12px rgba(49, 231, 255, .05) !important;
+    .overmark {
+        color: var(--rw-red) !important;
     }
 
-    #bar a { color: var(--rw-cyan-soft) !important; }
-    #bar a:hover { color: var(--rw-pink) !important; }
+    .undermark {
+        color: var(--rw-green) !important;
+    }
+
+    /* Preserve functional visibility classes from OGame. */
+    .hide {
+        display: none;
+    }
+
+    .invisible {
+        visibility: hidden;
+    }
+
+    /* ===== Bundled from v2/shell.css ===== */
+
+    /* =========================================================
+       OGAME RETROWAVE V2 — APPLICATION SHELL
+       Header, resource HUD, navigation, event bar, planet rail and
+       central content frame. Geometry is intentionally conservative.
+       ========================================================= */
+
+    /* ---------- top player bar ---------- */
+
+    #bar {
+        background: linear-gradient(
+            180deg,
+            rgba(13, 16, 34, .98),
+            rgba(5, 7, 18, .98)
+        ) !important;
+        border-bottom: 1px solid var(--rw-border) !important;
+        box-shadow:
+            0 5px 20px rgba(0, 0, 0, .24),
+            0 1px 12px rgba(49, 231, 255, .05) !important;
+    }
+
+    #bar a {
+        color: var(--rw-cyan-soft) !important;
+    }
+
+    #bar a:hover {
+        color: var(--rw-pink) !important;
+    }
+
     #bar .playername,
     #bar .textBeefy,
-    #bar .textCenter { color: var(--rw-text) !important; }
+    #bar .textCenter {
+        color: var(--rw-text) !important;
+    }
+
+    /* ---------- resources HUD ---------- */
 
     #resourcesbarcomponent {
         position: relative;
-        background: linear-gradient(180deg, rgba(15, 18, 39, .90), rgba(5, 8, 20, .80)) !important;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(15, 18, 39, .90),
+                rgba(5, 8, 20, .80)
+            ) !important;
         border-bottom: 1px solid var(--rw-border-soft) !important;
-        box-shadow: inset 0 -1px rgba(255, 60, 172, .05), 0 4px 18px rgba(0, 0, 0, .20) !important;
+        box-shadow:
+            inset 0 -1px rgba(255, 60, 172, .05),
+            0 4px 18px rgba(0, 0, 0, .20) !important;
     }
 
-    #resourcesbarcomponent li { transition: filter var(--rw-transition-fast), transform var(--rw-transition-fast); }
-    #resourcesbarcomponent li:hover { filter: brightness(1.12) saturate(1.12); transform: translateY(-1px); }
+    #resourcesbarcomponent li {
+        transition:
+            filter var(--rw-transition-fast),
+            transform var(--rw-transition-fast);
+    }
+
+    #resourcesbarcomponent li:hover {
+        filter: brightness(1.12) saturate(1.12);
+        transform: translateY(-1px);
+    }
+
     #resourcesbarcomponent .value,
     #resourcesbarcomponent .resourceIcon + span,
-    #resourcesbarcomponent .resourceIcon ~ span { color: var(--rw-text) !important; text-shadow: 0 0 4px rgba(49, 231, 255, .16); }
+    #resourcesbarcomponent .resourceIcon ~ span {
+        color: var(--rw-text) !important;
+        text-shadow: 0 0 4px rgba(49, 231, 255, .16);
+    }
+
     #resources_metal,
-    #resourcesbarcomponent .metal .value { color: var(--rw-metal) !important; }
+    #resourcesbarcomponent .metal .value {
+        color: var(--rw-metal) !important;
+    }
+
     #resources_crystal,
-    #resourcesbarcomponent .crystal .value { color: var(--rw-crystal) !important; }
+    #resourcesbarcomponent .crystal .value {
+        color: var(--rw-crystal) !important;
+    }
+
     #resources_deuterium,
-    #resourcesbarcomponent .deuterium .value { color: var(--rw-deuterium) !important; }
+    #resourcesbarcomponent .deuterium .value {
+        color: var(--rw-deuterium) !important;
+    }
+
     #resources_energy,
-    #resourcesbarcomponent .energy .value { color: var(--rw-energy) !important; }
+    #resourcesbarcomponent .energy .value {
+        color: var(--rw-energy) !important;
+    }
+
     #resources_darkmatter,
-    #resourcesbarcomponent .darkmatter .value { color: var(--rw-darkmatter) !important; }
+    #resourcesbarcomponent .darkmatter .value {
+        color: var(--rw-darkmatter) !important;
+    }
+
+    /* ---------- left navigation ---------- */
 
     #left {
-        background: linear-gradient(180deg, rgba(10, 13, 29, .97), rgba(4, 6, 16, .99)) !important;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(10, 13, 29, .97),
+                rgba(4, 6, 16, .99)
+            ) !important;
         border: 1px solid var(--rw-border-soft) !important;
-        box-shadow: inset 0 0 35px rgba(49, 231, 255, .025), var(--rw-shadow-panel) !important;
+        box-shadow:
+            inset 0 0 35px rgba(49, 231, 255, .025),
+            var(--rw-shadow-panel) !important;
     }
 
     #menuTable > li {
         position: relative;
         filter: saturate(.78) brightness(.92);
-        transition: filter var(--rw-transition-fast), background-color var(--rw-transition-fast);
+        transition:
+            filter var(--rw-transition-fast),
+            background-color var(--rw-transition-fast);
     }
 
     #menuTable > li::before {
@@ -218,14 +360,27 @@
     #menuTable a.menubutton .textlabel {
         color: #9aa3c4 !important;
         text-shadow: none !important;
-        transition: color var(--rw-transition-fast), text-shadow var(--rw-transition-fast), background-color var(--rw-transition-fast);
+        transition:
+            color var(--rw-transition-fast),
+            text-shadow var(--rw-transition-fast),
+            background-color var(--rw-transition-fast);
     }
 
-    #menuTable > li:hover { filter: saturate(1) brightness(1.03); }
-    #menuTable > li:hover::before { opacity: .85; }
+    #menuTable > li:hover {
+        filter: saturate(1) brightness(1.03);
+    }
+
+    #menuTable > li:hover::before {
+        opacity: .85;
+    }
+
     #menuTable > li:hover a.menubutton {
         color: var(--rw-cyan) !important;
-        background: linear-gradient(90deg, rgba(49, 231, 255, .10), transparent 82%) !important;
+        background: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .10),
+            transparent 82%
+        ) !important;
         text-shadow: 0 0 5px rgba(49, 231, 255, .35) !important;
     }
 
@@ -242,11 +397,20 @@
     }
 
     #menuTable a.menubutton.selected {
-        background: linear-gradient(90deg, rgba(255, 60, 172, .13), rgba(139, 92, 246, .05), transparent 82%) !important;
+        background: linear-gradient(
+            90deg,
+            rgba(255, 60, 172, .13),
+            rgba(139, 92, 246, .05),
+            transparent 82%
+        ) !important;
     }
 
     #menuTable a.menubutton.premiumHighligt,
-    #menuTable a.menubutton.premiumHighligt .textlabel { color: var(--rw-yellow) !important; }
+    #menuTable a.menubutton.premiumHighligt .textlabel {
+        color: var(--rw-yellow) !important;
+    }
+
+    /* ---------- event/fleet bar ---------- */
 
     #eventboxContent,
     #eventboxFilled,
@@ -258,15 +422,26 @@
     }
 
     #eventboxContent a,
-    #eventboxFilled a { color: var(--rw-cyan-soft) !important; }
+    #eventboxFilled a {
+        color: var(--rw-cyan-soft) !important;
+    }
+
+    /* ---------- planet rail ---------- */
 
     #rechts,
     #myWorlds,
     #myPlanets,
-    #planetList { color: var(--rw-text) !important; }
+    #planetList {
+        color: var(--rw-text) !important;
+    }
 
     #planetList {
-        background: linear-gradient(180deg, rgba(10, 13, 29, .95), rgba(5, 7, 18, .96)) !important;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(10, 13, 29, .95),
+                rgba(5, 7, 18, .96)
+            ) !important;
         border: 1px solid var(--rw-border-soft) !important;
         box-shadow: var(--rw-shadow-panel) !important;
     }
@@ -281,31 +456,77 @@
     #rechts .smallplanet {
         background-color: rgba(10, 13, 28, .75) !important;
         border-color: transparent !important;
-        transition: background-color var(--rw-transition-fast), border-color var(--rw-transition-fast), box-shadow var(--rw-transition-fast);
+        transition:
+            background-color var(--rw-transition-fast),
+            border-color var(--rw-transition-fast),
+            box-shadow var(--rw-transition-fast);
     }
 
     #planetList .smallplanet:hover,
-    #rechts .smallplanet:hover { background-color: rgba(22, 27, 51, .90) !important; }
+    #rechts .smallplanet:hover {
+        background-color: rgba(22, 27, 51, .90) !important;
+    }
+
     #planetList .planetlink,
-    #planetList .moonlink { color: var(--rw-text) !important; }
+    #planetList .moonlink {
+        color: var(--rw-text) !important;
+    }
 
     #planetList .planetlink.active,
     #planetList .moonlink.active {
-        background: linear-gradient(90deg, rgba(49, 231, 255, .13), rgba(139, 92, 246, .09), rgba(255, 60, 172, .09)) !important;
+        background: linear-gradient(
+            90deg,
+            rgba(49, 231, 255, .13),
+            rgba(139, 92, 246, .09),
+            rgba(255, 60, 172, .09)
+        ) !important;
         outline-color: var(--rw-cyan) !important;
-        box-shadow: inset 2px 0 var(--rw-magenta), 0 0 10px rgba(49, 231, 255, .08) !important;
+        box-shadow:
+            inset 2px 0 var(--rw-magenta),
+            0 0 10px rgba(49, 231, 255, .08) !important;
     }
 
-    #planetList .planet-name { color: var(--rw-text-strong) !important; }
-    #planetList .planet-koords { color: var(--rw-cyan-soft) !important; }
+    #planetList .planet-name {
+        color: var(--rw-text-strong) !important;
+    }
+
+    #planetList .planet-koords {
+        color: var(--rw-cyan-soft) !important;
+    }
+
+    /* ---------- central content frame ---------- */
+
     #middle,
     #contentWrapper,
-    #inhalt { color: var(--rw-text) !important; }
+    #inhalt {
+        color: var(--rw-text) !important;
+    }
+
     #contentWrapper > #content,
     #inhalt > .content,
-    #middle > .content { background-color: transparent !important; }
+    #middle > .content {
+        background-color: transparent !important;
+    }
+
+    /* Retain the original dimensions, only replace the visual chrome. */
+    #contentWrapper .content-box-s,
+    #contentWrapper .content-box-m,
+    #contentWrapper .content-box-l,
+    #contentWrapper .content-box-xl,
+    #inhalt .content-box-s,
+    #inhalt .content-box-m,
+    #inhalt .content-box-l,
+    #inhalt .content-box-xl {
+        filter: none;
+    }
 
     /* ===== Bundled from v2/components.css ===== */
+
+    /* =========================================================
+       OGAME RETROWAVE V2 — SHARED COMPONENTS
+       Generic panels, headers, buttons, forms and technology tiles.
+       ========================================================= */
+
     .content-box-s,
     .content-box-m,
     .content-box-l,
@@ -313,7 +534,9 @@
     .ogk-box,
     .ogl-dialog,
     .ui-dialog,
-    .tooltipBody { color: var(--rw-text) !important; }
+    .tooltipBody {
+        color: var(--rw-text) !important;
+    }
 
     .content-box-s,
     .content-box-m,
@@ -321,7 +544,9 @@
     .content-box-xl {
         background: var(--rw-gradient-panel) !important;
         border-color: var(--rw-border-soft) !important;
-        box-shadow: inset 0 1px rgba(255, 255, 255, .02), 0 8px 24px rgba(0, 0, 0, .22) !important;
+        box-shadow:
+            inset 0 1px rgba(255, 255, 255, .02),
+            0 8px 24px rgba(0, 0, 0, .22) !important;
     }
 
     .content-box-s .header,
@@ -354,6 +579,7 @@
         color: var(--rw-text) !important;
     }
 
+    /* Buttons: replace visual chrome but preserve OGame dimensions/events. */
     .btn_blue,
     a.btn_blue,
     button.btn_blue,
@@ -361,12 +587,22 @@
     a.btn_gray,
     button.btn_gray {
         color: var(--rw-cyan-soft) !important;
-        background: linear-gradient(180deg, rgba(24, 31, 58, .98), rgba(9, 13, 31, .98)) !important;
+        background: linear-gradient(
+            180deg,
+            rgba(24, 31, 58, .98),
+            rgba(9, 13, 31, .98)
+        ) !important;
         border: 1px solid var(--rw-border) !important;
         border-radius: var(--rw-radius-sm) !important;
-        box-shadow: inset 0 1px rgba(255, 255, 255, .035), 0 0 8px rgba(49, 231, 255, .035) !important;
+        box-shadow:
+            inset 0 1px rgba(255, 255, 255, .035),
+            0 0 8px rgba(49, 231, 255, .035) !important;
         text-shadow: none !important;
-        transition: color var(--rw-transition-fast), border-color var(--rw-transition-fast), box-shadow var(--rw-transition-fast), filter var(--rw-transition-fast);
+        transition:
+            color var(--rw-transition-fast),
+            border-color var(--rw-transition-fast),
+            box-shadow var(--rw-transition-fast),
+            filter var(--rw-transition-fast);
     }
 
     .btn_blue:hover,
@@ -385,7 +621,11 @@
     a.btn_red,
     button.btn_red {
         color: #ffdce5 !important;
-        background: linear-gradient(180deg, rgba(105, 24, 54, .95), rgba(49, 10, 31, .98)) !important;
+        background: linear-gradient(
+            180deg,
+            rgba(105, 24, 54, .95),
+            rgba(49, 10, 31, .98)
+        ) !important;
         border: 1px solid rgba(255, 82, 119, .60) !important;
         border-radius: var(--rw-radius-sm) !important;
         box-shadow: none !important;
@@ -399,48 +639,78 @@
         box-shadow: 0 0 10px rgba(255, 82, 119, .26) !important;
     }
 
+    /* Technology grids/cards */
     #technologies li.technology,
     .technology {
-        transition: border-color var(--rw-transition-fast), box-shadow var(--rw-transition-fast), filter var(--rw-transition-fast), transform var(--rw-transition-fast);
+        transition:
+            border-color var(--rw-transition-fast),
+            box-shadow var(--rw-transition-fast),
+            filter var(--rw-transition-fast),
+            transform var(--rw-transition-fast);
     }
 
     #technologies li.technology:hover,
-    .technology:hover { filter: brightness(1.07) saturate(1.04); }
+    .technology:hover {
+        filter: brightness(1.07) saturate(1.04);
+    }
 
     .technology .icon .amount,
     .technology .icon .level,
     .technology .amount,
     .technology .level {
         color: var(--rw-text) !important;
-        background: linear-gradient(180deg, rgba(20, 25, 48, .94), rgba(7, 10, 24, .96)) !important;
+        background: linear-gradient(
+            180deg,
+            rgba(20, 25, 48, .94),
+            rgba(7, 10, 24, .96)
+        ) !important;
         border-color: var(--rw-border-soft) !important;
     }
 
     .technology[data-status="active"] .icon,
     .technology.active .icon {
-        box-shadow: inset 0 0 0 1px rgba(49, 231, 255, .40), 0 0 10px rgba(49, 231, 255, .15) !important;
+        box-shadow:
+            inset 0 0 0 1px rgba(49, 231, 255, .40),
+            0 0 10px rgba(49, 231, 255, .15) !important;
     }
 
     .technology[data-status="off"],
-    .technology.off { filter: grayscale(.72) brightness(.72); }
-    .technology[data-status="disabled"],
-    .technology.disabled { filter: grayscale(.85) brightness(.62); }
+    .technology.off {
+        filter: grayscale(.72) brightness(.72);
+    }
 
+    .technology[data-status="disabled"],
+    .technology.disabled {
+        filter: grayscale(.85) brightness(.62);
+    }
+
+    /* Tables */
     table,
     tbody,
     tr,
     td,
-    th { border-color: var(--rw-border-soft); }
-    td,
-    th { color: var(--rw-text); }
-    tr:hover td { background-color: rgba(49, 231, 255, .025); }
+    th {
+        border-color: var(--rw-border-soft);
+    }
 
+    td,
+    th {
+        color: var(--rw-text);
+    }
+
+    tr:hover td {
+        background-color: rgba(49, 231, 255, .025);
+    }
+
+    /* Dialog chrome */
     .ui-dialog,
     .ogl-dialog,
     .ogk-box {
         background: var(--rw-gradient-panel) !important;
         border-color: var(--rw-border) !important;
-        box-shadow: 0 14px 45px rgba(0, 0, 0, .55), 0 0 18px rgba(49, 231, 255, .08) !important;
+        box-shadow:
+            0 14px 45px rgba(0, 0, 0, .55),
+            0 0 18px rgba(49, 231, 255, .08) !important;
     }
 
     .ui-dialog-titlebar,
@@ -452,15 +722,29 @@
     }
 
     /* ===== Bundled from v2/pages/overview.css ===== */
+
+    /* =========================================================
+       OGAME RETROWAVE V2 — OVERVIEW
+       First fully-owned page surface. Behaviour and dimensions from
+       OGame/Infinity stay intact; presentation belongs to Retrowave.
+       ========================================================= */
+
     #overviewcomponent #planet {
         border: 1px solid var(--rw-border) !important;
         border-radius: var(--rw-radius-sm) !important;
-        box-shadow: 0 0 18px rgba(49, 231, 255, .08), inset 0 0 28px rgba(5, 5, 16, .44) !important;
+        box-shadow:
+            0 0 18px rgba(49, 231, 255, .08),
+            inset 0 0 28px rgba(5, 5, 16, .44) !important;
         overflow: hidden;
     }
 
     #overviewcomponent #planet #detailWrapper {
-        background: linear-gradient(90deg, rgba(5, 7, 18, .34), rgba(12, 15, 33, .87) 58%, rgba(18, 15, 39, .92)) !important;
+        background: linear-gradient(
+            90deg,
+            rgba(5, 7, 18, .34),
+            rgba(12, 15, 33, .87) 58%,
+            rgba(18, 15, 39, .92)
+        ) !important;
     }
 
     #overviewcomponent #planet #header_text,
@@ -472,7 +756,9 @@
         text-shadow: 0 0 6px rgba(49, 231, 255, .34) !important;
     }
 
-    #overviewcomponent #planetNameHeader { color: var(--rw-cyan) !important; }
+    #overviewcomponent #planetNameHeader {
+        color: var(--rw-cyan) !important;
+    }
 
     #overviewcomponent #planetdata {
         color: var(--rw-text) !important;
@@ -484,7 +770,9 @@
 
     #overviewcomponent #planetdata a,
     #overviewcomponent #planetdata span,
-    #overviewcomponent #planetdata li { color: inherit; }
+    #overviewcomponent #planetdata li {
+        color: inherit;
+    }
 
     #overviewcomponent #detailWrapper > #planetOptions {
         background: rgba(9, 12, 29, .82) !important;
@@ -494,18 +782,40 @@
         box-shadow: inset 0 0 14px rgba(139, 92, 246, .04) !important;
     }
 
-    #overviewcomponent #detailWrapper > #planetOptions a { color: var(--rw-cyan-soft) !important; }
-    #overviewcomponent #detailWrapper > #planetOptions a:hover { color: var(--rw-pink) !important; text-shadow: var(--rw-glow-magenta) !important; }
-    #overviewcomponent .togglePlanetDetails { opacity: .82; transition: opacity var(--rw-transition-fast), filter var(--rw-transition-fast); }
-    #overviewcomponent .togglePlanetDetails:hover { opacity: 1; filter: brightness(1.18) saturate(1.2) drop-shadow(0 0 4px rgba(49, 231, 255, .38)); }
+    #overviewcomponent #detailWrapper > #planetOptions a {
+        color: var(--rw-cyan-soft) !important;
+    }
 
+    #overviewcomponent #detailWrapper > #planetOptions a:hover {
+        color: var(--rw-pink) !important;
+        text-shadow: var(--rw-glow-magenta) !important;
+    }
+
+    #overviewcomponent .togglePlanetDetails {
+        opacity: .82;
+        transition:
+            opacity var(--rw-transition-fast),
+            filter var(--rw-transition-fast);
+    }
+
+    #overviewcomponent .togglePlanetDetails:hover {
+        opacity: 1;
+        filter:
+            brightness(1.18)
+            saturate(1.2)
+            drop-shadow(0 0 4px rgba(49, 231, 255, .38));
+    }
+
+    /* Production queues */
     #overviewcomponent #productionboxBottom .content-box-s,
     #overviewcomponent #productionboxbuildingcomponent,
     #overviewcomponent #productionboxresearchcomponent,
     #overviewcomponent #productionboxshipyardcomponent {
         background: var(--rw-gradient-panel) !important;
         border-color: var(--rw-border-soft) !important;
-        box-shadow: inset 0 1px rgba(255, 255, 255, .02), 0 0 10px rgba(49, 231, 255, .045) !important;
+        box-shadow:
+            inset 0 1px rgba(255, 255, 255, .02),
+            0 0 10px rgba(49, 231, 255, .045) !important;
     }
 
     #overviewcomponent #productionboxBottom .content-box-s .header,
@@ -533,23 +843,48 @@
     }
 
     #overviewcomponent #productionboxBottom td.idle,
-    #overviewcomponent #productionboxBottom td.idle a { color: var(--rw-muted) !important; }
-    #overviewcomponent #productionboxBottom td.idle a:hover { color: var(--rw-cyan) !important; }
-    #overviewcomponent #productionboxBottom .content-box-s:hover {
-        border-color: var(--rw-border-hot) !important;
-        box-shadow: 0 0 12px rgba(255, 60, 172, .075), inset 0 1px rgba(255, 255, 255, .02) !important;
+    #overviewcomponent #productionboxBottom td.idle a {
+        color: var(--rw-muted) !important;
     }
 
+    #overviewcomponent #productionboxBottom td.idle a:hover {
+        color: var(--rw-cyan) !important;
+    }
+
+    #overviewcomponent #productionboxBottom .content-box-s:hover {
+        border-color: var(--rw-border-hot) !important;
+        box-shadow:
+            0 0 12px rgba(255, 60, 172, .075),
+            inset 0 1px rgba(255, 255, 255, .02) !important;
+    }
+
+    /* Status/progress bars */
     #overviewcomponent .bar_container,
     #overviewcomponent .progressbar,
-    #overviewcomponent .progressbar .bar { border-color: var(--rw-border-soft) !important; }
+    #overviewcomponent .progressbar .bar {
+        border-color: var(--rw-border-soft) !important;
+    }
+
     #overviewcomponent .progressbar .bar,
     #overviewcomponent .bar_container .bar {
-        background: linear-gradient(90deg, var(--rw-cyan), var(--rw-purple)) !important;
+        background: linear-gradient(
+            90deg,
+            var(--rw-cyan),
+            var(--rw-purple)
+        ) !important;
         box-shadow: 0 0 8px rgba(49, 231, 255, .18) !important;
     }
 
     /* ===== Bundled from v2/integrations/ogame-infinity.css ===== */
+
+    /* =========================================================
+       OGAME RETROWAVE V2 — OGAME INFINITY ADAPTER
+       Infinity remains responsible for behaviour and enhanced DOM.
+       This adapter remaps its visual language to Retrowave.
+       ========================================================= */
+
+    /* Infinity's own design tokens. Overriding them is low-risk and
+       gives us broad visual coverage without touching its layout. */
     :root {
         --p0: var(--rw-void);
         --p1: var(--rw-space);
@@ -558,8 +893,10 @@
         --p4: #181d39;
         --p5: #1d2343;
         --p6: #465072;
+
         --neon: var(--rw-cyan);
         --neonborder: var(--rw-cyan-soft);
+
         --textblue: var(--rw-muted);
         --textcyan: var(--rw-cyan-soft);
         --textgold: #cbbd7c;
@@ -567,6 +904,7 @@
         --textpremium: var(--rw-yellow);
         --textdate: #9b9cff;
         --texttime: #ffc46b;
+
         --metal: var(--rw-metal);
         --crystal: var(--rw-crystal);
         --deut: var(--rw-deuterium);
@@ -574,6 +912,7 @@
         --dm: var(--rw-darkmatter);
     }
 
+    /* Infinity boxes/settings/dialogs */
     .ogl-settings,
     .ogl-target-list,
     .ogk-tradeRate-box,
@@ -586,7 +925,9 @@
         color: var(--rw-text) !important;
         background: var(--rw-gradient-panel) !important;
         border-color: var(--rw-border-soft) !important;
-        box-shadow: inset 0 1px rgba(255, 255, 255, .02), 0 8px 22px rgba(0, 0, 0, .20) !important;
+        box-shadow:
+            inset 0 1px rgba(255, 255, 255, .02),
+            0 8px 22px rgba(0, 0, 0, .20) !important;
     }
 
     .ogl-settings h1,
@@ -594,7 +935,9 @@
     .ogk-tradeRate-text,
     .ogk-filter-text,
     .ogk-crawler-text,
-    .ogk-roi-desc { color: var(--rw-cyan-soft) !important; }
+    .ogk-roi-desc {
+        color: var(--rw-cyan-soft) !important;
+    }
 
     .ogl-text-btn {
         color: var(--rw-cyan-soft) !important;
@@ -611,55 +954,125 @@
         box-shadow: 0 0 8px rgba(255, 60, 172, .15) !important;
     }
 
+    /* Infinity planet rail enhancements. Keep its positioning and
+       hover transformations; own only colours/surfaces. */
     #planetbarcomponent #planetList,
     #planetbarcomponent #rechts #planetList {
-        background: linear-gradient(180deg, rgba(10, 13, 29, .96), rgba(5, 7, 18, .97)) !important;
+        background: linear-gradient(
+            180deg,
+            rgba(10, 13, 29, .96),
+            rgba(5, 7, 18, .97)
+        ) !important;
         border-color: var(--rw-border-soft) !important;
     }
 
-    #planetbarcomponent .planetlink .planet-name { color: var(--rw-text-strong) !important; }
-    #planetbarcomponent .planetlink .planet-koords { color: var(--rw-cyan-soft) !important; }
-    #planetbarcomponent .planetlink.active .planet-koords,
-    #planetbarcomponent .planetlink .ogl-mines { color: var(--rw-pink) !important; }
-    #planetbarcomponent .ogl-planet { background-color: rgba(49, 231, 255, .28); }
-    #planetbarcomponent .ogl-planet:hover,
-    #planetbarcomponent .ogl-planet.ogl-active { background-color: var(--rw-magenta) !important; }
-    #planetbarcomponent .ogl-moon { box-shadow: inset -.5em -.2em rgba(49, 231, 255, .40); }
-    #planetbarcomponent .moonlink .ogl-moon:hover,
-    #planetbarcomponent .ogl-moon.ogl-active { box-shadow: inset -.5em -.2em var(--rw-pink) !important; }
+    #planetbarcomponent .planetlink .planet-name {
+        color: var(--rw-text-strong) !important;
+    }
 
+    #planetbarcomponent .planetlink .planet-koords {
+        color: var(--rw-cyan-soft) !important;
+    }
+
+    #planetbarcomponent .planetlink.active .planet-koords,
+    #planetbarcomponent .planetlink .ogl-mines {
+        color: var(--rw-pink) !important;
+    }
+
+    #planetbarcomponent .ogl-planet {
+        background-color: rgba(49, 231, 255, .28);
+    }
+
+    #planetbarcomponent .ogl-planet:hover,
+    #planetbarcomponent .ogl-planet.ogl-active {
+        background-color: var(--rw-magenta) !important;
+    }
+
+    #planetbarcomponent .ogl-moon {
+        box-shadow: inset -.5em -.2em rgba(49, 231, 255, .40);
+    }
+
+    #planetbarcomponent .moonlink .ogl-moon:hover,
+    #planetbarcomponent .ogl-moon.ogl-active {
+        box-shadow: inset -.5em -.2em var(--rw-pink) !important;
+    }
+
+    /* Infinity resources/fleet dispatch widgets */
     .ogl-res-filler > div,
     .ogl-res-filler .ogk-real-cargo,
     .ogl-res-filler .ogl-actions {
-        background: linear-gradient(180deg, rgba(15, 19, 39, .97), rgba(7, 10, 24, .98)) !important;
+        background: linear-gradient(
+            180deg,
+            rgba(15, 19, 39, .97),
+            rgba(7, 10, 24, .98)
+        ) !important;
         border-color: var(--rw-border-soft) !important;
         color: var(--rw-text) !important;
     }
 
     .ogl-dest .ogl-arrival-time,
     .ogl-dest .ogl-return-time,
-    .ogk-time { color: var(--rw-yellow) !important; }
-    .ogl-spyTable td.ogi-new { background: rgba(49, 231, 255, .20) !important; color: var(--rw-text-strong) !important; }
+    .ogk-time {
+        color: var(--rw-yellow) !important;
+    }
+
+    .ogl-spyTable td.ogi-new {
+        background: rgba(49, 231, 255, .20) !important;
+        color: var(--rw-text-strong) !important;
+    }
+
+    /* Infinity technology controls added to OGame cards/details */
     .ogk-tech-controls,
     .ogk-titles,
-    .ogk-controls { color: var(--rw-muted) !important; }
-    .ogk-tech-controls .ogk-lvl,
-    .ogk-titles strong { color: var(--rw-cyan) !important; }
+    .ogk-controls {
+        color: var(--rw-muted) !important;
+    }
 
-    #planetList[data-alert-hostile-incoming-mode="2"] .smallplanet.ogi-planet_under_hostile_activity .planetlink.active,
-    #planetList[data-alert-hostile-incoming-mode="2"] .smallplanet.ogi-moon_under_hostile_activity .moonlink.active {
+    .ogk-tech-controls .ogk-lvl,
+    .ogk-titles strong {
+        color: var(--rw-cyan) !important;
+    }
+
+    /* Keep Infinity alert animations and target markers intact; only
+       translate their visible palette. */
+    #planetList[data-alert-hostile-incoming-mode="2"]
+    .smallplanet.ogi-planet_under_hostile_activity .planetlink.active,
+    #planetList[data-alert-hostile-incoming-mode="2"]
+    .smallplanet.ogi-moon_under_hostile_activity .moonlink.active {
         background: rgba(255, 82, 119, .30) !important;
     }
 
     .moonlink .ogl-timer,
-    .planetlink .ogl-timer { border-color: var(--rw-space) !important; }
+    .planetlink .ogl-timer {
+        border-color: var(--rw-space) !important;
+    }
+
     .moonlink .ogl-medium,
-    .planetlink .ogl-medium { background: #d7a536 !important; }
+    .planetlink .ogl-medium {
+        background: #d7a536 !important;
+    }
+
     .moonlink .ogl-short,
-    .planetlink .ogl-short { background: var(--rw-red) !important; }
+    .planetlink .ogl-short {
+        background: var(--rw-red) !important;
+    }
 
     /* ===== Bundled from v2/fixes/opera-gx.css ===== */
-    #overviewcomponent #planet[details-active="true"] #detailWrapper #planetdata {
+
+    /* =========================================================
+       OGAME RETROWAVE V2 — OPERA GX FIXES
+       Keep browser-specific compatibility isolated from the theme.
+       ========================================================= */
+
+    /* OGame Infinity hides #planetdata and relies on the
+       appearing-planetdata animation to make it visible. Opera GX can
+       fail to commit the animated visibility state, leaving the content
+       permanently hidden even though it is present in the DOM. */
+    #overviewcomponent
+    #planet[details-active="true"]
+    #detailWrapper
+    #planetdata {
         visibility: visible !important;
     }
+
 }
