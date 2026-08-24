@@ -1,8 +1,8 @@
 /* =========================================================
    OGAME RETROWAVE V2 — RESPONSIVE / FLUID APPLICATION SHELL
-   Stock OGame assumes a fixed 996px desktop frame. From dev.4 onward
-   we keep the DOM and internal behaviours, but let the three primary
-   application columns use the viewport instead of scaling that frame.
+   Stock OGame assumes a fixed 996px desktop frame. Develop keeps the
+   original DOM and behaviours, but progressively replaces that fixed shell
+   with a viewport-aware application layout.
    ========================================================= */
 
 /* Narrow desktop remains a compatibility mode. The legacy page is still
@@ -26,16 +26,26 @@
 }
 
 /* -------------------------------------------------------------------------
-   FLUID DESKTOP SHELL
+   FLUID DESKTOP SHELL — GRID
    -------------------------------------------------------------------------
-   Keep the legacy float relationship for now, but give it explicit slack.
-   Stock OGame fits its columns almost pixel-perfectly inside 996px; once
-   borders and our larger rails were introduced that exact fit made #right
-   wrap below #left. The fluid shell therefore reserves a small gutter and
-   uses border-box sizing on the three structural columns.
+   dev.4/dev.5 proved that widening the legacy floats is inherently fragile:
+   OGame's original 160 + 10 + 670 + 150 layout was designed to fit almost
+   pixel-perfectly inside 996px, so borders, Infinity additions and wider
+   rails can make #right wrap below #left. From dev.6 the three application
+   columns are explicit grid tracks. Their DOM, IDs and internal positioning
+   remain intact, but column placement no longer depends on float arithmetic.
    ------------------------------------------------------------------------- */
 @media (min-width: 1200px) {
     #pageContent {
+        display: grid !important;
+        grid-template-columns: 180px minmax(0, 1fr) 198px;
+        grid-template-areas:
+            "top top top"
+            "left middle right"
+            "bottom bottom bottom";
+        column-gap: 14px;
+        align-items: start;
+
         width: min(calc(100vw - 96px), 1660px) !important;
         min-width: 1040px !important;
         max-width: none !important;
@@ -45,35 +55,61 @@
         filter: drop-shadow(0 18px 42px rgba(0, 0, 0, .18));
     }
 
-    #left,
-    #middle,
-    #right {
+    #top {
+        grid-area: top;
+        width: 100% !important;
+        min-width: 0 !important;
         box-sizing: border-box !important;
     }
 
     #left {
-        width: 180px !important;
+        grid-area: left;
+        width: auto !important;
+        min-width: 0 !important;
+        float: none !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        align-self: start;
+        /* Preserve OGame's deliberate overlap with the lower edge of #top. */
+        top: -32px !important;
     }
 
     #middle {
-        width: calc(100% - 418px) !important;
-        min-width: 670px !important;
-        margin-left: 14px !important;
-        margin-right: 14px !important;
-    }
-
-    /* In the fluid shell the ad is intentionally removed. #right becomes a
-       genuine planet/account rail instead of a 150px float whose children
-       overflow horizontally into an advertising column. */
-    #bannerskyscrapercomponent,
-    #banner_skyscraper {
-        display: none !important;
+        grid-area: middle;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        float: none !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        align-self: start;
     }
 
     #right {
-        width: 198px !important;
+        grid-area: right;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        float: none !important;
+        margin: 0 !important;
         display: block !important;
-        float: right !important;
+        box-sizing: border-box !important;
+        align-self: start;
+    }
+
+    #bottom {
+        grid-area: bottom;
+        width: 100% !important;
+        clear: none !important;
+        box-sizing: border-box !important;
+    }
+
+    /* The skyscraper is deliberately not part of the V2 application shell.
+       It is decorative advertising, while #right is now exclusively the
+       planet/account rail. */
+    #bannerskyscrapercomponent,
+    #banner_skyscraper {
+        display: none !important;
     }
 
     #planetbarcomponent {
@@ -83,8 +119,8 @@
     }
 
     /* Release the 670px constraints carried by the original content shell.
-       Page-specific modules can still keep their own safe widths until we
-       explicitly migrate them. */
+       Page-specific modules can still keep their own safe dimensions until
+       we explicitly migrate them. */
     #middle .maincontent,
     #middle #contentWrapper,
     #middle #inhalt,
@@ -92,6 +128,7 @@
     #box #inhalt {
         width: 100% !important;
         max-width: none !important;
+        min-width: 0 !important;
         box-sizing: border-box !important;
     }
 
@@ -101,22 +138,14 @@
     #myPlanets {
         width: 100% !important;
         max-width: none !important;
+        min-width: 0 !important;
         box-sizing: border-box !important;
     }
 }
 
 @media (min-width: 1800px) {
-    #left {
-        width: 190px !important;
-    }
-
-    #middle {
-        width: calc(100% - 452px) !important;
-        margin-left: 16px !important;
-        margin-right: 16px !important;
-    }
-
-    #right {
-        width: 214px !important;
+    #pageContent {
+        grid-template-columns: 190px minmax(0, 1fr) 214px;
+        column-gap: 16px;
     }
 }
