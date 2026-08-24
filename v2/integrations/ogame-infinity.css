@@ -1,0 +1,179 @@
+/* =========================================================
+   OGAME RETROWAVE V2 — OGAME INFINITY ADAPTER
+   Infinity remains responsible for behaviour and enhanced DOM.
+   This adapter remaps its visual language to Retrowave.
+   ========================================================= */
+
+/* Infinity's own design tokens. Overriding them is low-risk and
+   gives us broad visual coverage without touching its layout. */
+:root {
+    --p0: var(--rw-void);
+    --p1: var(--rw-space);
+    --p2: #0d1022;
+    --p3: #12162c;
+    --p4: #181d39;
+    --p5: #1d2343;
+    --p6: #465072;
+
+    --neon: var(--rw-cyan);
+    --neonborder: var(--rw-cyan-soft);
+
+    --textblue: var(--rw-muted);
+    --textcyan: var(--rw-cyan-soft);
+    --textgold: #cbbd7c;
+    --textsand: var(--rw-yellow);
+    --textpremium: var(--rw-yellow);
+    --textdate: #9b9cff;
+    --texttime: #ffc46b;
+
+    --metal: var(--rw-metal);
+    --crystal: var(--rw-crystal);
+    --deut: var(--rw-deuterium);
+    --energy: var(--rw-energy);
+    --dm: var(--rw-darkmatter);
+}
+
+/* Infinity boxes/settings/dialogs */
+.ogl-settings,
+.ogl-target-list,
+.ogk-tradeRate-box,
+.ogk-filter-box,
+.ogk-crawler-box,
+.ogk-settings-box,
+.ogl-res-transport,
+.ogl-dest > div,
+.ogl-cargo {
+    color: var(--rw-text) !important;
+    background: var(--rw-gradient-panel) !important;
+    border-color: var(--rw-border-soft) !important;
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, .02),
+        0 8px 22px rgba(0, 0, 0, .20) !important;
+}
+
+.ogl-settings h1,
+.ogl-settings h1.tooltip,
+.ogk-tradeRate-text,
+.ogk-filter-text,
+.ogk-crawler-text,
+.ogk-roi-desc {
+    color: var(--rw-cyan-soft) !important;
+}
+
+.ogl-text-btn {
+    color: var(--rw-cyan-soft) !important;
+    background: rgba(21, 28, 53, .96) !important;
+    border-color: var(--rw-border) !important;
+    box-shadow: none !important;
+}
+
+.ogl-text-btn:hover,
+.ogl-text-btn.ogl-active {
+    color: var(--rw-pink) !important;
+    background: rgba(255, 60, 172, .10) !important;
+    border-color: var(--rw-border-hot) !important;
+    box-shadow: 0 0 8px rgba(255, 60, 172, .15) !important;
+}
+
+/* Infinity planet rail enhancements. Keep its positioning and
+   hover transformations; own only colours/surfaces. */
+#planetbarcomponent #planetList,
+#planetbarcomponent #rechts #planetList {
+    background: linear-gradient(
+        180deg,
+        rgba(10, 13, 29, .96),
+        rgba(5, 7, 18, .97)
+    ) !important;
+    border-color: var(--rw-border-soft) !important;
+}
+
+#planetbarcomponent .planetlink .planet-name {
+    color: var(--rw-text-strong) !important;
+}
+
+#planetbarcomponent .planetlink .planet-koords {
+    color: var(--rw-cyan-soft) !important;
+}
+
+#planetbarcomponent .planetlink.active .planet-koords,
+#planetbarcomponent .planetlink .ogl-mines {
+    color: var(--rw-pink) !important;
+}
+
+#planetbarcomponent .ogl-planet {
+    background-color: rgba(49, 231, 255, .28);
+}
+
+#planetbarcomponent .ogl-planet:hover,
+#planetbarcomponent .ogl-planet.ogl-active {
+    background-color: var(--rw-magenta) !important;
+}
+
+#planetbarcomponent .ogl-moon {
+    box-shadow: inset -.5em -.2em rgba(49, 231, 255, .40);
+}
+
+#planetbarcomponent .moonlink .ogl-moon:hover,
+#planetbarcomponent .ogl-moon.ogl-active {
+    box-shadow: inset -.5em -.2em var(--rw-pink) !important;
+}
+
+/* Infinity resources/fleet dispatch widgets */
+.ogl-res-filler > div,
+.ogl-res-filler .ogk-real-cargo,
+.ogl-res-filler .ogl-actions {
+    background: linear-gradient(
+        180deg,
+        rgba(15, 19, 39, .97),
+        rgba(7, 10, 24, .98)
+    ) !important;
+    border-color: var(--rw-border-soft) !important;
+    color: var(--rw-text) !important;
+}
+
+.ogl-dest .ogl-arrival-time,
+.ogl-dest .ogl-return-time,
+.ogk-time {
+    color: var(--rw-yellow) !important;
+}
+
+.ogl-spyTable td.ogi-new {
+    background: rgba(49, 231, 255, .20) !important;
+    color: var(--rw-text-strong) !important;
+}
+
+/* Infinity technology controls added to OGame cards/details */
+.ogk-tech-controls,
+.ogk-titles,
+.ogk-controls {
+    color: var(--rw-muted) !important;
+}
+
+.ogk-tech-controls .ogk-lvl,
+.ogk-titles strong {
+    color: var(--rw-cyan) !important;
+}
+
+/* Keep Infinity alert animations and target markers intact; only
+   translate their visible palette. */
+#planetList[data-alert-hostile-incoming-mode="2"]
+.smallplanet.ogi-planet_under_hostile_activity .planetlink.active,
+#planetList[data-alert-hostile-incoming-mode="2"]
+.smallplanet.ogi-moon_under_hostile_activity .moonlink.active {
+    background: rgba(255, 82, 119, .30) !important;
+}
+
+.moonlink .ogl-timer,
+.planetlink .ogl-timer {
+    border-color: var(--rw-space) !important;
+}
+
+.moonlink .ogl-medium,
+.planetlink .ogl-medium {
+    background: #d7a536 !important;
+}
+
+.moonlink .ogl-short,
+.planetlink .ogl-short {
+    background: var(--rw-red) !important;
+}
