@@ -725,11 +725,18 @@
 
     /* =========================================================
        OGAME RETROWAVE V2 — OVERVIEW
-       First fully-owned page surface. Behaviour and dimensions from
-       OGame/Infinity stay intact; presentation belongs to Retrowave.
+       First fully-owned page surface. Behaviour from OGame/Infinity stays
+       intact; dev.4 starts releasing the page from its 670px legacy canvas.
        ========================================================= */
 
+    #overviewcomponent {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
     #overviewcomponent #planet {
+        width: 100% !important;
+        max-width: none !important;
         border: 1px solid var(--rw-border) !important;
         border-radius: var(--rw-radius-sm) !important;
         box-shadow:
@@ -739,6 +746,8 @@
     }
 
     #overviewcomponent #planet #detailWrapper {
+        width: 100% !important;
+        max-width: none !important;
         background: linear-gradient(
             90deg,
             rgba(5, 7, 18, .34),
@@ -806,7 +815,43 @@
             drop-shadow(0 0 4px rgba(49, 231, 255, .38));
     }
 
-    /* Production queues */
+    /* Production queues -------------------------------------------------------
+       These were three fixed-width legacy boxes followed by the lifeform queue
+       boxes. The DOM is already suitable for a responsive grid, so we can use
+       the extra central width without changing any queue behaviour. */
+    #overviewcomponent #productionboxBottom {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    @media (min-width: 1200px) {
+        #overviewcomponent #productionboxBottom {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: start;
+            gap: 8px;
+            clear: both;
+        }
+
+        #overviewcomponent #productionboxBottom > *,
+        #overviewcomponent #productionboxbuildingcomponent,
+        #overviewcomponent #productionboxresearchcomponent,
+        #overviewcomponent #productionboxshipyardcomponent,
+        #overviewcomponent #productionboxlfbuildingcomponent,
+        #overviewcomponent #productionboxlfresearchcomponent {
+            float: none !important;
+            width: auto !important;
+            min-width: 0 !important;
+            margin: 0 !important;
+        }
+
+        #overviewcomponent #productionboxBottom .content-box-s {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+        }
+    }
+
     #overviewcomponent #productionboxBottom .content-box-s,
     #overviewcomponent #productionboxbuildingcomponent,
     #overviewcomponent #productionboxresearchcomponent,
