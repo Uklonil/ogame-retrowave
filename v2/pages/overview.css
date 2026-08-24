@@ -1,0 +1,151 @@
+/* =========================================================
+   OGAME RETROWAVE V2 — OVERVIEW
+   First fully-owned page surface. Behaviour and dimensions from
+   OGame/Infinity stay intact; presentation belongs to Retrowave.
+   ========================================================= */
+
+#overviewcomponent #planet {
+    border: 1px solid var(--rw-border) !important;
+    border-radius: var(--rw-radius-sm) !important;
+    box-shadow:
+        0 0 18px rgba(49, 231, 255, .08),
+        inset 0 0 28px rgba(5, 5, 16, .44) !important;
+    overflow: hidden;
+}
+
+#overviewcomponent #planet #detailWrapper {
+    background: linear-gradient(
+        90deg,
+        rgba(5, 7, 18, .34),
+        rgba(12, 15, 33, .87) 58%,
+        rgba(18, 15, 39, .92)
+    ) !important;
+}
+
+#overviewcomponent #planet #header_text,
+#overviewcomponent #planet #header_text h2,
+#overviewcomponent #planet #header_text h2 a,
+#overviewcomponent #planetNameHeader,
+#overviewcomponent .planetNameOverview {
+    color: var(--rw-text-strong) !important;
+    text-shadow: 0 0 6px rgba(49, 231, 255, .34) !important;
+}
+
+#overviewcomponent #planetNameHeader {
+    color: var(--rw-cyan) !important;
+}
+
+#overviewcomponent #planetdata {
+    color: var(--rw-text) !important;
+    background: rgba(6, 8, 21, .72) !important;
+    border: 1px solid var(--rw-border-soft) !important;
+    border-radius: var(--rw-radius-md) !important;
+    box-shadow: inset 0 0 18px rgba(49, 231, 255, .025) !important;
+}
+
+#overviewcomponent #planetdata a,
+#overviewcomponent #planetdata span,
+#overviewcomponent #planetdata li {
+    color: inherit;
+}
+
+#overviewcomponent #detailWrapper > #planetOptions {
+    background: rgba(9, 12, 29, .82) !important;
+    border: 1px solid var(--rw-border-soft) !important;
+    border-right: 0 !important;
+    border-radius: var(--rw-radius-md) 0 0 var(--rw-radius-md) !important;
+    box-shadow: inset 0 0 14px rgba(139, 92, 246, .04) !important;
+}
+
+#overviewcomponent #detailWrapper > #planetOptions a {
+    color: var(--rw-cyan-soft) !important;
+}
+
+#overviewcomponent #detailWrapper > #planetOptions a:hover {
+    color: var(--rw-pink) !important;
+    text-shadow: var(--rw-glow-magenta) !important;
+}
+
+#overviewcomponent .togglePlanetDetails {
+    opacity: .82;
+    transition:
+        opacity var(--rw-transition-fast),
+        filter var(--rw-transition-fast);
+}
+
+#overviewcomponent .togglePlanetDetails:hover {
+    opacity: 1;
+    filter:
+        brightness(1.18)
+        saturate(1.2)
+        drop-shadow(0 0 4px rgba(49, 231, 255, .38));
+}
+
+/* Production queues */
+#overviewcomponent #productionboxBottom .content-box-s,
+#overviewcomponent #productionboxbuildingcomponent,
+#overviewcomponent #productionboxresearchcomponent,
+#overviewcomponent #productionboxshipyardcomponent {
+    background: var(--rw-gradient-panel) !important;
+    border-color: var(--rw-border-soft) !important;
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, .02),
+        0 0 10px rgba(49, 231, 255, .045) !important;
+}
+
+#overviewcomponent #productionboxBottom .content-box-s .header,
+#overviewcomponent #productionboxbuildingcomponent .header,
+#overviewcomponent #productionboxresearchcomponent .header,
+#overviewcomponent #productionboxshipyardcomponent .header {
+    background: var(--rw-gradient-header) !important;
+    border-color: var(--rw-border-soft) !important;
+}
+
+#overviewcomponent #productionboxBottom .content-box-s .header h3,
+#overviewcomponent #productionboxbuildingcomponent h3,
+#overviewcomponent #productionboxresearchcomponent h3,
+#overviewcomponent #productionboxshipyardcomponent h3 {
+    color: var(--rw-cyan) !important;
+    text-shadow: 0 0 5px rgba(49, 231, 255, .28) !important;
+}
+
+#overviewcomponent #productionboxBottom .content-box-s .content,
+#overviewcomponent #productionboxBottom td,
+#overviewcomponent .construction,
+#overviewcomponent .queue {
+    background-color: rgba(7, 9, 21, .88) !important;
+    color: var(--rw-text) !important;
+}
+
+#overviewcomponent #productionboxBottom td.idle,
+#overviewcomponent #productionboxBottom td.idle a {
+    color: var(--rw-muted) !important;
+}
+
+#overviewcomponent #productionboxBottom td.idle a:hover {
+    color: var(--rw-cyan) !important;
+}
+
+#overviewcomponent #productionboxBottom .content-box-s:hover {
+    border-color: var(--rw-border-hot) !important;
+    box-shadow:
+        0 0 12px rgba(255, 60, 172, .075),
+        inset 0 1px rgba(255, 255, 255, .02) !important;
+}
+
+/* Status/progress bars */
+#overviewcomponent .bar_container,
+#overviewcomponent .progressbar,
+#overviewcomponent .progressbar .bar {
+    border-color: var(--rw-border-soft) !important;
+}
+
+#overviewcomponent .progressbar .bar,
+#overviewcomponent .bar_container .bar {
+    background: linear-gradient(
+        90deg,
+        var(--rw-cyan),
+        var(--rw-purple)
+    ) !important;
+    box-shadow: 0 0 8px rgba(49, 231, 255, .18) !important;
+}
