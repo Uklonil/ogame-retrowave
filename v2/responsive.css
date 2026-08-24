@@ -28,15 +28,16 @@
 /* -------------------------------------------------------------------------
    FLUID DESKTOP SHELL
    -------------------------------------------------------------------------
-   We deliberately keep floats here instead of changing #pageContent to Grid.
-   OGame and Infinity position a number of overlays relative to these legacy
-   columns. Changing their dimensions is considerably safer than replacing
-   their containing/layout model in the first fluid-shell iteration.
+   Keep the legacy float relationship for now, but give it explicit slack.
+   Stock OGame fits its columns almost pixel-perfectly inside 996px; once
+   borders and our larger rails were introduced that exact fit made #right
+   wrap below #left. The fluid shell therefore reserves a small gutter and
+   uses border-box sizing on the three structural columns.
    ------------------------------------------------------------------------- */
 @media (min-width: 1200px) {
     #pageContent {
-        width: min(calc(100vw - 220px), 1660px) !important;
-        min-width: 980px !important;
+        width: min(calc(100vw - 96px), 1660px) !important;
+        min-width: 1040px !important;
         max-width: none !important;
         margin-left: auto !important;
         margin-right: auto !important;
@@ -44,20 +45,41 @@
         filter: drop-shadow(0 18px 42px rgba(0, 0, 0, .18));
     }
 
+    #left,
+    #middle,
+    #right {
+        box-sizing: border-box !important;
+    }
+
     #left {
         width: 180px !important;
     }
 
     #middle {
-        width: calc(100% - 406px) !important;
+        width: calc(100% - 418px) !important;
         min-width: 670px !important;
         margin-left: 14px !important;
         margin-right: 14px !important;
     }
 
-    #right,
-    #planetbarcomponent {
+    /* In the fluid shell the ad is intentionally removed. #right becomes a
+       genuine planet/account rail instead of a 150px float whose children
+       overflow horizontally into an advertising column. */
+    #bannerskyscrapercomponent,
+    #banner_skyscraper {
+        display: none !important;
+    }
+
+    #right {
         width: 198px !important;
+        display: block !important;
+        float: right !important;
+    }
+
+    #planetbarcomponent {
+        width: 100% !important;
+        max-width: none !important;
+        box-sizing: border-box !important;
     }
 
     /* Release the 670px constraints carried by the original content shell.
@@ -70,6 +92,7 @@
     #box #inhalt {
         width: 100% !important;
         max-width: none !important;
+        box-sizing: border-box !important;
     }
 
     #planetbarcomponent #rechts,
@@ -78,33 +101,22 @@
     #myPlanets {
         width: 100% !important;
         max-width: none !important;
+        box-sizing: border-box !important;
     }
 }
 
-/* Give larger desktops a little more breathing room in the side rails while
-   directing almost all additional space to the useful central workspace. */
 @media (min-width: 1800px) {
     #left {
         width: 190px !important;
     }
 
     #middle {
-        width: calc(100% - 436px) !important;
+        width: calc(100% - 452px) !important;
         margin-left: 16px !important;
         margin-right: 16px !important;
     }
 
-    #right,
-    #planetbarcomponent {
+    #right {
         width: 214px !important;
-    }
-}
-
-/* The skyscraper remains an optional fourth visual rail. Do not allow it to
-   overlap the game on medium desktops where the new shell consumes the space. */
-@media (min-width: 1200px) and (max-width: 1499px) {
-    #bannerskyscrapercomponent,
-    #banner_skyscraper {
-        display: none !important;
     }
 }
