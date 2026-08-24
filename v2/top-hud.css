@@ -15,14 +15,18 @@
         grid-template-rows: 30px 72px 42px;
         column-gap: 14px;
         align-items: stretch;
-        background-image: none !important;
-        background:
-            linear-gradient(180deg, rgba(5, 7, 18, .97), rgba(6, 8, 21, .82) 72%, transparent),
-            radial-gradient(circle at 55% 110%, rgba(139, 92, 246, .09), transparent 46%) !important;
+
+        /* Keep OGame's #top background-image: it contains the actual OGame
+           logo artwork. dev.7 replaced the complete background shorthand and
+           left #pageReloader as an empty dark pill. We only tint the surface
+           instead of replacing that semantic artwork. */
+        background-color: rgba(5, 7, 18, .72) !important;
         border-bottom: 1px solid rgba(49, 231, 255, .10);
     }
 
-    /* OGame logo / overview reload target */
+    /* #pageReloader is only the clickable hit target over the logo artwork.
+       Infinity gives it a black pill background; neutralise that without
+       touching the #top image underneath. */
     #pageReloader {
         grid-column: 1;
         grid-row: 2 / 4;
@@ -35,17 +39,15 @@
         top: auto !important;
         left: auto !important;
         margin: 0 !important;
-        background-size: contain !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        opacity: .82;
-        filter: saturate(.68) brightness(1.08) drop-shadow(0 0 8px rgba(49, 231, 255, .10));
+        background: transparent !important;
+        border-radius: 0 !important;
+        opacity: .9;
         transition: opacity var(--rw-transition-fast), filter var(--rw-transition-fast);
     }
 
     #pageReloader:hover {
         opacity: 1;
-        filter: saturate(.95) brightness(1.18) drop-shadow(0 0 9px rgba(49, 231, 255, .24));
+        filter: drop-shadow(0 0 9px rgba(49, 231, 255, .18));
     }
 
     /* Account/navigation bar */
@@ -103,8 +105,9 @@
         grid-column: 2;
         grid-row: 2;
         align-self: center;
+        justify-self: center;
         width: 100% !important;
-        max-width: none !important;
+        max-width: 920px !important;
         height: 64px !important;
         margin: 0 !important;
         position: relative !important;
@@ -172,80 +175,111 @@
         line-height: 14px !important;
     }
 
-    /* Commander/officer strip stays in the right rail of the HUD. */
-    #advice-bar,
-    #officers,
-    #officerscomponent,
+    /* Lifeform, character class and officer icons are all children of the
+       single #commandercomponent node. Put that node explicitly in the HUD's
+       right cell instead of relying on OGame's old absolute coordinates. */
     #commandercomponent {
-        max-width: 100%;
+        grid-column: 3;
+        grid-row: 2;
+        align-self: center;
+        justify-self: stretch;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 56px !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 0 !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 3px;
+        box-sizing: border-box !important;
     }
 
-    /* Message/event controls occupy the lower center row. */
+    #commandercomponent #lifeform,
+    #commandercomponent #characterclass,
+    #commandercomponent #officers {
+        float: none !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 0 !important;
+    }
+
+    #commandercomponent #officers {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    /* New-message/chat controls and the fleet notification strip share the
+       lower centre row. Keep OGame/Infinity's internal event layout intact;
+       dev.7 converted #message-wrapper itself to grid and Infinity's injected
+       fleet summary consequently escaped to the far right of the viewport. */
+    #newmessagesindicatorcomponent {
+        grid-column: 2;
+        grid-row: 3;
+        align-self: center;
+        justify-self: start;
+        width: 76px !important;
+        height: 38px !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 0 !important;
+        z-index: 5;
+    }
+
     #notificationbarcomponent {
         grid-column: 2;
         grid-row: 3;
-        width: 100% !important;
+        width: calc(100% - 82px) !important;
+        max-width: 838px !important;
         height: 38px !important;
         align-self: center;
+        justify-self: end;
         position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
         margin: 0 !important;
         box-sizing: border-box !important;
     }
 
     #notificationbarcomponent #message-wrapper {
         width: 100% !important;
+        max-width: none !important;
         height: 38px !important;
         margin: 0 !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
         box-sizing: border-box !important;
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) 38px;
         background: rgba(7, 10, 24, .88) !important;
         border: 1px solid rgba(49, 231, 255, .11) !important;
         border-radius: var(--rw-radius-sm) !important;
-        overflow: hidden;
+        overflow: visible !important;
         box-shadow: inset 0 1px rgba(255, 255, 255, .018) !important;
     }
 
-    #messages_collapsed {
-        width: auto !important;
-        min-width: 0 !important;
-        height: 36px !important;
-        margin: 0 !important;
-        float: none !important;
-        display: flex !important;
-        align-items: center;
+    #messages_collapsed,
+    #eventboxFilled,
+    #eventboxBlank,
+    #eventboxLoading,
+    #attack_alert {
+        box-sizing: border-box !important;
     }
 
     #eventboxFilled,
     #eventboxBlank,
     #eventboxLoading {
-        width: 100% !important;
-        min-width: 0 !important;
-        height: 36px !important;
-        line-height: 36px !important;
-        margin: 0 !important;
-        box-sizing: border-box !important;
-        background: transparent !important;
-        border: 0 !important;
+        background-color: transparent !important;
         color: var(--rw-text) !important;
-    }
-
-    #attack_alert {
-        grid-column: 2;
-        width: 38px !important;
-        height: 36px !important;
-        margin: 0 !important;
-        float: none !important;
-        border-left: 1px solid rgba(49, 231, 255, .09);
-        background-color: rgba(12, 16, 34, .68) !important;
-    }
-
-    /* Right-side officer icons sit in the same visual tier as resources. */
-    #top > #officerscomponent,
-    #top > #commandercomponent {
-        grid-column: 3;
-        grid-row: 2;
-        align-self: center;
     }
 }
 
