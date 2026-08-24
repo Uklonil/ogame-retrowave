@@ -41,8 +41,6 @@
     ) !important;
 }
 
-/* Keep the icon column functional, but stop the old button sprites from
-   visually defining the whole navigation row. */
 #menuTable .menu_icon,
 #menuTable .menu_icon span,
 #menuTable .menu_icon a {
@@ -105,9 +103,6 @@
     background-image: none !important;
 }
 
-/* Old OGame corner/edge pseudo-elements often exist solely to complete
-   sprite backgrounds. Do not touch arbitrary pseudo-elements globally;
-   only neutralise them on the generic box shells we fully own. */
 .content-box-s > .header::before,
 .content-box-s > .header::after,
 .content-box-m > .header::before,
@@ -121,7 +116,10 @@
 
 /* ---------- overview ---------- */
 
-#overviewcomponent #planet,
+/* The inline #planet background is semantic artwork, not legacy chrome.
+   dev.4 removed it together with the sprite-era decorations and created a
+   large empty slab on wide layouts. Keep that artwork and neutralise only
+   the layers that really are presentation chrome. */
 #overviewcomponent #planet #detailWrapper,
 #overviewcomponent #planetdata,
 #overviewcomponent #planetOptions,
@@ -133,25 +131,22 @@
 }
 
 #overviewcomponent #planet {
-    background: linear-gradient(
-        135deg,
-        rgba(7, 10, 25, .90),
-        rgba(13, 17, 37, .80) 60%,
-        rgba(32, 19, 51, .68)
-    ) !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
 }
 
 #overviewcomponent #planet #detailWrapper {
     background: linear-gradient(
         90deg,
-        rgba(7, 10, 25, .46),
-        rgba(10, 14, 32, .82) 56%,
-        rgba(19, 14, 39, .90)
+        rgba(7, 10, 25, .26),
+        rgba(10, 14, 32, .54) 48%,
+        rgba(19, 14, 39, .86)
     ) !important;
 }
 
 #overviewcomponent #planetdata {
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
 }
 
 #overviewcomponent #productionboxBottom .content-box-s {
