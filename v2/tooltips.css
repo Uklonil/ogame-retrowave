@@ -1,0 +1,96 @@
+/* =========================================================
+   OGAME RETROWAVE V2 — TOOLTIPS
+   Restyles generated OGame Infinity tooltip surfaces without changing
+   positioning, visibility or interaction behaviour.
+   ========================================================= */
+
+.ogl-tooltip {
+    color: var(--rw-text) !important;
+    background: linear-gradient(
+        180deg,
+        rgba(17, 20, 41, .98),
+        rgba(7, 9, 23, .99)
+    ) !important;
+    border: 1px solid var(--rw-border) !important;
+    border-radius: var(--rw-radius-md) !important;
+    box-shadow:
+        0 14px 36px rgba(0, 0, 0, .42),
+        0 0 16px rgba(49, 231, 255, .07),
+        inset 0 1px rgba(255, 255, 255, .025) !important;
+    backdrop-filter: blur(8px);
+}
+
+.ogl-tooltip h1,
+.ogl-tooltip h2,
+.ogl-tooltip h3,
+.ogl-tooltip strong {
+    color: var(--rw-text-strong) !important;
+}
+
+.ogl-tooltip a {
+    color: var(--rw-cyan-soft) !important;
+    transition:
+        color var(--rw-transition-fast),
+        text-shadow var(--rw-transition-fast);
+}
+
+.ogl-tooltip a[href]:hover {
+    color: var(--rw-pink) !important;
+    text-shadow: var(--rw-glow-magenta) !important;
+}
+
+.ogl-tooltip .ogl-date {
+    color: var(--rw-muted) !important;
+}
+
+.ogl-tooltip hr {
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(49, 231, 255, .30),
+        rgba(139, 92, 246, .26),
+        transparent
+    ) !important;
+}
+
+/* Infinity draws tooltip arrows with a rotated square. Keep the geometry,
+   replace only its old grey surface/border palette. */
+.ogl-tooltip:not(.ogl-update)::after {
+    background: #0b0e22 !important;
+    border-color: var(--rw-border) !important;
+}
+
+.ogl-tooltip.ogl-tooltipLeft::after {
+    border-top-color: var(--rw-border) !important;
+    border-right-color: var(--rw-border) !important;
+}
+
+.ogl-tooltip.ogl-tooltipRight::after {
+    border-bottom-color: var(--rw-border) !important;
+    border-left-color: var(--rw-border) !important;
+}
+
+.ogl-tooltip.ogl-tooltipBottom::after {
+    border-top-color: var(--rw-border) !important;
+    border-left-color: var(--rw-border) !important;
+}
+
+.ogl-tooltip .ogl-listSeparator {
+    color: var(--rw-cyan-soft) !important;
+    background: linear-gradient(
+        90deg,
+        rgba(49, 231, 255, .08),
+        rgba(139, 92, 246, .08),
+        rgba(255, 60, 172, .06)
+    ) !important;
+    border-top: 1px solid rgba(49, 231, 255, .08);
+    border-bottom: 1px solid rgba(255, 60, 172, .08);
+}
+
+.ogl-tooltip .ogl-text-btn,
+.ogl-tooltip .ogl-text-btn_bluen {
+    color: var(--rw-cyan-soft) !important;
+    border-color: var(--rw-border-soft) !important;
+    background: rgba(16, 20, 42, .92) !important;
+}
