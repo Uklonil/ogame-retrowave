@@ -1,0 +1,38 @@
+name: Build develop userstyle
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'v2/**'
+      - 'scripts/build-develop-userstyle.sh'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Build userstyle bundle
+        run: bash scripts/build-develop-userstyle.sh
+
+      - name: Commit generated bundle
+        run: |
+          if git diff --quiet -- ogame-retrowave-develop.user.css; then
+            echo "Bundle already up to date"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ogame-retrowave-develop.user.css
+          git commit -m "build: refresh develop userstyle"
+          git push origin develop
