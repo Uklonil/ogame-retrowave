@@ -1,0 +1,53 @@
+/* =========================================================
+   OGAME RETROWAVE V2 — RESPONSIVE / VIEWPORT ADAPTATION
+   OGame ships a fixed 996px application frame. We preserve that
+   contract, but improve perceived scale on wide displays and remove
+   the skyscraper ad when it would force horizontal overflow.
+   ========================================================= */
+
+/* Medium/narrow desktop: keep the functional 996px shell but stop
+   the ad rail from pushing the page outside the viewport. */
+@media (max-width: 1199px) {
+    #bannerskyscrapercomponent,
+    #banner_skyscraper {
+        display: none !important;
+    }
+
+    #right {
+        width: 150px !important;
+    }
+}
+
+/* Very narrow windows are still desktop OGame, not a mobile rewrite.
+   Align the fixed game frame to the left so the important navigation
+   and central content remain reachable without wasting viewport space. */
+@media (max-width: 1030px) {
+    #pageContent {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* Full-HD: the original 996px frame is usable, but slightly small.
+   Chromium's zoom participates in layout, unlike transform: scale(),
+   so hitboxes and Infinity overlays stay aligned. */
+@media (min-width: 1700px) and (max-width: 2199px) {
+    #pageContent {
+        zoom: 1.06;
+    }
+}
+
+/* 1440p / ultrawide: prevent the game from becoming a tiny island in
+   the middle of the wallpaper. */
+@media (min-width: 2200px) {
+    #pageContent {
+        zoom: 1.16;
+    }
+}
+
+/* Preserve a clean visual edge around the fixed shell when zoomed. */
+@media (min-width: 1700px) {
+    #pageContent {
+        filter: drop-shadow(0 16px 36px rgba(0, 0, 0, .18));
+    }
+}
