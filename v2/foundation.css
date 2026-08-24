@@ -1,0 +1,127 @@
+/* =========================================================
+   OGAME RETROWAVE V2 — FOUNDATION
+   Establishes the visual baseline without resetting OGame's
+   behavioural layout contracts.
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+body#ingamepage,
+#ingamepage {
+    background-color: var(--rw-void) !important;
+}
+
+body#ingamepage {
+    color: var(--rw-text);
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(3, 4, 14, .42) 0%,
+            rgba(3, 4, 14, .30) 38%,
+            rgba(3, 4, 14, .10) 70%,
+            rgba(3, 4, 14, .02) 100%
+        ),
+        url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/develop/background.png") !important;
+    background-position: center top !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+body#ingamepage,
+button,
+input,
+select,
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#pageContent,
+#contentWrapper,
+#content,
+#middle,
+#inhalt,
+#overviewcomponent,
+#suppliescomponent,
+#facilitiescomponent,
+#researchcomponent,
+#shipyardcomponent,
+#defensescomponent,
+#fleetdispatchcomponent {
+    background-color: transparent !important;
+}
+
+a {
+    color: var(--rw-cyan-soft);
+    transition:
+        color var(--rw-transition-fast),
+        text-shadow var(--rw-transition-fast);
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--rw-pink);
+    text-shadow: var(--rw-glow-magenta);
+}
+
+strong,
+b {
+    color: inherit;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+    color: var(--rw-text) !important;
+    background: rgba(6, 9, 23, .92) !important;
+    border: 1px solid var(--rw-border) !important;
+    border-radius: var(--rw-radius-sm) !important;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .015),
+        0 0 0 rgba(0, 0, 0, 0) !important;
+    transition:
+        border-color var(--rw-transition-fast),
+        box-shadow var(--rw-transition-fast),
+        background-color var(--rw-transition-fast);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none !important;
+    border-color: var(--rw-cyan) !important;
+    box-shadow: var(--rw-glow-cyan) !important;
+    background: rgba(9, 13, 31, .98) !important;
+}
+
+::selection {
+    background: rgba(255, 60, 172, .35);
+    color: var(--rw-text-strong);
+}
+
+.overmark {
+    color: var(--rw-red) !important;
+}
+
+.undermark {
+    color: var(--rw-green) !important;
+}
+
+/* Preserve functional visibility classes from OGame. */
+.hide {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
