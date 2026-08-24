@@ -1,0 +1,665 @@
+/* ==UserStyle==
+@name           OGame Retrowave — Develop
+@namespace      https://github.com/Uklonil/ogame-retrowave
+@version        2.0.0-dev.1
+@description    Experimental full-theme rewrite for OGame 13. Develop channel; designed for Stylus and OGame Infinity.
+@author         Uklonil
+@homepageURL    https://github.com/Uklonil/ogame-retrowave/tree/develop
+@supportURL     https://github.com/Uklonil/ogame-retrowave/issues
+@updateURL      https://raw.githubusercontent.com/Uklonil/ogame-retrowave/develop/ogame-retrowave-develop.user.css
+@license        MIT
+==/UserStyle== */
+
+@-moz-document regexp("https://s[0-9]+-[a-z]{2}\\.ogame\\.gameforge\\.com/game/.*") {
+    /* ===== Bundled from v2/tokens.css ===== */
+    :root {
+        --rw-void: #050510;
+        --rw-space: #080a18;
+        --rw-space-soft: rgba(8, 10, 24, .82);
+        --rw-panel: rgba(13, 16, 34, .94);
+        --rw-panel-2: rgba(18, 22, 44, .94);
+        --rw-panel-3: rgba(25, 30, 57, .92);
+        --rw-panel-hover: rgba(31, 37, 70, .94);
+        --rw-elevated: rgba(20, 25, 48, .97);
+        --rw-cyan: #31e7ff;
+        --rw-cyan-soft: #78efff;
+        --rw-magenta: #ff3cac;
+        --rw-pink: #ff71ce;
+        --rw-purple: #8b5cf6;
+        --rw-violet: #5634a5;
+        --rw-yellow: #ffe66d;
+        --rw-green: #62ff9d;
+        --rw-red: #ff5277;
+        --rw-text: #e7e9ff;
+        --rw-text-strong: #f5f7ff;
+        --rw-muted: #8990b5;
+        --rw-muted-2: #606987;
+        --rw-metal: #c9d0df;
+        --rw-crystal: #31e7ff;
+        --rw-deuterium: #8b7cff;
+        --rw-energy: #ffe66d;
+        --rw-darkmatter: #ff71ce;
+        --rw-food: #f5b739;
+        --rw-border: rgba(49, 231, 255, .28);
+        --rw-border-soft: rgba(49, 231, 255, .13);
+        --rw-border-hot: rgba(255, 60, 172, .62);
+        --rw-border-purple: rgba(139, 92, 246, .45);
+        --rw-shadow-panel: 0 12px 35px rgba(0, 0, 0, .35);
+        --rw-glow-cyan: 0 0 4px rgba(49, 231, 255, .42), 0 0 14px rgba(49, 231, 255, .12);
+        --rw-glow-magenta: 0 0 5px rgba(255, 60, 172, .5), 0 0 16px rgba(255, 60, 172, .14);
+        --rw-gradient: linear-gradient(90deg, var(--rw-cyan), var(--rw-purple), var(--rw-magenta));
+        --rw-gradient-panel: linear-gradient(180deg, rgba(18, 22, 44, .96), rgba(7, 9, 22, .97));
+        --rw-gradient-header: linear-gradient(90deg, rgba(49, 231, 255, .13), rgba(139, 92, 246, .09) 52%, rgba(255, 60, 172, .10));
+        --rw-radius-xs: 2px;
+        --rw-radius-sm: 4px;
+        --rw-radius-md: 7px;
+        --rw-radius-lg: 11px;
+        --rw-transition-fast: 120ms ease;
+        --rw-transition: 180ms ease;
+    }
+
+    /* ===== Bundled from v2/foundation.css ===== */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html,
+    body,
+    body#ingamepage,
+    #ingamepage {
+        background-color: var(--rw-void) !important;
+    }
+
+    body#ingamepage {
+        color: var(--rw-text);
+        background-image:
+            linear-gradient(90deg, rgba(3, 4, 14, .42) 0%, rgba(3, 4, 14, .30) 38%, rgba(3, 4, 14, .10) 70%, rgba(3, 4, 14, .02) 100%),
+            url("https://raw.githubusercontent.com/Uklonil/ogame-retrowave/develop/background.png") !important;
+        background-position: center top !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+    }
+
+    body#ingamepage,
+    button,
+    input,
+    select,
+    textarea {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #pageContent,
+    #contentWrapper,
+    #content,
+    #middle,
+    #inhalt,
+    #overviewcomponent,
+    #suppliescomponent,
+    #facilitiescomponent,
+    #researchcomponent,
+    #shipyardcomponent,
+    #defensescomponent,
+    #fleetdispatchcomponent {
+        background-color: transparent !important;
+    }
+
+    a {
+        color: var(--rw-cyan-soft);
+        transition: color var(--rw-transition-fast), text-shadow var(--rw-transition-fast);
+    }
+
+    a:hover,
+    a:focus-visible {
+        color: var(--rw-pink);
+        text-shadow: var(--rw-glow-magenta);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="number"],
+    textarea,
+    select {
+        color: var(--rw-text) !important;
+        background: rgba(6, 9, 23, .92) !important;
+        border: 1px solid var(--rw-border) !important;
+        border-radius: var(--rw-radius-sm) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .015), 0 0 0 rgba(0, 0, 0, 0) !important;
+        transition: border-color var(--rw-transition-fast), box-shadow var(--rw-transition-fast), background-color var(--rw-transition-fast);
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="number"]:focus,
+    textarea:focus,
+    select:focus {
+        outline: none !important;
+        border-color: var(--rw-cyan) !important;
+        box-shadow: var(--rw-glow-cyan) !important;
+        background: rgba(9, 13, 31, .98) !important;
+    }
+
+    ::selection {
+        background: rgba(255, 60, 172, .35);
+        color: var(--rw-text-strong);
+    }
+
+    .overmark { color: var(--rw-red) !important; }
+    .undermark { color: var(--rw-green) !important; }
+    .hide { display: none; }
+    .invisible { visibility: hidden; }
+
+    /* ===== Bundled from v2/shell.css ===== */
+    #bar {
+        background: linear-gradient(180deg, rgba(13, 16, 34, .98), rgba(5, 7, 18, .98)) !important;
+        border-bottom: 1px solid var(--rw-border) !important;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, .24), 0 1px 12px rgba(49, 231, 255, .05) !important;
+    }
+
+    #bar a { color: var(--rw-cyan-soft) !important; }
+    #bar a:hover { color: var(--rw-pink) !important; }
+    #bar .playername,
+    #bar .textBeefy,
+    #bar .textCenter { color: var(--rw-text) !important; }
+
+    #resourcesbarcomponent {
+        position: relative;
+        background: linear-gradient(180deg, rgba(15, 18, 39, .90), rgba(5, 8, 20, .80)) !important;
+        border-bottom: 1px solid var(--rw-border-soft) !important;
+        box-shadow: inset 0 -1px rgba(255, 60, 172, .05), 0 4px 18px rgba(0, 0, 0, .20) !important;
+    }
+
+    #resourcesbarcomponent li { transition: filter var(--rw-transition-fast), transform var(--rw-transition-fast); }
+    #resourcesbarcomponent li:hover { filter: brightness(1.12) saturate(1.12); transform: translateY(-1px); }
+    #resourcesbarcomponent .value,
+    #resourcesbarcomponent .resourceIcon + span,
+    #resourcesbarcomponent .resourceIcon ~ span { color: var(--rw-text) !important; text-shadow: 0 0 4px rgba(49, 231, 255, .16); }
+    #resources_metal,
+    #resourcesbarcomponent .metal .value { color: var(--rw-metal) !important; }
+    #resources_crystal,
+    #resourcesbarcomponent .crystal .value { color: var(--rw-crystal) !important; }
+    #resources_deuterium,
+    #resourcesbarcomponent .deuterium .value { color: var(--rw-deuterium) !important; }
+    #resources_energy,
+    #resourcesbarcomponent .energy .value { color: var(--rw-energy) !important; }
+    #resources_darkmatter,
+    #resourcesbarcomponent .darkmatter .value { color: var(--rw-darkmatter) !important; }
+
+    #left {
+        background: linear-gradient(180deg, rgba(10, 13, 29, .97), rgba(4, 6, 16, .99)) !important;
+        border: 1px solid var(--rw-border-soft) !important;
+        box-shadow: inset 0 0 35px rgba(49, 231, 255, .025), var(--rw-shadow-panel) !important;
+    }
+
+    #menuTable > li {
+        position: relative;
+        filter: saturate(.78) brightness(.92);
+        transition: filter var(--rw-transition-fast), background-color var(--rw-transition-fast);
+    }
+
+    #menuTable > li::before {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        top: 2px;
+        bottom: 2px;
+        left: 0;
+        width: 2px;
+        opacity: 0;
+        pointer-events: none;
+        background: var(--rw-cyan);
+        box-shadow: 0 0 8px rgba(49, 231, 255, .62);
+        transition: opacity var(--rw-transition-fast);
+    }
+
+    #menuTable a.menubutton,
+    #menuTable a.menubutton .textlabel {
+        color: #9aa3c4 !important;
+        text-shadow: none !important;
+        transition: color var(--rw-transition-fast), text-shadow var(--rw-transition-fast), background-color var(--rw-transition-fast);
+    }
+
+    #menuTable > li:hover { filter: saturate(1) brightness(1.03); }
+    #menuTable > li:hover::before { opacity: .85; }
+    #menuTable > li:hover a.menubutton {
+        color: var(--rw-cyan) !important;
+        background: linear-gradient(90deg, rgba(49, 231, 255, .10), transparent 82%) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .35) !important;
+    }
+
+    #menuTable > li:has(a.menubutton.selected)::before {
+        opacity: 1;
+        background: var(--rw-magenta);
+        box-shadow: 0 0 9px rgba(255, 60, 172, .68);
+    }
+
+    #menuTable a.menubutton.selected,
+    #menuTable a.menubutton.selected .textlabel {
+        color: var(--rw-pink) !important;
+        text-shadow: 0 0 5px rgba(255, 60, 172, .40) !important;
+    }
+
+    #menuTable a.menubutton.selected {
+        background: linear-gradient(90deg, rgba(255, 60, 172, .13), rgba(139, 92, 246, .05), transparent 82%) !important;
+    }
+
+    #menuTable a.menubutton.premiumHighligt,
+    #menuTable a.menubutton.premiumHighligt .textlabel { color: var(--rw-yellow) !important; }
+
+    #eventboxContent,
+    #eventboxFilled,
+    #eventboxBlank,
+    .eventboxContent {
+        background: rgba(7, 9, 22, .92) !important;
+        border-color: var(--rw-border-soft) !important;
+        color: var(--rw-text) !important;
+    }
+
+    #eventboxContent a,
+    #eventboxFilled a { color: var(--rw-cyan-soft) !important; }
+
+    #rechts,
+    #myWorlds,
+    #myPlanets,
+    #planetList { color: var(--rw-text) !important; }
+
+    #planetList {
+        background: linear-gradient(180deg, rgba(10, 13, 29, .95), rgba(5, 7, 18, .96)) !important;
+        border: 1px solid var(--rw-border-soft) !important;
+        box-shadow: var(--rw-shadow-panel) !important;
+    }
+
+    #countColonies {
+        background: var(--rw-gradient-header) !important;
+        color: var(--rw-muted) !important;
+        border-color: var(--rw-border-soft) !important;
+    }
+
+    #planetList .smallplanet,
+    #rechts .smallplanet {
+        background-color: rgba(10, 13, 28, .75) !important;
+        border-color: transparent !important;
+        transition: background-color var(--rw-transition-fast), border-color var(--rw-transition-fast), box-shadow var(--rw-transition-fast);
+    }
+
+    #planetList .smallplanet:hover,
+    #rechts .smallplanet:hover { background-color: rgba(22, 27, 51, .90) !important; }
+    #planetList .planetlink,
+    #planetList .moonlink { color: var(--rw-text) !important; }
+
+    #planetList .planetlink.active,
+    #planetList .moonlink.active {
+        background: linear-gradient(90deg, rgba(49, 231, 255, .13), rgba(139, 92, 246, .09), rgba(255, 60, 172, .09)) !important;
+        outline-color: var(--rw-cyan) !important;
+        box-shadow: inset 2px 0 var(--rw-magenta), 0 0 10px rgba(49, 231, 255, .08) !important;
+    }
+
+    #planetList .planet-name { color: var(--rw-text-strong) !important; }
+    #planetList .planet-koords { color: var(--rw-cyan-soft) !important; }
+    #middle,
+    #contentWrapper,
+    #inhalt { color: var(--rw-text) !important; }
+    #contentWrapper > #content,
+    #inhalt > .content,
+    #middle > .content { background-color: transparent !important; }
+
+    /* ===== Bundled from v2/components.css ===== */
+    .content-box-s,
+    .content-box-m,
+    .content-box-l,
+    .content-box-xl,
+    .ogk-box,
+    .ogl-dialog,
+    .ui-dialog,
+    .tooltipBody { color: var(--rw-text) !important; }
+
+    .content-box-s,
+    .content-box-m,
+    .content-box-l,
+    .content-box-xl {
+        background: var(--rw-gradient-panel) !important;
+        border-color: var(--rw-border-soft) !important;
+        box-shadow: inset 0 1px rgba(255, 255, 255, .02), 0 8px 24px rgba(0, 0, 0, .22) !important;
+    }
+
+    .content-box-s .header,
+    .content-box-m .header,
+    .content-box-l .header,
+    .content-box-xl .header,
+    .ogk-box .header {
+        background: var(--rw-gradient-header) !important;
+        border-bottom: 1px solid var(--rw-border-soft) !important;
+        color: var(--rw-cyan) !important;
+    }
+
+    .content-box-s .header h3,
+    .content-box-m .header h3,
+    .content-box-l .header h3,
+    .content-box-xl .header h3,
+    .content-box-s .header h2,
+    .content-box-m .header h2,
+    .content-box-l .header h2,
+    .content-box-xl .header h2 {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .28);
+    }
+
+    .content-box-s .content,
+    .content-box-m .content,
+    .content-box-l .content,
+    .content-box-xl .content {
+        background: rgba(7, 9, 22, .82) !important;
+        color: var(--rw-text) !important;
+    }
+
+    .btn_blue,
+    a.btn_blue,
+    button.btn_blue,
+    .btn_gray,
+    a.btn_gray,
+    button.btn_gray {
+        color: var(--rw-cyan-soft) !important;
+        background: linear-gradient(180deg, rgba(24, 31, 58, .98), rgba(9, 13, 31, .98)) !important;
+        border: 1px solid var(--rw-border) !important;
+        border-radius: var(--rw-radius-sm) !important;
+        box-shadow: inset 0 1px rgba(255, 255, 255, .035), 0 0 8px rgba(49, 231, 255, .035) !important;
+        text-shadow: none !important;
+        transition: color var(--rw-transition-fast), border-color var(--rw-transition-fast), box-shadow var(--rw-transition-fast), filter var(--rw-transition-fast);
+    }
+
+    .btn_blue:hover,
+    a.btn_blue:hover,
+    button.btn_blue:hover,
+    .btn_gray:hover,
+    a.btn_gray:hover,
+    button.btn_gray:hover {
+        color: var(--rw-cyan) !important;
+        border-color: var(--rw-cyan) !important;
+        box-shadow: var(--rw-glow-cyan) !important;
+        filter: brightness(1.08);
+    }
+
+    .btn_red,
+    a.btn_red,
+    button.btn_red {
+        color: #ffdce5 !important;
+        background: linear-gradient(180deg, rgba(105, 24, 54, .95), rgba(49, 10, 31, .98)) !important;
+        border: 1px solid rgba(255, 82, 119, .60) !important;
+        border-radius: var(--rw-radius-sm) !important;
+        box-shadow: none !important;
+    }
+
+    .btn_red:hover,
+    a.btn_red:hover,
+    button.btn_red:hover {
+        color: #fff !important;
+        border-color: var(--rw-red) !important;
+        box-shadow: 0 0 10px rgba(255, 82, 119, .26) !important;
+    }
+
+    #technologies li.technology,
+    .technology {
+        transition: border-color var(--rw-transition-fast), box-shadow var(--rw-transition-fast), filter var(--rw-transition-fast), transform var(--rw-transition-fast);
+    }
+
+    #technologies li.technology:hover,
+    .technology:hover { filter: brightness(1.07) saturate(1.04); }
+
+    .technology .icon .amount,
+    .technology .icon .level,
+    .technology .amount,
+    .technology .level {
+        color: var(--rw-text) !important;
+        background: linear-gradient(180deg, rgba(20, 25, 48, .94), rgba(7, 10, 24, .96)) !important;
+        border-color: var(--rw-border-soft) !important;
+    }
+
+    .technology[data-status="active"] .icon,
+    .technology.active .icon {
+        box-shadow: inset 0 0 0 1px rgba(49, 231, 255, .40), 0 0 10px rgba(49, 231, 255, .15) !important;
+    }
+
+    .technology[data-status="off"],
+    .technology.off { filter: grayscale(.72) brightness(.72); }
+    .technology[data-status="disabled"],
+    .technology.disabled { filter: grayscale(.85) brightness(.62); }
+
+    table,
+    tbody,
+    tr,
+    td,
+    th { border-color: var(--rw-border-soft); }
+    td,
+    th { color: var(--rw-text); }
+    tr:hover td { background-color: rgba(49, 231, 255, .025); }
+
+    .ui-dialog,
+    .ogl-dialog,
+    .ogk-box {
+        background: var(--rw-gradient-panel) !important;
+        border-color: var(--rw-border) !important;
+        box-shadow: 0 14px 45px rgba(0, 0, 0, .55), 0 0 18px rgba(49, 231, 255, .08) !important;
+    }
+
+    .ui-dialog-titlebar,
+    .ogl-dialog .header,
+    .ogk-box .header {
+        background: var(--rw-gradient-header) !important;
+        color: var(--rw-cyan) !important;
+        border-color: var(--rw-border-soft) !important;
+    }
+
+    /* ===== Bundled from v2/pages/overview.css ===== */
+    #overviewcomponent #planet {
+        border: 1px solid var(--rw-border) !important;
+        border-radius: var(--rw-radius-sm) !important;
+        box-shadow: 0 0 18px rgba(49, 231, 255, .08), inset 0 0 28px rgba(5, 5, 16, .44) !important;
+        overflow: hidden;
+    }
+
+    #overviewcomponent #planet #detailWrapper {
+        background: linear-gradient(90deg, rgba(5, 7, 18, .34), rgba(12, 15, 33, .87) 58%, rgba(18, 15, 39, .92)) !important;
+    }
+
+    #overviewcomponent #planet #header_text,
+    #overviewcomponent #planet #header_text h2,
+    #overviewcomponent #planet #header_text h2 a,
+    #overviewcomponent #planetNameHeader,
+    #overviewcomponent .planetNameOverview {
+        color: var(--rw-text-strong) !important;
+        text-shadow: 0 0 6px rgba(49, 231, 255, .34) !important;
+    }
+
+    #overviewcomponent #planetNameHeader { color: var(--rw-cyan) !important; }
+
+    #overviewcomponent #planetdata {
+        color: var(--rw-text) !important;
+        background: rgba(6, 8, 21, .72) !important;
+        border: 1px solid var(--rw-border-soft) !important;
+        border-radius: var(--rw-radius-md) !important;
+        box-shadow: inset 0 0 18px rgba(49, 231, 255, .025) !important;
+    }
+
+    #overviewcomponent #planetdata a,
+    #overviewcomponent #planetdata span,
+    #overviewcomponent #planetdata li { color: inherit; }
+
+    #overviewcomponent #detailWrapper > #planetOptions {
+        background: rgba(9, 12, 29, .82) !important;
+        border: 1px solid var(--rw-border-soft) !important;
+        border-right: 0 !important;
+        border-radius: var(--rw-radius-md) 0 0 var(--rw-radius-md) !important;
+        box-shadow: inset 0 0 14px rgba(139, 92, 246, .04) !important;
+    }
+
+    #overviewcomponent #detailWrapper > #planetOptions a { color: var(--rw-cyan-soft) !important; }
+    #overviewcomponent #detailWrapper > #planetOptions a:hover { color: var(--rw-pink) !important; text-shadow: var(--rw-glow-magenta) !important; }
+    #overviewcomponent .togglePlanetDetails { opacity: .82; transition: opacity var(--rw-transition-fast), filter var(--rw-transition-fast); }
+    #overviewcomponent .togglePlanetDetails:hover { opacity: 1; filter: brightness(1.18) saturate(1.2) drop-shadow(0 0 4px rgba(49, 231, 255, .38)); }
+
+    #overviewcomponent #productionboxBottom .content-box-s,
+    #overviewcomponent #productionboxbuildingcomponent,
+    #overviewcomponent #productionboxresearchcomponent,
+    #overviewcomponent #productionboxshipyardcomponent {
+        background: var(--rw-gradient-panel) !important;
+        border-color: var(--rw-border-soft) !important;
+        box-shadow: inset 0 1px rgba(255, 255, 255, .02), 0 0 10px rgba(49, 231, 255, .045) !important;
+    }
+
+    #overviewcomponent #productionboxBottom .content-box-s .header,
+    #overviewcomponent #productionboxbuildingcomponent .header,
+    #overviewcomponent #productionboxresearchcomponent .header,
+    #overviewcomponent #productionboxshipyardcomponent .header {
+        background: var(--rw-gradient-header) !important;
+        border-color: var(--rw-border-soft) !important;
+    }
+
+    #overviewcomponent #productionboxBottom .content-box-s .header h3,
+    #overviewcomponent #productionboxbuildingcomponent h3,
+    #overviewcomponent #productionboxresearchcomponent h3,
+    #overviewcomponent #productionboxshipyardcomponent h3 {
+        color: var(--rw-cyan) !important;
+        text-shadow: 0 0 5px rgba(49, 231, 255, .28) !important;
+    }
+
+    #overviewcomponent #productionboxBottom .content-box-s .content,
+    #overviewcomponent #productionboxBottom td,
+    #overviewcomponent .construction,
+    #overviewcomponent .queue {
+        background-color: rgba(7, 9, 21, .88) !important;
+        color: var(--rw-text) !important;
+    }
+
+    #overviewcomponent #productionboxBottom td.idle,
+    #overviewcomponent #productionboxBottom td.idle a { color: var(--rw-muted) !important; }
+    #overviewcomponent #productionboxBottom td.idle a:hover { color: var(--rw-cyan) !important; }
+    #overviewcomponent #productionboxBottom .content-box-s:hover {
+        border-color: var(--rw-border-hot) !important;
+        box-shadow: 0 0 12px rgba(255, 60, 172, .075), inset 0 1px rgba(255, 255, 255, .02) !important;
+    }
+
+    #overviewcomponent .bar_container,
+    #overviewcomponent .progressbar,
+    #overviewcomponent .progressbar .bar { border-color: var(--rw-border-soft) !important; }
+    #overviewcomponent .progressbar .bar,
+    #overviewcomponent .bar_container .bar {
+        background: linear-gradient(90deg, var(--rw-cyan), var(--rw-purple)) !important;
+        box-shadow: 0 0 8px rgba(49, 231, 255, .18) !important;
+    }
+
+    /* ===== Bundled from v2/integrations/ogame-infinity.css ===== */
+    :root {
+        --p0: var(--rw-void);
+        --p1: var(--rw-space);
+        --p2: #0d1022;
+        --p3: #12162c;
+        --p4: #181d39;
+        --p5: #1d2343;
+        --p6: #465072;
+        --neon: var(--rw-cyan);
+        --neonborder: var(--rw-cyan-soft);
+        --textblue: var(--rw-muted);
+        --textcyan: var(--rw-cyan-soft);
+        --textgold: #cbbd7c;
+        --textsand: var(--rw-yellow);
+        --textpremium: var(--rw-yellow);
+        --textdate: #9b9cff;
+        --texttime: #ffc46b;
+        --metal: var(--rw-metal);
+        --crystal: var(--rw-crystal);
+        --deut: var(--rw-deuterium);
+        --energy: var(--rw-energy);
+        --dm: var(--rw-darkmatter);
+    }
+
+    .ogl-settings,
+    .ogl-target-list,
+    .ogk-tradeRate-box,
+    .ogk-filter-box,
+    .ogk-crawler-box,
+    .ogk-settings-box,
+    .ogl-res-transport,
+    .ogl-dest > div,
+    .ogl-cargo {
+        color: var(--rw-text) !important;
+        background: var(--rw-gradient-panel) !important;
+        border-color: var(--rw-border-soft) !important;
+        box-shadow: inset 0 1px rgba(255, 255, 255, .02), 0 8px 22px rgba(0, 0, 0, .20) !important;
+    }
+
+    .ogl-settings h1,
+    .ogl-settings h1.tooltip,
+    .ogk-tradeRate-text,
+    .ogk-filter-text,
+    .ogk-crawler-text,
+    .ogk-roi-desc { color: var(--rw-cyan-soft) !important; }
+
+    .ogl-text-btn {
+        color: var(--rw-cyan-soft) !important;
+        background: rgba(21, 28, 53, .96) !important;
+        border-color: var(--rw-border) !important;
+        box-shadow: none !important;
+    }
+
+    .ogl-text-btn:hover,
+    .ogl-text-btn.ogl-active {
+        color: var(--rw-pink) !important;
+        background: rgba(255, 60, 172, .10) !important;
+        border-color: var(--rw-border-hot) !important;
+        box-shadow: 0 0 8px rgba(255, 60, 172, .15) !important;
+    }
+
+    #planetbarcomponent #planetList,
+    #planetbarcomponent #rechts #planetList {
+        background: linear-gradient(180deg, rgba(10, 13, 29, .96), rgba(5, 7, 18, .97)) !important;
+        border-color: var(--rw-border-soft) !important;
+    }
+
+    #planetbarcomponent .planetlink .planet-name { color: var(--rw-text-strong) !important; }
+    #planetbarcomponent .planetlink .planet-koords { color: var(--rw-cyan-soft) !important; }
+    #planetbarcomponent .planetlink.active .planet-koords,
+    #planetbarcomponent .planetlink .ogl-mines { color: var(--rw-pink) !important; }
+    #planetbarcomponent .ogl-planet { background-color: rgba(49, 231, 255, .28); }
+    #planetbarcomponent .ogl-planet:hover,
+    #planetbarcomponent .ogl-planet.ogl-active { background-color: var(--rw-magenta) !important; }
+    #planetbarcomponent .ogl-moon { box-shadow: inset -.5em -.2em rgba(49, 231, 255, .40); }
+    #planetbarcomponent .moonlink .ogl-moon:hover,
+    #planetbarcomponent .ogl-moon.ogl-active { box-shadow: inset -.5em -.2em var(--rw-pink) !important; }
+
+    .ogl-res-filler > div,
+    .ogl-res-filler .ogk-real-cargo,
+    .ogl-res-filler .ogl-actions {
+        background: linear-gradient(180deg, rgba(15, 19, 39, .97), rgba(7, 10, 24, .98)) !important;
+        border-color: var(--rw-border-soft) !important;
+        color: var(--rw-text) !important;
+    }
+
+    .ogl-dest .ogl-arrival-time,
+    .ogl-dest .ogl-return-time,
+    .ogk-time { color: var(--rw-yellow) !important; }
+    .ogl-spyTable td.ogi-new { background: rgba(49, 231, 255, .20) !important; color: var(--rw-text-strong) !important; }
+    .ogk-tech-controls,
+    .ogk-titles,
+    .ogk-controls { color: var(--rw-muted) !important; }
+    .ogk-tech-controls .ogk-lvl,
+    .ogk-titles strong { color: var(--rw-cyan) !important; }
+
+    #planetList[data-alert-hostile-incoming-mode="2"] .smallplanet.ogi-planet_under_hostile_activity .planetlink.active,
+    #planetList[data-alert-hostile-incoming-mode="2"] .smallplanet.ogi-moon_under_hostile_activity .moonlink.active {
+        background: rgba(255, 82, 119, .30) !important;
+    }
+
+    .moonlink .ogl-timer,
+    .planetlink .ogl-timer { border-color: var(--rw-space) !important; }
+    .moonlink .ogl-medium,
+    .planetlink .ogl-medium { background: #d7a536 !important; }
+    .moonlink .ogl-short,
+    .planetlink .ogl-short { background: var(--rw-red) !important; }
+
+    /* ===== Bundled from v2/fixes/opera-gx.css ===== */
+    #overviewcomponent #planet[details-active="true"] #detailWrapper #planetdata {
+        visibility: visible !important;
+    }
+}
