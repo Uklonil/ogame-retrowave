@@ -1,0 +1,78 @@
+/* =========================================================
+   OGAME RETROWAVE V2 — DESIGN TOKENS
+   Visual primitives only. Keep OGame/Infinity behaviour out
+   of this file.
+   ========================================================= */
+
+:root {
+    --rw-void: #050510;
+    --rw-space: #080a18;
+    --rw-space-soft: rgba(8, 10, 24, .82);
+
+    --rw-panel: rgba(13, 16, 34, .94);
+    --rw-panel-2: rgba(18, 22, 44, .94);
+    --rw-panel-3: rgba(25, 30, 57, .92);
+    --rw-panel-hover: rgba(31, 37, 70, .94);
+    --rw-elevated: rgba(20, 25, 48, .97);
+
+    --rw-cyan: #31e7ff;
+    --rw-cyan-soft: #78efff;
+    --rw-magenta: #ff3cac;
+    --rw-pink: #ff71ce;
+    --rw-purple: #8b5cf6;
+    --rw-violet: #5634a5;
+    --rw-yellow: #ffe66d;
+    --rw-green: #62ff9d;
+    --rw-red: #ff5277;
+
+    --rw-text: #e7e9ff;
+    --rw-text-strong: #f5f7ff;
+    --rw-muted: #8990b5;
+    --rw-muted-2: #606987;
+
+    --rw-metal: #c9d0df;
+    --rw-crystal: #31e7ff;
+    --rw-deuterium: #8b7cff;
+    --rw-energy: #ffe66d;
+    --rw-darkmatter: #ff71ce;
+    --rw-food: #f5b739;
+
+    --rw-border: rgba(49, 231, 255, .28);
+    --rw-border-soft: rgba(49, 231, 255, .13);
+    --rw-border-hot: rgba(255, 60, 172, .62);
+    --rw-border-purple: rgba(139, 92, 246, .45);
+
+    --rw-shadow-panel: 0 12px 35px rgba(0, 0, 0, .35);
+    --rw-glow-cyan:
+        0 0 4px rgba(49, 231, 255, .42),
+        0 0 14px rgba(49, 231, 255, .12);
+    --rw-glow-magenta:
+        0 0 5px rgba(255, 60, 172, .5),
+        0 0 16px rgba(255, 60, 172, .14);
+
+    --rw-gradient: linear-gradient(
+        90deg,
+        var(--rw-cyan),
+        var(--rw-purple),
+        var(--rw-magenta)
+    );
+    --rw-gradient-panel: linear-gradient(
+        180deg,
+        rgba(18, 22, 44, .96),
+        rgba(7, 9, 22, .97)
+    );
+    --rw-gradient-header: linear-gradient(
+        90deg,
+        rgba(49, 231, 255, .13),
+        rgba(139, 92, 246, .09) 52%,
+        rgba(255, 60, 172, .10)
+    );
+
+    --rw-radius-xs: 2px;
+    --rw-radius-sm: 4px;
+    --rw-radius-md: 7px;
+    --rw-radius-lg: 11px;
+
+    --rw-transition-fast: 120ms ease;
+    --rw-transition: 180ms ease;
+}
