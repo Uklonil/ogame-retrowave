@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           OGame Retrowave — Develop
 @namespace      https://github.com/Uklonil/ogame-retrowave
-@version        2.0.0-dev.2
+@version        2.0.0-dev.3
 @description    Experimental full-theme rewrite for OGame 13. Develop channel; designed for Stylus and OGame Infinity.
 @author         Uklonil
 @homepageURL    https://github.com/Uklonil/ogame-retrowave/tree/develop
@@ -1055,6 +1055,187 @@
     .moonlink .ogl-short,
     .planetlink .ogl-short {
         background: var(--rw-red) !important;
+    }
+
+    /* ===== Bundled from v2/chrome.css ===== */
+
+    /* =========================================================
+       OGAME RETROWAVE V2 — LEGACY CHROME REPLACEMENT
+       Removes decorative sprite-era chrome while preserving the DOM,
+       dimensions and interactive states expected by OGame and Infinity.
+       ========================================================= */
+
+    /* ---------- left navigation ---------- */
+
+    #menuTable,
+    #menuTable > li,
+    #menuTable a.menubutton,
+    #menuTable a.menubutton .textlabel {
+        background-image: none !important;
+    }
+
+    #menuTable > li {
+        margin: 2px 4px !important;
+        border: 1px solid rgba(49, 231, 255, .07) !important;
+        border-radius: var(--rw-radius-sm) !important;
+        background: rgba(9, 12, 27, .68) !important;
+        box-shadow: inset 0 1px rgba(255,255,255,.015) !important;
+    }
+
+    #menuTable > li:hover {
+        border-color: rgba(49, 231, 255, .24) !important;
+        background: rgba(18, 24, 45, .88) !important;
+    }
+
+    #menuTable a.menubutton {
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+    #menuTable a.menubutton.selected {
+        border: 0 !important;
+        background: linear-gradient(
+            90deg,
+            rgba(255, 60, 172, .16),
+            rgba(139, 92, 246, .08) 55%,
+            rgba(49, 231, 255, .03)
+        ) !important;
+    }
+
+    /* Keep the icon column functional, but stop the old button sprites from
+       visually defining the whole navigation row. */
+    #menuTable .menu_icon,
+    #menuTable .menu_icon span,
+    #menuTable .menu_icon a {
+        filter: saturate(.8) brightness(.92);
+    }
+
+    #menuTable > li:hover .menu_icon,
+    #menuTable > li:has(a.menubutton.selected) .menu_icon {
+        filter: saturate(1.12) brightness(1.08) drop-shadow(0 0 3px rgba(49,231,255,.22));
+    }
+
+    /* ---------- fleet / message strip ---------- */
+
+    #eventboxContent,
+    #eventboxFilled,
+    #eventboxBlank,
+    .eventboxContent,
+    #message-wrapper,
+    #messages_collapsed,
+    #messages_expanded {
+        background-image: none !important;
+    }
+
+    /* ---------- planet rail ---------- */
+
+    #planetList,
+    #planetList .smallplanet,
+    #planetList .planetlink,
+    #planetList .moonlink,
+    #countColonies {
+        background-image: none !important;
+    }
+
+    #planetList .smallplanet {
+        margin: 2px 3px !important;
+        border: 1px solid rgba(49, 231, 255, .08) !important;
+        border-radius: var(--rw-radius-sm) !important;
+    }
+
+    #planetList .smallplanet:has(.active),
+    #planetList .planetlink.active,
+    #planetList .moonlink.active {
+        border-color: rgba(255, 60, 172, .42) !important;
+    }
+
+    /* ---------- generic legacy box chrome ---------- */
+
+    .content-box-s,
+    .content-box-m,
+    .content-box-l,
+    .content-box-xl,
+    .content-box-s .header,
+    .content-box-m .header,
+    .content-box-l .header,
+    .content-box-xl .header,
+    .content-box-s .content,
+    .content-box-m .content,
+    .content-box-l .content,
+    .content-box-xl .content {
+        background-image: none !important;
+    }
+
+    /* Old OGame corner/edge pseudo-elements often exist solely to complete
+       sprite backgrounds. Do not touch arbitrary pseudo-elements globally;
+       only neutralise them on the generic box shells we fully own. */
+    .content-box-s > .header::before,
+    .content-box-s > .header::after,
+    .content-box-m > .header::before,
+    .content-box-m > .header::after,
+    .content-box-l > .header::before,
+    .content-box-l > .header::after,
+    .content-box-xl > .header::before,
+    .content-box-xl > .header::after {
+        background-image: none !important;
+    }
+
+    /* ---------- overview ---------- */
+
+    #overviewcomponent #planet,
+    #overviewcomponent #planet #detailWrapper,
+    #overviewcomponent #planetdata,
+    #overviewcomponent #planetOptions,
+    #overviewcomponent #productionboxBottom,
+    #overviewcomponent #productionboxBottom .content-box-s,
+    #overviewcomponent #productionboxBottom .header,
+    #overviewcomponent #productionboxBottom .content {
+        background-image: none !important;
+    }
+
+    #overviewcomponent #planet {
+        background: linear-gradient(
+            135deg,
+            rgba(7, 10, 25, .90),
+            rgba(13, 17, 37, .80) 60%,
+            rgba(32, 19, 51, .68)
+        ) !important;
+    }
+
+    #overviewcomponent #planet #detailWrapper {
+        background: linear-gradient(
+            90deg,
+            rgba(7, 10, 25, .46),
+            rgba(10, 14, 32, .82) 56%,
+            rgba(19, 14, 39, .90)
+        ) !important;
+    }
+
+    #overviewcomponent #planetdata {
+        backdrop-filter: blur(2px);
+    }
+
+    #overviewcomponent #productionboxBottom .content-box-s {
+        border-radius: var(--rw-radius-sm) !important;
+        overflow: hidden;
+    }
+
+    #overviewcomponent #productionboxBottom .header {
+        border-bottom: 1px solid rgba(49, 231, 255, .12) !important;
+    }
+
+    /* ---------- buttons that still use sprite backgrounds ---------- */
+
+    a.btn_blue,
+    a.btn_gray,
+    a.btn_red,
+    button.btn_blue,
+    button.btn_gray,
+    button.btn_red,
+    .btn_blue,
+    .btn_gray,
+    .btn_red {
+        background-image: none !important;
     }
 
     /* ===== Bundled from v2/fixes/opera-gx.css ===== */
